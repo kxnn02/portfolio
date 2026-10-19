@@ -1,202 +1,381 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import ccShot from '../assets/shots/campuscurrents.png';
+import portrait from '../assets/shots/portrait.jpg';
 
-const title = 'Kenneth Clein T. Fernandez — Developer, Manila';
+const title = 'Kenneth Clein T. Fernandez — I build software that ships';
 const description =
-	'Third-year BSIT student in Manila. Shipped a campus alert app, a Telegram bot in production use by DEVCON Cohort 5, and the retrieval layer of a nonprofit operations platform. Open to internship hours.';
+	'Third-year BSIT student in Manila. A campus alert app on Android, a Telegram bot DEVCON Cohort 5 uses daily, the retrieval layer of a nonprofit platform, and an internship on a membership product. Open to OJT and internship hours.';
+
+const meta = [
+	{
+		idx: '01',
+		kind: 'Android app · 2026',
+		name: 'CampusCurrents',
+		href: 'https://campus-currents-website.vercel.app',
+		body: 'Class suspension alerts, emergency notices and campus announcements for San Sebastian – Recoletos, in one Android app. Five-person team; I was project manager and lead developer. The Supabase backend runs 50 migrations with row-level security, and push delivery reports a receipt for every student.',
+		stack: 'React Native (Expo) · Next.js · Supabase · PostgreSQL',
+		links: [
+			{ label: 'Project site', href: 'https://campus-currents-website.vercel.app' },
+			{ label: 'Download APK', href: 'https://github.com/kxnn02/campus-currents/releases/latest' },
+			{ label: 'Source code', href: 'https://github.com/kxnn02/campus-currents' },
+		],
+	},
+	{
+		idx: '02',
+		kind: 'Telegram bot · 2026',
+		name: 'DEVCON Cohort 5 Task Bot',
+		href: 'https://telegram-taskbot-ten.vercel.app',
+		body: 'A Telegram bot and a Next.js dashboard in daily use by DEVCON\u2019s eight-person Cohort 5: board, team and activity views, plus the cohort\u2019s working rhythm \u2014 a morning standup card grouped by person, overdue reminders, and weekly digests. CI blocks any merge that fails typecheck, the test suite or the migration check.',
+		stack: 'Telegram Bot API · Next.js · Supabase · CI',
+		links: [
+			{ label: 'Live dashboard', href: 'https://telegram-taskbot-ten.vercel.app' },
+			{ label: 'Source code', href: 'https://github.com/kxnn02/telegram-taskbot' },
+		],
+	},
+	{
+		idx: '03',
+		kind: 'Nonprofit platform · 2026',
+		name: 'DEVCON Kids Hub',
+		href: 'https://devcon-kids-hub-2-0.vercel.app',
+		body: 'Events, volunteer onboarding, chapters, inventory and post-event reporting for DEVCON Kids, built by five people. I owned the AI half: document ingestion and chunking, Mistral embeddings, pgvector search, the chat interface and an FAQ auto-builder \u2014 and I wrote the 39-case evaluation harness on my own.',
+		stack: 'React · Vite · Supabase · pgvector · Mistral',
+		links: [
+			{ label: 'Live site', href: 'https://devcon-kids-hub-2-0.vercel.app' },
+			{ label: 'Team repo', href: 'https://github.com/Debb1ie/DEVCON-Kids-Hub-2.0' },
+		],
+	},
+	{
+		idx: '04',
+		kind: 'Internship · Aug–Sep 2026',
+		name: 'DEVCON+',
+		href: 'https://devcon.plus',
+		body: 'A volunteer internship on DEVCON\u2019s membership platform \u2014 event registration, points and rewards, and chapter operations across 13 chapters. I fixed UI and data bugs in the admin dashboard, including duplicate chapter entries in chapter listings, and proposed the chapter leaderboard.',
+		stack: 'React · TypeScript · NestJS · Supabase · Firebase Auth',
+		links: [{ label: 'Live site', href: 'https://devcon.plus' }],
+		private: true,
+	},
+];
 ---
 
 <Base {title} {description}>
-	<div class="wrap">
-		<header class="top">
-			<span class="top__mark">KCF</span>
-			<span class="top__meta">Manila, Philippines</span>
-		</header>
-	</div>
+	<a class="skip" href="#work">Skip to work</a>
 
-	<main>
-		<div class="wrap">
-			<section class="hero">
-				<p class="eyebrow">Third-year BSIT · Full-stack internship candidate · Manila</p>
-				<h1>Kenneth Clein T. Fernandez</h1>
-				<p class="lede">
-					I'm a third-year BSIT student at San Sebastian College – Recoletos Manila. I build software
-					that ships: a campus alert app, a Telegram bot in production use by DEVCON's Cohort 5, and the
-					retrieval layer of a nonprofit operations platform.
-				</p>
-				<p class="status">Available for OJT / internship hours</p>
-				<div class="actions">
-					<a class="btn" href="#contact">
-						Get in touch
-						<span class="btn__arrow" aria-hidden="true">↗</span>
-					</a>
-					<a class="link-mono" href="https://github.com/kxnn02">GitHub</a>
-					<a class="link-mono" href="https://linkedin.com/in/kenneth-clein-fernandez">LinkedIn</a>
+	<header class="site-head">
+		<div class="shell site-head__in">
+			<a class="brand" href="#top">
+				KCF<span class="brand__name"> — Kenneth Clein Fernandez</span>
+			</a>
+			<nav class="nav" aria-label="Sections">
+				<a href="#work">Work</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main">
+		<section class="hero" id="top">
+			<div class="shell">
+				<p class="label hero__eyebrow">Kenneth Clein T. Fernandez — Manila, Philippines</p>
+				<h1 class="hero__title">
+					<span class="line">I build software</span>
+					<span class="line">that <em>ships.</em></span>
+				</h1>
+
+				<div class="hero__foot">
+					<p class="hero__lede">
+						Third-year BSIT student at San Sebastian College – Recoletos Manila. Four things I've built
+						are live right now: a campus alert app on Android, a Telegram bot DEVCON's Cohort 5 uses
+						every day, the retrieval layer of a nonprofit platform, and a membership product I worked on
+						during an internship.
+					</p>
+
+					<div class="hero__side">
+						<p class="status">Open to OJT / internship hours</p>
+						<div class="hero__actions">
+							<a class="btn" href="#work">
+								See the work
+								<svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+									<path
+										d="M2.5 7h9M7.5 3l4 4-4 4"
+										stroke="currentColor"
+										stroke-width="1.6"
+										stroke-linecap="round"
+										stroke-linejoin="round"></path>
+								</svg>
+							</a>
+							<a class="btn btn--ghost" href="mailto:fernandezk728@gmail.com">Email me</a>
+						</div>
+						<p class="hero__links">
+							<a href="https://github.com/kxnn02">GitHub</a>
+							<a href="https://linkedin.com/in/kenneth-clein-fernandez">LinkedIn</a>
+						</p>
+					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section class="section" id="work" aria-labelledby="work-title">
-				<div class="section__head">
+		<section class="section" id="work" aria-labelledby="work-title">
+			<div class="shell">
+				<header class="section__head" data-reveal>
+					<span class="section__num">01</span>
 					<h2 id="work-title">Selected work</h2>
+					<p class="section__note">All four are running</p>
+				</header>
+
+				{
+					meta.map((project, i) => (
+						<article class="project" data-reveal>
+							<div class="project__text">
+								<p class="project__meta">
+									<span>{project.idx}</span>
+									<span>{project.kind}</span>
+								</p>
+								<h3 class="project__title">
+									<a href={project.href}>{project.name}</a>
+								</h3>
+								<p class="project__body">{project.body}</p>
+								<p class="project__stack">{project.stack}</p>
+								<ul class="project__links">
+									{project.links.map((link) => (
+										<li>
+											<a href={link.href}>{link.label}</a>
+										</li>
+									))}
+									{project.private && (
+										<li>
+											<span class="project__private">Private repo</span>
+										</li>
+									)}
+								</ul>
+							</div>
+
+							<figure class="project__visual">
+								{i === 0 ? (
+									<>
+										<div class="shot-wrap">
+											<Image
+												src={ccShot}
+												alt="The CampusCurrents landing page: the headline “Stay Informed. Stay Safe.”, a red Try the Beta button, and a phone showing its Status screen reading CLASSES ARE ON."
+												widths={[640, 960, 1440]}
+												sizes="(max-width: 56rem) 92vw, 55vw"
+												format="webp"
+												quality={82}
+												loading="lazy"
+											/>
+										</div>
+										<figcaption class="project__caption">
+											<span>Landing page</span>
+											<a href="https://campus-currents-website.vercel.app">
+												campus-currents-website.vercel.app
+											</a>
+										</figcaption>
+									</>
+								) : i === 1 ? (
+									<div class="facts">
+										<p class="facts__label">By the numbers</p>
+										<p class="facts__big">
+											328<em>/328</em>
+										</p>
+										<p class="facts__sub">commits on main, authored by me</p>
+										<ul class="facts__list">
+											<li>
+												<b>17</b> architecture decisions
+											</li>
+											<li>
+												<b>19</b> SQL migrations
+											</li>
+											<li>
+												<b>93</b> test files
+											</li>
+										</ul>
+									</div>
+								) : i === 2 ? (
+									<div class="facts">
+										<p class="facts__label">Evaluation harness</p>
+										<p class="facts__big">39</p>
+										<p class="facts__sub">cases, written alone</p>
+										<ul class="facts__tags">
+											<li>Grounding</li>
+											<li>Citations</li>
+											<li>No-answer</li>
+											<li>Injection</li>
+											<li>Authorization</li>
+										</ul>
+									</div>
+								) : (
+									<div class="facts">
+										<p class="facts__label">Internship</p>
+										<p class="facts__big">13</p>
+										<p class="facts__sub">chapters on the membership platform</p>
+										<ul class="facts__list facts__list--2">
+											<li>
+												<b>Aug–Sep 2026</b> volunteer internship
+											</li>
+											<li>
+												<b>Private</b> source repository
+											</li>
+										</ul>
+									</div>
+								)}
+							</figure>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="section" id="about" aria-labelledby="about-title">
+			<div class="shell">
+				<header class="section__head" data-reveal>
+					<span class="section__num">02</span>
+					<h2 id="about-title">About</h2>
+				</header>
+
+				<div class="about" data-reveal>
+					<figure class="about__photo">
+						<Image
+							src={portrait}
+							alt="Kenneth Fernandez, in a white shirt, dark tie and orange-tinted glasses, giving two thumbs up."
+							widths={[320, 480, 640]}
+							sizes="(max-width: 56rem) 60vw, 20rem"
+							format="webp"
+							quality={82}
+							loading="lazy"
+						/>
+					</figure>
+
+					<div class="about__text">
+						<p class="about__lede">
+							I'm Kenneth. I like the part of shipping that comes after the demo — <em>auth,
+							migrations, the bug a tester finds on a Friday.</em>
+						</p>
+						<p>
+							I'm a third-year BSIT student at San Sebastian College – Recoletos Manila. Most of what I
+							know came from building four projects with other people and fixing what broke, not from
+							tutorials.
+						</p>
+						<p>
+							I work in JavaScript and Python, with Java from coursework. I'm looking for an OJT or
+							internship where I own a feature end to end instead of watching one get built.
+						</p>
+					</div>
 				</div>
+			</div>
+		</section>
 
-				<ol class="work">
-					<li class="work__item">
-						<span class="work__idx" aria-hidden="true">01</span>
-						<div class="work__body">
-							<div class="work__title">
-								<h3>CampusCurrents</h3>
-								<span class="tag">Campus communication</span>
-							</div>
-							<p>
-								Class suspension alerts, emergency notifications and school announcements in one app.
-								I led five people as project manager and lead developer, shipped an Android beta, then
-								a release that fixed the security and UX issues testers reported. The Supabase backend
-								runs 50 migrations with row-level security and two-phase push delivery, with a receipt
-								for every student.
-							</p>
-							<p class="work__meta">React Native (Expo) · Next.js · Supabase · PostgreSQL</p>
-							<p class="work__links">
-								<a href="https://campus-currents-website.vercel.app">Project site</a>
-								<a href="https://github.com/kxnn02/campus-currents/releases/latest">Download APK</a>
-								<a href="https://github.com/kxnn02/campus-currents">Source code</a>
-							</p>
-						</div>
-					</li>
-
-					<li class="work__item">
-						<span class="work__idx" aria-hidden="true">02</span>
-						<div class="work__body">
-							<div class="work__title">
-								<h3>DEVCON Cohort 5 Task Bot</h3>
-								<span class="tag">Telegram task manager</span>
-							</div>
-							<p>
-								In production use by DEVCON Philippines' eight-person Cohort 5. A Telegram bot plus a
-								Next.js dashboard with board, team and activity views; CI blocks any merge that fails
-								typecheck, the full test suite or the migration check. It also runs the cohort's daily
-								rhythm — a morning standup card grouped by person, overdue and due-soon reminders, and
-								weekly digests. 328 of 328 commits are mine, across 93 test files.
-							</p>
-							<p class="work__meta">Telegram Bot API · Next.js · Supabase · CI</p>
-							<p class="work__links">
-								<a href="https://telegram-taskbot-ten.vercel.app">Live dashboard</a>
-								<a href="https://github.com/kxnn02/telegram-taskbot">Source code</a>
-							</p>
-						</div>
-					</li>
-
-					<li class="work__item">
-						<span class="work__idx" aria-hidden="true">03</span>
-						<div class="work__body">
-							<div class="work__title">
-								<h3>DEVCON Kids Hub</h3>
-								<span class="tag">Nonprofit operations</span>
-							</div>
-							<p>
-								Events, volunteer onboarding, chapters, inventory and post-event reporting for DEVCON
-								Kids, built by five people. I owned the AI half: document ingestion and chunking,
-								Mistral embeddings, pgvector search, the chat interface and an FAQ auto-builder. I also
-								wrote the 39-case evaluation harness alone, covering grounding, citations, no-answer,
-								injection and authorization.
-							</p>
-							<p class="work__meta">React · Vite · Supabase · pgvector · Mistral</p>
-							<p class="work__links">
-								<a href="https://devcon-kids-hub-2-0.vercel.app">Live site</a>
-								<a href="https://github.com/Debb1ie/DEVCON-Kids-Hub-2.0">Team repo</a>
-							</p>
-						</div>
-					</li>
-
-					<li class="work__item">
-						<span class="work__idx" aria-hidden="true">04</span>
-						<div class="work__body">
-							<div class="work__title">
-								<h3>DEVCON+</h3>
-								<span class="tag">Internship</span>
-							</div>
-							<p>
-								Volunteer internship, Aug–Sep 2026, on DEVCON's membership platform — event
-								registration, points and rewards, and chapter operations across 13 chapters. Fixed UI
-								and data bugs in the admin dashboard, including duplicate chapter entries in chapter
-								listings, and proposed a chapter leaderboard.
-							</p>
-							<p class="work__meta">React · TypeScript · NestJS · Supabase · Firebase Auth</p>
-							<p class="work__links">
-								<a href="https://devcon.plus">Live site</a>
-								<span class="tag">Private repo</span>
-							</p>
-						</div>
-					</li>
-				</ol>
-			</section>
-
-			<section class="section" id="background" aria-labelledby="background-title">
-				<div class="section__head">
+		<section class="section" id="background" aria-labelledby="background-title">
+			<div class="shell">
+				<header class="section__head" data-reveal>
+					<span class="section__num">03</span>
 					<h2 id="background-title">Education &amp; leadership</h2>
-				</div>
-				<ul class="roles">
-					<li class="roles__item">
-						<div>
-							<p class="roles__role">
-								B.S. Information Technology — San Sebastian College – Recoletos Manila
-							</p>
-							<p class="roles__org">Silver Medalist for Academic Excellence, 1st year, both semesters</p>
-						</div>
-						<p class="roles__period">Expected 2028</p>
-					</li>
-					<li class="roles__item">
-						<div>
-							<p class="roles__role">Founder and Lead</p>
-							<p class="roles__org">AWS Learning Club, San Sebastian College – Recoletos Manila</p>
-						</div>
-						<p class="roles__period">2026–2027</p>
-					</li>
-					<li class="roles__item">
-						<div>
-							<p class="roles__role">3rd Year Representative</p>
-							<p class="roles__org">Junior Philippine Computer Society, SSCR Manila</p>
-						</div>
-						<p class="roles__period">2026–2027</p>
-					</li>
-					<li class="roles__item">
-						<div>
-							<p class="roles__role">2nd Year Representative</p>
-							<p class="roles__org">Junior Philippine Computer Society, SSCR Manila</p>
-						</div>
-						<p class="roles__period">2025–2026</p>
-					</li>
-				</ul>
-			</section>
+				</header>
 
-			<section class="contact" id="contact" aria-labelledby="contact-title">
-				<h2 id="contact-title">Contact</h2>
-				<p>Open to OJT and internship hours. Email is the fastest way to reach me — I'm in Manila (GMT+8).</p>
-				<div class="email-row">
+				<div class="bg-grid" data-reveal>
+					<div class="bg-col">
+						<h3>Education</h3>
+						<p class="edu__degree">B.S. Information Technology</p>
+						<p class="edu__school">San Sebastian College – Recoletos Manila</p>
+						<p class="edu__award">Silver Medalist for Academic Excellence, 1st year, both semesters</p>
+						<p class="edu__period">Expected 2028</p>
+					</div>
+
+					<div class="bg-col">
+						<h3>Leadership</h3>
+						<ul class="roles">
+							<li class="roles__item">
+								<div>
+									<p class="roles__role">Founder and Lead</p>
+									<p class="roles__org">AWS Learning Club, SSCR Manila</p>
+								</div>
+								<p class="roles__period">2026–2027</p>
+							</li>
+							<li class="roles__item">
+								<div>
+									<p class="roles__role">3rd Year Representative</p>
+									<p class="roles__org">Junior Philippine Computer Society, SSCR Manila</p>
+								</div>
+								<p class="roles__period">2026–2027</p>
+							</li>
+							<li class="roles__item">
+								<div>
+									<p class="roles__role">2nd Year Representative</p>
+									<p class="roles__org">Junior Philippine Computer Society, SSCR Manila</p>
+								</div>
+								<p class="roles__period">2025–2026</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="contact" id="contact" aria-labelledby="contact-title">
+			<div class="shell">
+				<p class="label" data-reveal>04 — Contact</p>
+				<h2 class="contact__title" id="contact-title" data-reveal>
+					Hiring for an internship? <em>I'd like to hear about it.</em>
+				</h2>
+
+				<div class="email-row" data-reveal>
 					<a class="email" href="mailto:fernandezk728@gmail.com">fernandezk728@gmail.com</a>
 					<button
 						class="copy"
 						type="button"
 						data-copy-email
 						aria-label="Copy email address to clipboard"
-					>Copy</button>
+					>
+						Copy
+					</button>
 				</div>
-				<div class="contact__links">
-					<a href="https://github.com/kxnn02">github.com/kxnn02</a>
-					<a href="https://linkedin.com/in/kenneth-clein-fernandez">LinkedIn</a>
+
+				<div class="contact__foot" data-reveal>
+					<p>Manila, Philippines · GMT+8</p>
+					<div>
+						<a href="https://github.com/kxnn02">github.com/kxnn02</a>
+						<a href="https://linkedin.com/in/kenneth-clein-fernandez">LinkedIn</a>
+					</div>
 				</div>
-			</section>
-		</div>
+			</div>
+		</section>
 	</main>
 
 	<footer class="footer">
-		<div class="wrap">
-			<p>Kenneth Clein T. Fernandez · Manila, Philippines</p>
-			<p>Built with Astro. No client-side framework.</p>
+		<div class="shell footer__in">
+			<p>© 2026 Kenneth Clein T. Fernandez</p>
+			<p>
+				Built with Astro · <a href="https://github.com/kxnn02/portfolio">source</a>
+			</p>
 		</div>
 	</footer>
 
 	<script>
+		// Reveal on scroll. If this file ever fails to load, the watchdog in the
+		// document head drops the `js` class and everything shows up immediately.
+		const targets = document.querySelectorAll('[data-reveal]');
+
+		if ('IntersectionObserver' in window) {
+			const io = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('is-in');
+							io.unobserve(entry.target);
+						}
+					}
+				},
+				{ rootMargin: '0px 0px -10% 0px', threshold: 0.04 }
+			);
+
+			targets.forEach((target) => io.observe(target));
+		} else {
+			targets.forEach((target) => target.classList.add('is-in'));
+		}
+
+		window.__revealReady = true;
+
 		const button = document.querySelector('[data-copy-email]');
 		const email = 'fernandezk728@gmail.com';
 

@@ -21,11 +21,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
-		<meta name="theme-color" content="#fbfaf8" />
+		<meta name="theme-color" content="#f8f5ef" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-		<Font cssVariable="--font-sans" preload={[{ weight: '400' }, { weight: '500' }]} />
+		<script is:inline>
+			document.documentElement.classList.add('js');
+			// If the reveal script never runs, show everything. See index.astro.
+			window.setTimeout(function () {
+				if (!window.__revealReady) document.documentElement.classList.remove('js');
+			}, 3000);
+		</script>
+
+		<Font cssVariable="--font-sans" preload={[{ weight: '400' }, { weight: '600' }]} />
+		<Font cssVariable="--font-serif" preload />
 		<Font cssVariable="--font-mono" />
 	</head>
 	<body>

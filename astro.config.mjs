@@ -19,6 +19,15 @@ export default defineConfig({
 			fallbacks: ['system-ui', 'sans-serif'],
 		},
 		{
+			name: 'Instrument Serif',
+			cssVariable: '--font-serif',
+			provider: fontProviders.google(),
+			weights: [400],
+			styles: ['italic'],
+			subsets: ['latin'],
+			fallbacks: ['Georgia', 'serif'],
+		},
+		{
 			name: 'JetBrains Mono',
 			cssVariable: '--font-mono',
 			provider: fontProviders.google(),
