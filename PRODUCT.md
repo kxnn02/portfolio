@@ -4,8 +4,8 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (structure changed to a single-page showcase; content
-corrections after the first deploy)
+Last updated: 2026-10-20 (visual direction chosen and built from live references;
+single-page showcase; content corrections after the first deploy)
 
 ---
 
@@ -123,17 +123,24 @@ everything else). Numbers below are stamped with the date they were counted.
 
 ## Constraints
 
-- Solo build. **Astro, static output, no client-side framework** — the only JS
-  is the copy-email button. The site has to be explainable by its owner line by
-  line.
-- Load speed beats scroll theatrics. Motion budget: 2–4 purposeful moments,
-  decided in the motion phase, not during the build.
+- Solo build. **Astro, static output, no client-side framework.** The only
+  JavaScript is one inline script (a `js` class so reveal animations never hide
+  content from a browser without JS) and one small module: the copy-email button
+  plus an IntersectionObserver that adds a class on scroll. No framework, no
+  hydration, no third-party script. The site has to be explainable by its owner
+  line by line — including that observer.
+- Load speed beats scroll theatrics. Motion budget, decided 2026-10-20 and now
+  fixed: hero lines rise on load, sections reveal once on scroll, project visuals
+  lag slightly behind their text, and hover/focus states. Everything is
+  `transform`/`opacity` only. The scroll-linked drift uses `animation-timeline`
+  behind `@supports`, so browsers without it get a completely still page rather
+  than a bug. No WebGL, no scroll-jacking, no animation library.
 - Phone-first: recruiters read this on a phone, so 390px is the primary canvas
   and the desktop layout is the adaptation.
-- Tokens in `src/styles/global.css` are provisional scaffold values **chosen by
-  the builder, not the owner**. The owner has not chosen a visual direction yet;
-  until they do, treat every colour, typeface and spacing value as a placeholder.
-  The design phase replaces the values, not the file structure.
+- Tokens in `src/styles/global.css` are the built direction. They are traceable:
+  paper and ink are warm neutrals, and the accent is `#AE0F19`, sampled from the
+  CampusCurrents landing page rather than invented. `reference-brief.md` records
+  which reference each structural decision came from.
 - Domain pending a Student Pack claim (Namecheap `.me`, Name.com free TLD, or
   `.TECH`). `SITE` in `astro.config.mjs` is the only place the URL is written.
 
@@ -151,26 +158,26 @@ everything else). Numbers below are stamped with the date they were counted.
 | Leadership | Its own section under the work list | Owner asked for it; founder and both JPCS roles are verified |
 | Screenshots | Captured from live sites only, never mocked | Mocked UI would break the honesty rule |
 | Colour mode | Light only | Owner's call 2026-10-20 — one surface, one set of contrast checks |
-| Accent | One strong accent, used sparingly | Owner's call; candidate colours derived from the project screenshots rather than invented |
-| Project layout | Full-width rows, one large screenshot each | Owner's call — makes the software the argument instead of a card grid |
-| Motion | Expressive, inside the 2s LCP budget | Owner asked for expressive on 2026-10-20; the load-speed constraint still caps technique to transform/opacity, no WebGL |
-| Portrait | One photo in a short about section | Owner's call |
-| Visual direction | Three references shortlisted, owner deciding | The builder had picked a direction unasked; corrected 2026-10-20. Shortlist at `C:\Users\Admin\portfolio-shots\references.html` |
+| Accent | `#AE0F19`, used about six times on the page | Owner chose "one strong accent, derived from my screenshots". Sampled from the CampusCurrents button and headline, not invented |
+| Project layout | One row per project, one large visual in the second column | Owner chose the mix: structure from NexStudio (screenshot rows), type from Signal-A, rhythm from AAT |
+| Motion | Expressive but transform/opacity only | Owner asked for expressive on 2026-10-20. Scroll-linked drift is behind `@supports (animation-timeline)` |
+| Portrait | One photo in a short about section | Owner's call. Currently the photo from the old portfolio — worth replacing |
+| Visual direction | Owned by the owner, decided from references | The builder had picked a direction unasked; corrected 2026-10-20. Three live references captured full-page, compared at `C:\Users\Admin\portfolio-shots\references.html`, direction chosen and recorded in `reference-brief.md` |
+| Login-walled projects | Typographic fact panel instead of a screenshot | Task Bot, Kids Hub and DEVCON+ all sit behind logins. Panels show countable facts only, and are built to be replaced one-for-one by a screenshot |
 
 ## Open questions
 
-1. **Visual direction — owner deciding.** Three live references, captured full-page on
-   2026-10-20 and compared in `C:\Users\Admin\portfolio-shots\references.html`:
-   Signal-A Studio (type discipline, text project index), NexStudio (screenshot
-   rows, band contrast, big type), AAT Architecten (whitespace, uneven image
-   rhythm). Four other awwwards candidates were dropped after live checks — two
-   dead domains, one expired certificate, one now a splash page, one full-screen
-   WebGL with no content. Do not build a direction until the owner picks.
+1. **Portrait.** The About section currently uses the photo from the old
+   portfolio (white shirt, black tie, headphones, mottled blue backdrop). It has
+   personality and it works at 22rem wide, but a cleaner, current headshot would
+   be better. Ask before publishing anything else.
 2. **Resume PDF.** Received and extracted, but it overclaims (see Non-claims) and
    carries a public phone number. Fix the text, then decide: publish at
    `/resume.pdf`, or keep it as staples. Not linked yet.
 3. **Screenshots still needed** (everything below is behind a login or on a device
-   the build machine doesn't have):
+   the build machine doesn't have). The page ships without them — each project
+   has a designed fact panel in the visual slot that a screenshot replaces
+   one-for-one:
    - Task Bot dashboard, signed in: board view, team view, activity view.
    - Kids Hub chat / AI assistant: a grounded answer with citations, and the
      no-answer case. This is the only visual proof of the retrieval pipeline.
@@ -181,9 +188,9 @@ everything else). Numbers below are stamped with the date they were counted.
    - CampusCurrents: Android app screens on a real device (feed, status, calendar,
      profile) and the admin dashboard.
    - AWS Learning Club SSCR Manila: the org itself, if a leadership image is wanted.
-5. **`devcon.plus` renders an empty Events list in a desktop browser** — tabs and
+4. **`devcon.plus` renders an empty Events list in a desktop browser** — tabs and
    filters load, no events appear. Either nothing is live right now or the list
    fails to load. Worth checking, since it's the public face of internship work.
-6. **Older projects.** `PasaBuy`, `StraySafe` and `flappy-kiro` exist on GitHub with
+5. **Older projects.** `PasaBuy`, `StraySafe` and `flappy-kiro` exist on GitHub with
    live links but are not in the brief's four. Deliberately excluded — say the word
    if they should appear as a smaller "other work" list.
