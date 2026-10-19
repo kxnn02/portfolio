@@ -150,13 +150,22 @@ everything else). Numbers below are stamped with the date they were counted.
 | Deploy | Vercel now, custom domain when claimed | Clears the "always shipping" gate today |
 | Leadership | Its own section under the work list | Owner asked for it; founder and both JPCS roles are verified |
 | Screenshots | Captured from live sites only, never mocked | Mocked UI would break the honesty rule |
+| Colour mode | Light only | Owner's call 2026-10-20 — one surface, one set of contrast checks |
+| Accent | One strong accent, used sparingly | Owner's call; candidate colours derived from the project screenshots rather than invented |
+| Project layout | Full-width rows, one large screenshot each | Owner's call — makes the software the argument instead of a card grid |
+| Motion | Expressive, inside the 2s LCP budget | Owner asked for expressive on 2026-10-20; the load-speed constraint still caps technique to transform/opacity, no WebGL |
+| Portrait | One photo in a short about section | Owner's call |
+| Visual direction | Three references shortlisted, owner deciding | The builder had picked a direction unasked; corrected 2026-10-20. Shortlist at `C:\Users\Admin\portfolio-shots\references.html` |
 
 ## Open questions
 
-1. **Visual direction — owner-owned, unanswered.** The scaffold used warm
-   off-white, Inter Tight + JetBrains Mono, a single narrow column and near-black
-   pills. That was the builder's choice, not the owner's, and it is provisional.
-   See the decisions log once the owner picks a direction.
+1. **Visual direction — owner deciding.** Three live references, captured full-page on
+   2026-10-20 and compared in `C:\Users\Admin\portfolio-shots\references.html`:
+   Signal-A Studio (type discipline, text project index), NexStudio (screenshot
+   rows, band contrast, big type), AAT Architecten (whitespace, uneven image
+   rhythm). Four other awwwards candidates were dropped after live checks — two
+   dead domains, one expired certificate, one now a splash page, one full-screen
+   WebGL with no content. Do not build a direction until the owner picks.
 2. **Resume PDF.** Received and extracted, but it overclaims (see Non-claims) and
    carries a public phone number. Fix the text, then decide: publish at
    `/resume.pdf`, or keep it as staples. Not linked yet.
