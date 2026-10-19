@@ -57,6 +57,9 @@ body {
 	margin: 0;
 	background: var(--paper);
 	color: var(--ink);
+	/* A single unbreakable string anywhere in the copy — a pasted URL, a long
+	   email — would otherwise give the whole document a sideways scroll. */
+	overflow-wrap: break-word;
 	font-family: var(--sans);
 	font-size: var(--step-0);
 	line-height: 1.62;
@@ -132,7 +135,6 @@ img {
 	font-family: var(--mono);
 	font-size: var(--step--1);
 	text-decoration: none;
-	transition: top 160ms ease;
 }
 
 .skip:focus-visible {
@@ -186,8 +188,10 @@ img {
 	text-decoration: none;
 }
 
-.nav a:hover {
-	color: var(--accent);
+@media (hover: hover) {
+	.nav a:hover {
+		color: var(--accent);
+	}
 }
 
 /* -------------------------------------------------------------------------
@@ -322,27 +326,35 @@ img {
 	font-size: 0.9375rem;
 	font-weight: 500;
 	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 	transition:
 		background 180ms ease,
 		border-color 180ms ease,
 		transform 180ms var(--ease);
 }
 
-.btn:hover {
-	background: var(--accent-deep);
-	border-color: var(--accent-deep);
+@media (hover: hover) {
+	.btn:hover {
+		background: var(--accent-deep);
+		border-color: var(--accent-deep);
+	}
 }
 
 .btn:active {
 	transform: translateY(1px);
+	/* A press should land instantly; only the release eases. */
+	transition: none;
 }
 
 .btn svg {
 	transition: transform 240ms var(--ease);
 }
 
-.btn:hover svg {
-	transform: translateX(3px);
+@media (hover: hover) {
+	.btn:hover svg {
+		transform: translateX(3px);
+	}
 }
 
 .btn--ghost {
@@ -351,9 +363,11 @@ img {
 	color: var(--ink);
 }
 
-.btn--ghost:hover {
-	background: transparent;
-	border-color: var(--ink);
+@media (hover: hover) {
+	.btn--ghost:hover {
+		background: transparent;
+		border-color: var(--ink);
+	}
 }
 
 .hero__links {
@@ -368,8 +382,10 @@ img {
 	text-decoration: none;
 }
 
-.hero__links a:hover {
-	color: var(--accent);
+@media (hover: hover) {
+	.hero__links a:hover {
+		color: var(--accent);
+	}
 }
 
 /* -------------------------------------------------------------------------
@@ -412,11 +428,13 @@ img {
 	background-size: 0% 1px;
 	background-repeat: no-repeat;
 	background-position: 0 100%;
-	transition: background-size 400ms var(--ease);
+	transition: background-size 240ms var(--ease);
 }
 
-.project__title a:hover {
-	background-size: 100% 1px;
+@media (hover: hover) {
+	.project__title a:hover {
+		background-size: 100% 1px;
+	}
 }
 
 .project__body {
@@ -449,9 +467,11 @@ img {
 	padding-bottom: 1px;
 }
 
-.project__links a:hover {
-	color: var(--accent);
-	border-color: var(--accent);
+@media (hover: hover) {
+	.project__links a:hover {
+		color: var(--accent);
+		border-color: var(--accent);
+	}
 }
 
 .project__private {
@@ -474,11 +494,13 @@ img {
 	display: block;
 	width: 100%;
 	height: auto;
-	transition: transform 900ms var(--ease);
+	transition: transform 560ms var(--ease);
 }
 
-.project:hover .shot-wrap img {
-	transform: scale(1.015);
+@media (hover: hover) {
+	.project:hover .shot-wrap img {
+		transform: scale(1.015);
+	}
 }
 
 .project__caption {
@@ -496,8 +518,10 @@ img {
 	text-decoration: none;
 }
 
-.project__caption a:hover {
-	color: var(--accent);
+@media (hover: hover) {
+	.project__caption a:hover {
+		color: var(--accent);
+	}
 }
 
 /* A portrait screenshot — a phone screen, a chat card — can't fill a landscape
@@ -518,11 +542,13 @@ img {
 	height: auto;
 	border: 1px solid var(--line-2);
 	box-shadow: 0 20px 44px -28px rgba(25, 22, 18, 0.5);
-	transition: transform 900ms var(--ease);
+	transition: transform 560ms var(--ease);
 }
 
-.project:hover .panel__shot {
-	transform: scale(1.012);
+@media (hover: hover) {
+	.project:hover .panel__shot {
+		transform: scale(1.012);
+	}
 }
 
 /* -------------------------------------------------------------------------
@@ -695,9 +721,11 @@ img {
 	overflow-wrap: anywhere;
 }
 
-.email:hover {
-	color: var(--accent);
-	border-color: var(--accent);
+@media (hover: hover) {
+	.email:hover {
+		color: var(--accent);
+		border-color: var(--accent);
+	}
 }
 
 .copy {
@@ -711,15 +739,23 @@ img {
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 	transition:
 		color 160ms ease,
 		border-color 160ms ease,
 		background 160ms ease;
 }
 
-.copy:hover {
-	border-color: var(--ink-3);
-	color: var(--ink);
+.copy:active {
+	background: var(--paper-2);
+}
+
+@media (hover: hover) {
+	.copy:hover {
+		border-color: var(--ink-3);
+		color: var(--ink);
+	}
 }
 
 .copy[data-state='done'] {
@@ -751,8 +787,10 @@ img {
 	text-decoration: none;
 }
 
-.contact__foot a:hover {
-	color: var(--accent);
+@media (hover: hover) {
+	.contact__foot a:hover {
+		color: var(--accent);
+	}
 }
 
 /* -------------------------------------------------------------------------
@@ -778,8 +816,10 @@ img {
 	text-decoration: none;
 }
 
-.footer a:hover {
-	color: var(--accent);
+@media (hover: hover) {
+	.footer a:hover {
+		color: var(--accent);
+	}
 }
 
 /* -------------------------------------------------------------------------
@@ -809,28 +849,28 @@ img {
 }
 
 .js .hero__title .line {
-	animation: rise 1.05s var(--ease) both;
+	animation: rise 0.75s var(--ease) both;
 }
 
 .js .hero__title .line:nth-child(1) {
-	animation-delay: 0.05s;
+	animation-delay: 0.04s;
 }
 
 .js .hero__title .line:nth-child(2) {
-	animation-delay: 0.16s;
+	animation-delay: 0.12s;
 }
 
 .js .hero__eyebrow,
 .js .hero__foot {
-	animation: fade 1s var(--ease) both;
+	animation: fade 0.7s var(--ease) both;
 }
 
 .js .hero__eyebrow {
-	animation-delay: 0.2s;
+	animation-delay: 0.14s;
 }
 
 .js .hero__foot {
-	animation-delay: 0.38s;
+	animation-delay: 0.26s;
 }
 
 .js [data-reveal] {
