@@ -204,3 +204,30 @@ everything else). Numbers below are stamped with the date they were counted.
    repo's history and in any old Vercel deployment URL. If the number must never
    be recoverable, the remaining options are: rewrite that repo's history, or
    delete the repo and the old Vercel project. Owner's call.
+7. **The physical-phone check is still outstanding.** Responsively wasn't open, so
+   device coverage was done with exact Playwright profiles instead: iPhone 12 Pro,
+   iPad (gen 7) and 1440 desktop, all with touch where applicable — zero
+   overflow, no clipped text, fonts loaded. That is not a substitute for holding
+   the phone. Phase 6's gate says "plus your physical phone" and only the owner
+   can close it.
+
+## Measured (2026-10-20)
+
+Recorded because these numbers decay and the next person should know what the
+build was actually like on the day, not what it was assumed to be.
+
+| Measure | Value | Method |
+| --- | --- | --- |
+| Mobile LCP | 960 ms | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3 |
+| CLS | 0.000 | same run, whole-page scroll |
+| TTFB / FCP | 116 ms / 860 ms | same run |
+| Transfer | 357 KB over 9 requests | same run |
+| WCAG contrast | every pair AA or AAA | `dembrandt --wcag`, including hover and focus states |
+| Tap targets | 19–24 px tall, ≥24 px apart | measured centre-to-centre; passes 2.5.8 on the spacing exception |
+| Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1440 | Playwright device profiles |
+| Sticky hover | none | real touch tap; background stayed at rest |
+
+The LCP is bounded by the hero entrance — the headline is the largest paint and
+it animates from `opacity: 0`, so the measurement cannot complete until the
+animation does. Shortening the entrance from 1.05 s to 0.75 s is what brought it
+under a second.

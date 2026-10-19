@@ -17,6 +17,17 @@ that adds a class.
 | `npm run build`   | Build to `./dist/`                    |
 | `npm run preview` | Serve the production build locally    |
 
+## Checks
+
+| Check         | Command                                                   |
+| ------------- | --------------------------------------------------------- |
+| Design drift  | `dembrandt <url> --compare .dembrandt/baseline.json`       |
+| Re-baseline   | `dembrandt <url> --approve --compare .dembrandt/baseline.json` |
+
+`.dembrandt/baseline.json` is the frozen token set — colours, type sizes, radii — captured from production on 2026-10-20. Run the compare against a preview deploy before shipping; the command exits non-zero when a token changes, so an intentional change needs `--approve` and an intentional commit.
+
+Measured 2026-10-20 on a throttled mobile profile (390×844, 4× CPU, 1.6 Mbps / 150 ms RTT): **LCP 960 ms**, **CLS 0.000**, 357 KB over 9 requests, 201 DOM nodes. WCAG contrast: every pair AA or AAA, including hover and focus states. Tap targets are 19–24px tall but all sit ≥24px apart, so they pass WCAG 2.2 target size on the spacing exception.
+
 ## Structure
 
 ```text
