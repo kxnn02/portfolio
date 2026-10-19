@@ -3,8 +3,10 @@
 Personal site for Kenneth Clein T. Fernandez, third-year BSIT at San Sebastian
 College – Recoletos Manila, looking for full-stack internship hours.
 
-Static Astro site. No client-side framework, no analytics, no CMS. The only
-JavaScript on the page is the copy-email button.
+Static Astro site. No client-side framework, no analytics, no CMS. One inline
+script (a `js` class, so reveal animations never hide content from a browser
+without JS) and one small module: the copy-email button and a scroll observer
+that adds a class.
 
 ## Commands
 
@@ -25,7 +27,23 @@ src/
 public/                  favicon, robots
 astro.config.mjs         site URL, static output, fonts
 PRODUCT.md               audience, voice, verified claims, non-claims
+reference-brief.md       where the design is borrowed from, and what isn't
 ```
+
+## Design
+
+Light only. Warm paper (`#f8f5ef`), warm near-black ink, and one accent:
+`#AE0F19`, sampled from the CampusCurrents landing page rather than picked by
+eye. Green appears once, as the availability dot — it's a status colour, not a
+brand one.
+
+Type is Inter Tight for reading, Instrument Serif italic for the hero and one
+line of the About section, JetBrains Mono for every label, year and stack line.
+Motion is `transform`/`opacity` only; the scroll-linked drift sits behind
+`@supports (animation-timeline: view())`, so browsers without it get a still
+page rather than a broken one.
+
+`reference-brief.md` records which reference each structural decision came from.
 
 ## Content rules
 
