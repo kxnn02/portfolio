@@ -500,6 +500,31 @@ img {
 	color: var(--accent);
 }
 
+/* A portrait screenshot — a phone screen, a chat card — can't fill a landscape
+   column without cropping the thing it's evidence of. It sits framed on a
+   panel instead. */
+.panel {
+	display: grid;
+	place-items: center;
+	min-height: clamp(15rem, 28vw, 22rem);
+	padding: clamp(1.25rem, 2.6vw, 2.25rem);
+	border: 1px solid var(--line-2);
+	background: var(--paper-2);
+}
+
+.panel__shot {
+	display: block;
+	width: min(100%, 26rem);
+	height: auto;
+	border: 1px solid var(--line-2);
+	box-shadow: 0 20px 44px -28px rgba(25, 22, 18, 0.5);
+	transition: transform 900ms var(--ease);
+}
+
+.project:hover .panel__shot {
+	transform: scale(1.012);
+}
+
 /* -------------------------------------------------------------------------
    Facts panel — the visual for projects whose product is behind a login.
 ------------------------------------------------------------------------- */
@@ -939,6 +964,14 @@ img {
 	}
 
 	.project:hover .shot-wrap img {
+		transform: none;
+	}
+
+	.panel__shot {
+		transition: none;
+	}
+
+	.project:hover .panel__shot {
 		transform: none;
 	}
 }

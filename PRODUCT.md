@@ -152,6 +152,8 @@ everything else). Numbers below are stamped with the date they were counted.
 | Framework | Astro, static | Content is static; zero JS by default; explainable unaided, which Next.js is not for the owner |
 | Structure | One page, project showcase | Owner's call 2026-10-20, replacing the one-page-plus-four-case-studies plan. Reverses an earlier decision — the plan document still describes case studies |
 | Contact | Email + copy button, no form, no phone | No backend, no spam surface; phone stays on the resume PDF |
+| Phone number | **Never on a public page.** Email only | Owner's instruction 2026-10-20: the number is shared when he applies, not when someone views. Audited the built output for phone-shaped strings — clean |
+| Resume PDF | Not published. Carried the number and three overclaims | The old site `kxnn02-portfolio.vercel.app` was serving `kenneth-fernandez-resume.pdf` publicly (HTTP 200, number in the header line) and the file sat in a public repo. Removed 2026-10-20: the file is deleted from `kxnn02/kxnn02-portfolio`, the URL now 404s, and the raw GitHub path 404s |
 | Repo | Public, `kxnn02/portfolio` | The repo is itself evidence |
 | Availability | "Open to OJT / internship hours" | Honest for a third-year with classes |
 | Deploy | Vercel now, custom domain when claimed | Clears the "always shipping" gate today |
@@ -174,23 +176,30 @@ everything else). Numbers below are stamped with the date they were counted.
 2. **Resume PDF.** Received and extracted, but it overclaims (see Non-claims) and
    carries a public phone number. Fix the text, then decide: publish at
    `/resume.pdf`, or keep it as staples. Not linked yet.
-3. **Screenshots still needed** (everything below is behind a login or on a device
-   the build machine doesn't have). The page ships without them — each project
-   has a designed fact panel in the visual slot that a screenshot replaces
-   one-for-one:
-   - Task Bot dashboard, signed in: board view, team view, activity view.
-   - Kids Hub chat / AI assistant: a grounded answer with citations, and the
-     no-answer case. This is the only visual proof of the retrieval pipeline.
-   - Kids Hub FAQ auto-builder and AI settings screens.
-   - DEVCON+ admin dashboard: chapter listing (before/after the duplicate-entry
-     fix would be the strongest single image on the site) and the leaderboard
-     proposal.
-   - CampusCurrents: Android app screens on a real device (feed, status, calendar,
-     profile) and the admin dashboard.
-   - AWS Learning Club SSCR Manila: the org itself, if a leadership image is wanted.
+3. **Screenshots — partly received 2026-10-20.** Live now: CampusCurrents
+   landing page (captured), Task Bot command card in Telegram (owner, cropped
+   to drop the group header), DEVCON+ member home (owner, desktop). Kids Hub
+   shows a countable-facts panel instead, because the only shareable screen is
+   its login page and that proves nothing about the retrieval work.
+   - **Still wanted:** Kids Hub chat with citations, and the no-answer case —
+     the only visual proof of the retrieval pipeline. Also Kids Hub FAQ
+     auto-builder and AI settings.
+   - CampusCurrents Android app screens from a real device (feed, status,
+     calendar) and the admin dashboard.
+   - AWS Learning Club SSCR Manila, if a leadership image is wanted.
+   - **Not shareable by the owner:** the DEVCON+ admin dashboard (company-owned
+     and private). The member home is used instead, and its caption says so.
+   - Note the Task Bot screenshot comes from a group whose chat title contains
+     "TEST". That is the bot's own naming; the caption doesn't claim otherwise.
+     A production screenshot replaces it one-for-one if one exists.
 4. **`devcon.plus` renders an empty Events list in a desktop browser** — tabs and
    filters load, no events appear. Either nothing is live right now or the list
    fails to load. Worth checking, since it's the public face of internship work.
 5. **Older projects.** `PasaBuy`, `StraySafe` and `flappy-kiro` exist on GitHub with
    live links but are not in the brief's four. Deliberately excluded — say the word
    if they should appear as a smaller "other work" list.
+6. **The deleted resume is still in git history.** Removing the file from
+   `kxnn02/kxnn02-portfolio` stops it being served, but the blob survives in that
+   repo's history and in any old Vercel deployment URL. If the number must never
+   be recoverable, the remaining options are: rewrite that repo's history, or
+   delete the repo and the old Vercel project. Owner's call.
