@@ -4,7 +4,8 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (scaffold step)
+Last updated: 2026-10-20 (structure changed to a single-page showcase; content
+corrections after the first deploy)
 
 ---
 
@@ -13,17 +14,20 @@ Last updated: 2026-10-20 (scaffold step)
 A static personal site for **Kenneth Clein T. Fernandez**, third-year BSIT
 student at San Sebastian College – Recoletos Manila (graduating 2028).
 
-Structure: **one homepage + four project case studies.** The homepage has to
-work on its own — the case studies are depth for anyone who is already
-interested.
+Structure: **one page — a project showcase.** Four projects, each with the
+problem, what was built, the stack and links to the live thing. No case-study
+sub-pages and no long decision write-ups: the owner's call, made 2026-10-20
+after the SPA-plus-case-studies plan was drafted. Depth lives in the linked
+repos and the running software, not in prose.
 
 ## Who reads it
 
 1. **Recruiter or hiring manager** at a Philippine software company. On a phone.
    Forty-five seconds. They want to know: what has this person built, where can
    I click it, how do I contact them.
-2. **Technical interviewer** who opens a case study and asks "why did you do it
-   that way". This is the reader the decisions sections are for.
+2. **Technical interviewer** who opens a linked repo and asks "why did you do it
+   that way". Nothing on the page needs to answer that — the repos and the
+   running software do. The page's job is to make them want to open one.
 3. **Org leads and peers** at DEVCON, AWS Learning Club, JPCS. Lowest priority.
 
 ## The one impression
@@ -85,7 +89,7 @@ everything else). Numbers below are stamped with the date they were counted.
 | DEVCON+ scope | event registration, points and rewards, chapter operations | resume |
 | DEVCON+ work | admin dashboard UI/data bug fixes, duplicate chapter entries, proposed chapter leaderboard | owner |
 | Academic | BSIT, San Sebastian College – Recoletos Manila, expected 2028 | owner |
-| Academic award | Silver Medalist for Academic Excellence, 1st year, both semesters — **school not yet confirmed, see open questions** | owner + resume |
+| Academic award | Silver Medalist for Academic Excellence, 1st year (both semesters) — San Sebastian College – Recoletos Manila, confirmed by owner 2026-10-20 | owner |
 | Organisations | Founder and Lead, AWS Learning Club SSCR Manila (2026–2027); 3rd Year Representative, JPCS SSCR Manila (2026–2027); 2nd Year Representative, JPCS SSCR Manila (2025–2026) | owner + resume |
 
 ## Non-claims — do not write these
@@ -126,8 +130,10 @@ everything else). Numbers below are stamped with the date they were counted.
   decided in the motion phase, not during the build.
 - Phone-first: recruiters read this on a phone, so 390px is the primary canvas
   and the desktop layout is the adaptation.
-- Tokens in `src/styles/global.css` are provisional scaffold values. The design
-  system phase replaces the values, not the file structure.
+- Tokens in `src/styles/global.css` are provisional scaffold values **chosen by
+  the builder, not the owner**. The owner has not chosen a visual direction yet;
+  until they do, treat every colour, typeface and spacing value as a placeholder.
+  The design phase replaces the values, not the file structure.
 - Domain pending a Student Pack claim (Namecheap `.me`, Name.com free TLD, or
   `.TECH`). `SITE` in `astro.config.mjs` is the only place the URL is written.
 
@@ -137,7 +143,7 @@ everything else). Numbers below are stamped with the date they were counted.
 | --- | --- | --- |
 | Positioning | Ships real software | Differentiated; AI is table stakes in 2026 |
 | Framework | Astro, static | Content is static; zero JS by default; explainable unaided, which Next.js is not for the owner |
-| Structure | One page + 4 case studies | Homepage passes the 30-second test alone; depth available on click |
+| Structure | One page, project showcase | Owner's call 2026-10-20, replacing the one-page-plus-four-case-studies plan. Reverses an earlier decision — the plan document still describes case studies |
 | Contact | Email + copy button, no form, no phone | No backend, no spam surface; phone stays on the resume PDF |
 | Repo | Public, `kxnn02/portfolio` | The repo is itself evidence |
 | Availability | "Open to OJT / internship hours" | Honest for a third-year with classes |
@@ -147,18 +153,14 @@ everything else). Numbers below are stamped with the date they were counted.
 
 ## Open questions
 
-1. **Silver Medal attribution.** The brief says "Silver Medalist for Academic
-   Excellence, 1st Year (both semesters)". The resume prints it immediately after
-   "Saint Augustine Academia", which reads as a different school from SSCR. Which
-   school and which level (senior high or college 1st year)? Not on the site until
-   confirmed.
+1. **Visual direction — owner-owned, unanswered.** The scaffold used warm
+   off-white, Inter Tight + JetBrains Mono, a single narrow column and near-black
+   pills. That was the builder's choice, not the owner's, and it is provisional.
+   See the decisions log once the owner picks a direction.
 2. **Resume PDF.** Received and extracted, but it overclaims (see Non-claims) and
    carries a public phone number. Fix the text, then decide: publish at
    `/resume.pdf`, or keep it as staples. Not linked yet.
-3. **Case-study decisions.** Four case studies need 2–3 real decisions each with
-   the tradeoff accepted. Only the owner can supply these; they cannot be inferred
-   from code.
-4. **Screenshots still needed** (everything below is behind a login or on a device
+3. **Screenshots still needed** (everything below is behind a login or on a device
    the build machine doesn't have):
    - Task Bot dashboard, signed in: board view, team view, activity view.
    - Kids Hub chat / AI assistant: a grounded answer with citations, and the
