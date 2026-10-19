@@ -165,7 +165,7 @@ everything else). Numbers below are stamped with the date they were counted.
 | Motion | Expressive but transform/opacity only | Owner asked for expressive on 2026-10-20. Scroll-linked drift is behind `@supports (animation-timeline)` |
 | Portrait | One photo in a short about section | Owner's call. Currently the photo from the old portfolio — worth replacing |
 | Visual direction | Owned by the owner, decided from references | The builder had picked a direction unasked; corrected 2026-10-20. Three live references captured full-page, compared at `C:\Users\Admin\portfolio-shots\references.html`, direction chosen and recorded in `reference-brief.md` |
-| Login-walled projects | Typographic fact panel instead of a screenshot | Task Bot, Kids Hub and DEVCON+ all sit behind logins. Panels show countable facts only, and are built to be replaced one-for-one by a screenshot |
+| Project visuals | One screenshot per row, shape chosen by the asset | A wide screenshot fills the column; a portrait one (the Telegram card) sits framed on a panel rather than being cropped into a shape it isn't. Earlier typographic fact panels were retired when real screenshots arrived. Where a screen can't be shown — the DEVCON+ admin dashboard is company-owned — the caption says so instead of substituting a different screen silently |
 
 ## Open questions
 
@@ -176,16 +176,17 @@ everything else). Numbers below are stamped with the date they were counted.
 2. **Resume PDF.** Received and extracted, but it overclaims (see Non-claims) and
    carries a public phone number. Fix the text, then decide: publish at
    `/resume.pdf`, or keep it as staples. Not linked yet.
-3. **Screenshots — partly received 2026-10-20.** Live now: CampusCurrents
-   landing page (captured), Task Bot command card in Telegram (owner, cropped
-   to drop the group header), DEVCON+ member home (owner, desktop). Kids Hub
-   shows a countable-facts panel instead, because the only shareable screen is
-   its login page and that proves nothing about the retrieval work.
-   - **Still wanted:** Kids Hub chat with citations, and the no-answer case —
-     the only visual proof of the retrieval pipeline. Also Kids Hub FAQ
-     auto-builder and AI settings.
+3. **Screenshots — all four rows now carry a real one (2026-10-20).**
+   CampusCurrents landing page (captured), Task Bot command card in Telegram
+   (owner, cropped to drop the group header), Kids Hub sign-in (owner), DEVCON+
+   member home (owner, desktop).
+   - **Still wanted, and the strongest single upgrade left:** Kids Hub chat with
+     citations, and the no-answer case. The sign-in screen proves the product
+     exists and is well built; it does not show the retrieval pipeline, and the
+     caption is worded so it doesn't claim to.
    - CampusCurrents Android app screens from a real device (feed, status,
-     calendar) and the admin dashboard.
+     calendar) and the admin dashboard would show the app itself rather than
+     its landing page.
    - AWS Learning Club SSCR Manila, if a leadership image is wanted.
    - **Not shareable by the owner:** the DEVCON+ admin dashboard (company-owned
      and private). The member home is used instead, and its caption says so.

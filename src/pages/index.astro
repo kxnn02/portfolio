@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ccShot from '../assets/shots/campuscurrents.png';
 import taskbotShot from '../assets/shots/taskbot-help.png';
+import kidshubShot from '../assets/shots/kidshub-login.png';
 import devconShot from '../assets/shots/devconplus-home.png';
 import portrait from '../assets/shots/portrait.jpg';
 
@@ -10,10 +11,9 @@ const title = 'Kenneth Clein T. Fernandez — I build software that ships';
 const description =
 	'Third-year BSIT student in Manila. A campus alert app on Android, a Telegram bot DEVCON Cohort 5 uses daily, the retrieval layer of a nonprofit platform, and an internship on a membership product. Open to OJT and internship hours.';
 
-/* Each project carries its own visual. Three shapes, chosen by what the asset
-   actually is: a wide screenshot fills the column, a portrait screenshot is
-   framed on a panel, and a project with no shareable screen shows countable
-   facts instead. */
+/* Each project carries its own visual. Two shapes, chosen by what the asset
+   actually is: a wide screenshot fills the column, a portrait one is framed on
+   a panel instead of being cropped into a shape it isn't. */
 const work = [
 	{
 		idx: '01',
@@ -67,11 +67,11 @@ const work = [
 			{ label: 'Team repo', href: 'https://github.com/Debb1ie/DEVCON-Kids-Hub-2.0' },
 		],
 		visual: {
-			kind: 'stats',
-			label: 'Evaluation harness',
-			big: '39',
-			sub: 'cases, written alone',
-			tags: ['Grounding', 'Citations', 'No-answer', 'Injection', 'Authorization'],
+			kind: 'shot',
+			src: kidshubShot,
+			alt: 'The DEVCON Kids Hub sign-in page: a constellation graphic and the words “Learn. Build. Belong.” on the left, and a sign-in card on the right offering Continue with Google or email.',
+			caption: 'Sign-in, role-based',
+			note: 'The AI chat sits behind it',
 		},
 	},
 	{
@@ -231,19 +231,6 @@ const work = [
 											<span>{project.visual.note}</span>
 										</figcaption>
 									</>
-								)}
-
-								{project.visual.kind === 'stats' && (
-									<div class="facts">
-										<p class="facts__label">{project.visual.label}</p>
-										<p class="facts__big">{project.visual.big}</p>
-										<p class="facts__sub">{project.visual.sub}</p>
-										<ul class="facts__tags">
-											{project.visual.tags.map((tag) => (
-												<li>{tag}</li>
-											))}
-										</ul>
-									</div>
 								)}
 							</figure>
 						</article>

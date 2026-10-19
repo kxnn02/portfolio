@@ -526,100 +526,6 @@ img {
 }
 
 /* -------------------------------------------------------------------------
-   Facts panel — the visual for projects whose product is behind a login.
-------------------------------------------------------------------------- */
-
-.facts {
-	display: flex;
-	flex-direction: column;
-	gap: 0.85rem;
-	min-height: clamp(15rem, 28vw, 22rem);
-	padding: clamp(1.5rem, 3vw, 2.5rem);
-	border: 1px solid var(--line-2);
-	background: var(--paper-2);
-}
-
-.facts__label {
-	font-family: var(--mono);
-	font-size: 0.6875rem;
-	letter-spacing: 0.09em;
-	text-transform: uppercase;
-	color: var(--ink-3);
-}
-
-.facts__big {
-	font-size: clamp(3.25rem, 7vw, 5.5rem);
-	line-height: 0.86;
-	letter-spacing: -0.05em;
-	font-weight: 600;
-	font-variant-numeric: tabular-nums;
-}
-
-.facts__big em {
-	font-family: var(--serif);
-	font-style: italic;
-	font-weight: 400;
-	letter-spacing: -0.02em;
-	color: var(--accent);
-}
-
-.facts__sub {
-	max-width: 22ch;
-	font-size: 0.9375rem;
-	color: var(--ink-2);
-}
-
-.facts__list {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 1rem;
-	margin-top: auto;
-	padding-top: 1.15rem;
-	border-top: 1px solid var(--line-2);
-}
-
-.facts__list--2 {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.facts__list li {
-	font-family: var(--mono);
-	font-size: 0.6875rem;
-	line-height: 1.4;
-	color: var(--ink-3);
-}
-
-.facts__list b {
-	display: block;
-	margin-bottom: 0.2rem;
-	font-family: var(--sans);
-	font-size: 1.25rem;
-	font-weight: 600;
-	letter-spacing: -0.02em;
-	color: var(--ink);
-	font-variant-numeric: tabular-nums;
-}
-
-.facts__tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.4rem;
-	margin-top: auto;
-	padding-top: 1.15rem;
-	border-top: 1px solid var(--line-2);
-}
-
-.facts__tags li {
-	padding: 0.2rem 0.55rem;
-	border: 1px solid var(--line-2);
-	border-radius: 2px;
-	font-family: var(--mono);
-	font-size: 0.6875rem;
-	letter-spacing: 0.03em;
-	color: var(--ink-2);
-}
-
-/* -------------------------------------------------------------------------
    About
 ------------------------------------------------------------------------- */
 
@@ -1069,13 +975,8 @@ img {
 		letter-spacing: -0.04em;
 	}
 
-	.facts {
+	.panel {
 		min-height: 0;
-	}
-
-	.facts__list {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 0.75rem;
 	}
 
 	.contact__foot {
