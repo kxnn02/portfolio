@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Kenneth Clein T. Fernandez">
+	<rect width="48" height="48" rx="10" fill="#14110e" />
+	<path
+		d="M17 13.5v21M17 24 30.5 13.5M17 24 30.5 34.5"
+		fill="none"
+		stroke="#fbfaf8"
+		stroke-width="3.4"
+		stroke-linecap="square"
+	/>
+</svg>
