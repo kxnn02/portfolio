@@ -32,6 +32,14 @@ and a print block that stops resolving the scroll reveals. See PRODUCT.md.
 
 `.dembrandt/baseline.json` is the frozen token set — colours, type sizes, radii — captured from production on 2026-10-20. Run the compare against a preview deploy before shipping; the command exits non-zero when a token changes, so an intentional change needs `--approve` and an intentional commit.
 
+Re-approved once, for the motion pass: one new duration (0.9s), one new easing
+(`cubic-bezier(0.77, 0, 0.175, 1)`, the screenshot wipe), one new mono style and
+one new border pair (the stack strip), and a higher accent count from its
+separators. No colour value changed. The same compare is also the check that the
+scroll-driven animations are really running — `drift-away` and `drift-away-soft`
+reappear in the extracted animation list, which they could not do while the
+minifier was compiling them out.
+
 Measured 2026-10-20 on a throttled mobile profile (390×844, 4× CPU, 1.6 Mbps / 150 ms RTT, median of 3): **LCP 804 ms**, **CLS 0.000**, 358 KB over 10 requests, 264 DOM nodes. WCAG contrast: every pair AA or AAA, including hover and focus states. Tap targets are 19–24px tall but all sit ≥24px apart, so they pass WCAG 2.2 target size on the spacing exception.
 
 ## Structure

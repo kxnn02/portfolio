@@ -235,7 +235,7 @@ build was actually like on the day, not what it was assumed to be.
 | CLS | 0.000 | same run, whole-page scroll |
 | Transfer | 358 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
 | DOM nodes | 264 | the stack strip adds 63 |
-| WCAG contrast | every pair AA or AAA | `dembrandt --wcag`, including hover and focus states |
+| WCAG contrast | every pair AA or AAA, 0 failures | `dembrandt --wcag` against production, including hover and focus states; lowest pair is 5.06:1 (mono labels on paper) |
 | Tap targets | 19–24 px tall, ≥24 px apart | measured centre-to-centre; passes 2.5.8 on the spacing exception |
 | Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1440, and at 768 / 1024 with root text doubled | Playwright, plus a `font-size: 32px` pass for the 200 % text case |
 | Sticky hover | none | real touch tap; background stayed at rest |
