@@ -60,7 +60,7 @@ const work = [
 		kind: 'Nonprofit platform · 2026',
 		name: 'DEVCON Kids Hub',
 		href: 'https://devcon-kids-hub-2-0.vercel.app',
-		body: 'Events, volunteer onboarding, chapters, inventory and post-event reporting for DEVCON Kids, built by five people. I owned the AI half: document ingestion and chunking, Mistral embeddings, pgvector search, the chat interface and an FAQ auto-builder \u2014 and I wrote the 39-case evaluation harness on my own.',
+		body: 'Events, volunteer onboarding, chapters, inventory and post-event reporting for DEVCON Kids, built by five people. I built the retrieval pipeline: document ingestion and chunking, Mistral embeddings and pgvector search, plus an FAQ auto-builder. I wrote the 39-case evaluation harness on my own.',
 		stack: 'React · Vite · Supabase · pgvector · Mistral',
 		links: [
 			{ label: 'Live site', href: 'https://devcon-kids-hub-2-0.vercel.app' },
@@ -100,7 +100,8 @@ const work = [
 	<header class="site-head">
 		<div class="shell site-head__in">
 			<a class="brand" href="#top">
-				KCF<span class="brand__name"> — Kenneth Clein Fernandez</span>
+				<span class="sr-only">Kenneth Clein T. Fernandez, back to top</span>
+				<span aria-hidden="true">KCF<span class="brand__name"> — Kenneth Clein Fernandez</span></span>
 			</a>
 			<nav class="nav" aria-label="Sections">
 				<a href="#work">Work</a>
@@ -114,10 +115,12 @@ const work = [
 		<section class="hero" id="top">
 			<div class="shell">
 				<p class="label hero__eyebrow">Kenneth Clein T. Fernandez — Manila, Philippines</p>
-				<h1 class="hero__title">
-					<span class="line">I build software</span>
-					<span class="line">that <em>ships.</em></span>
-				</h1>
+				<div class="hero__type">
+					<h1 class="hero__title">
+						<span class="line"><span>I build software</span></span>
+						<span class="line"><span>that <em>ships.</em></span></span>
+					</h1>
+				</div>
 
 				<div class="hero__foot">
 					<p class="hero__lede">
@@ -162,8 +165,8 @@ const work = [
 
 				{
 					work.map((project) => (
-						<article class="project" data-reveal>
-							<div class="project__text">
+						<article class="project">
+							<div class="project__text" data-reveal>
 								<p class="project__meta">
 									<span>{project.idx}</span>
 									<span>{project.kind}</span>
@@ -187,7 +190,7 @@ const work = [
 								</ul>
 							</div>
 
-							<figure class="project__visual">
+							<figure class="project__visual" data-wipe>
 								{project.visual.kind === 'shot' && (
 									<>
 										<div class="shot-wrap">
@@ -238,6 +241,20 @@ const work = [
 				}
 			</div>
 		</section>
+
+		{/* The four projects' own stacks, gathered into one line. aria-hidden
+		    because it repeats what each row already states, and because the
+		    second half is a duplicate that exists only to make the loop join. */}
+		<div class="strip" aria-hidden="true">
+			<div class="strip__in">
+				<span class="strip__set">
+					<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
+				</span>
+				<span class="strip__set">
+					<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
+				</span>
+			</div>
+		</div>
 
 		<section class="section" id="about" aria-labelledby="about-title">
 			<div class="shell">
@@ -341,6 +358,7 @@ const work = [
 					>
 						Copy
 					</button>
+					<span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
 				</div>
 
 				<div class="contact__foot" data-reveal>
@@ -366,7 +384,7 @@ const work = [
 	<script>
 		// Reveal on scroll. If this file ever fails to load, the watchdog in the
 		// document head drops the `js` class and everything shows up immediately.
-		const targets = document.querySelectorAll('[data-reveal]');
+		const targets = document.querySelectorAll('[data-reveal], [data-wipe]');
 
 		if ('IntersectionObserver' in window) {
 			const io = new IntersectionObserver(
@@ -388,17 +406,83 @@ const work = [
 
 		window.__revealReady = true;
 
+		// Pointer parallax. The pointer's position in the viewport drives every
+		// rigged element through the same field, so this never needs a
+		// getBoundingClientRect per move. Fine pointers only, and never under
+		// reduced motion — on a phone the whole block is skipped.
+		const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+		const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+		if (finePointer.matches && !stillMotion.matches) {
+			const rig = [];
+
+			const rigElement = (element, travel) => {
+				if (element) rig.push({ element, travel, x: 0, y: 0, toX: 0, toY: 0 });
+			};
+
+			rigElement(document.querySelector('.hero__type'), 6);
+
+			for (const row of document.querySelectorAll('.project')) {
+				rigElement(row.querySelector('.shot-wrap') || row.querySelector('.panel'), 12);
+			}
+
+			let frame = 0;
+
+			const settle = () => {
+				frame = 0;
+				let moving = false;
+
+				for (const item of rig) {
+					item.x += (item.toX - item.x) * 0.08;
+					item.y += (item.toY - item.y) * 0.08;
+
+					if (Math.abs(item.toX - item.x) > 0.05 || Math.abs(item.toY - item.y) > 0.05) {
+						moving = true;
+					}
+
+					item.element.style.transform = `translate3d(${item.x.toFixed(2)}px, ${item.y.toFixed(2)}px, 0)`;
+				}
+
+				if (moving) frame = requestAnimationFrame(settle);
+			};
+
+			window.addEventListener(
+				'pointermove',
+				(event) => {
+					if (event.pointerType !== 'mouse') return;
+
+					const nx = (event.clientX / window.innerWidth - 0.5) * 2;
+					const ny = (event.clientY / window.innerHeight - 0.5) * 2;
+
+					for (const item of rig) {
+						item.toX = -nx * item.travel;
+						item.toY = -ny * item.travel;
+					}
+
+					if (!frame) frame = requestAnimationFrame(settle);
+				},
+				{ passive: true }
+			);
+		}
+
 		const button = document.querySelector('[data-copy-email]');
+		const status = document.querySelector('[data-copy-status]');
 		const email = 'fernandezk728@gmail.com';
 
 		button?.addEventListener('click', async () => {
 			try {
 				await navigator.clipboard.writeText(email);
 				button.textContent = 'Copied';
+				button.setAttribute('aria-label', 'Email address copied');
 				button.dataset.state = 'done';
+				// The label change alone is not reliably announced, so the copy is
+				// also pushed through a polite live region.
+				if (status) status.textContent = 'Email address copied to clipboard';
 				setTimeout(() => {
 					button.textContent = 'Copy';
+					button.setAttribute('aria-label', 'Copy email address to clipboard');
 					delete button.dataset.state;
+					if (status) status.textContent = '';
 				}, 2000);
 			} catch {
 				window.location.href = `mailto:${email}`;

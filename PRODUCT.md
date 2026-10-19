@@ -126,15 +126,26 @@ everything else). Numbers below are stamped with the date they were counted.
 - Solo build. **Astro, static output, no client-side framework.** The only
   JavaScript is one inline script (a `js` class so reveal animations never hide
   content from a browser without JS) and one small module: the copy-email button
-  plus an IntersectionObserver that adds a class on scroll. No framework, no
-  hydration, no third-party script. The site has to be explainable by its owner
-  line by line — including that observer.
-- Load speed beats scroll theatrics. Motion budget, decided 2026-10-20 and now
-  fixed: hero lines rise on load, sections reveal once on scroll, project visuals
-  lag slightly behind their text, and hover/focus states. Everything is
-  `transform`/`opacity` only. The scroll-linked drift uses `animation-timeline`
-  behind `@supports`, so browsers without it get a completely still page rather
-  than a bug. No WebGL, no scroll-jacking, no animation library.
+  with its live region, an IntersectionObserver that adds a class on scroll, and
+  a pointer-parallax loop that only runs for a fine pointer and never under
+  reduced motion. No framework, no hydration, no third-party script. The site has
+  to be explainable by its owner line by line — including that observer.
+- Load speed beats scroll theatrics. Motion budget, decided 2026-10-20 and
+  revised later the same day (thesis B, "instrument"): hero lines rise out of a
+  mask and settle, project text reveals while its screenshot wipes across a frame
+  that is already on the page, the four projects' stacks run as one slow strip
+  that pauses on hover, a pointer-parallax field of at most 12 px on a fine
+  pointer, and hover/focus states. Everything is `transform`/`opacity`/`clip-path`
+  only, and none of it adds a byte of network payload. The scroll-linked drift and
+  the header progress rule use `animation-timeline` behind `@supports`, so
+  browsers without it get a completely still page rather than a bug. No WebGL, no
+  scroll-jacking, no animation library.
+- **Scroll-driven CSS is a build hazard, not a source hazard.** Lightning CSS
+  folds an `animation-timeline` longhand into the `animation` shorthand, and
+  current Chromium cannot parse `scroll()` inside that shorthand — it drops the
+  declaration and the effect silently never runs. Keep the keyframes and the
+  timeline in separate rules, and let `scripts/check-built.mjs` fail the build if
+  the fold ever comes back.
 - Phone-first: recruiters read this on a phone, so 390px is the primary canvas
   and the desktop layout is the adaptation.
 - Tokens in `src/styles/global.css` are the built direction. They are traceable:
@@ -163,6 +174,8 @@ everything else). Numbers below are stamped with the date they were counted.
 | Accent | `#AE0F19`, used about six times on the page | Owner chose "one strong accent, derived from my screenshots". Sampled from the CampusCurrents button and headline, not invented |
 | Project layout | One row per project, one large visual in the second column | Owner chose the mix: structure from NexStudio (screenshot rows), type from Signal-A, rhythm from AAT |
 | Motion | Expressive but transform/opacity only | Owner asked for expressive on 2026-10-20. Scroll-linked drift is behind `@supports (animation-timeline)` |
+| Motion thesis | **B — "instrument"**, chosen by the owner from three | Quiet/editorial (A) read as too still, cinematic/technical (C) read as a stunt. B keeps A's masked line reveal and takes exactly one thing from C: the screenshot wipe. Previewed at `C:\Users\Admin\portfolio-shots\motion-preview.html` as a throwaway — the implementation was written from the thesis, not ported from that file |
+| Wipe target | The frame inside the observed figure, never the figure | Clipping the observed element collapses its own intersection rect, so it never reports as visible and the wipe never fires. Same reason the settled clip is oversized — `inset(-4rem)` — so it releases the card's drop shadow |
 | Portrait | One photo in a short about section | Owner's call. Currently the photo from the old portfolio — worth replacing |
 | Visual direction | Owned by the owner, decided from references | The builder had picked a direction unasked; corrected 2026-10-20. Three live references captured full-page, compared at `C:\Users\Admin\portfolio-shots\references.html`, direction chosen and recorded in `reference-brief.md` |
 | Project visuals | One screenshot per row, shape chosen by the asset | A wide screenshot fills the column; a portrait one (the Telegram card) sits framed on a panel rather than being cropped into a shape it isn't. Earlier typographic fact panels were retired when real screenshots arrived. Where a screen can't be shown — the DEVCON+ admin dashboard is company-owned — the caption says so instead of substituting a different screen silently |
@@ -218,16 +231,29 @@ build was actually like on the day, not what it was assumed to be.
 
 | Measure | Value | Method |
 | --- | --- | --- |
-| Mobile LCP | 960 ms | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3 |
+| Mobile LCP | **804 ms** | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3 |
 | CLS | 0.000 | same run, whole-page scroll |
-| TTFB / FCP | 116 ms / 860 ms | same run |
-| Transfer | 357 KB over 9 requests | same run |
+| Transfer | 358 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
+| DOM nodes | 264 | the stack strip adds 63 |
 | WCAG contrast | every pair AA or AAA | `dembrandt --wcag`, including hover and focus states |
 | Tap targets | 19–24 px tall, ≥24 px apart | measured centre-to-centre; passes 2.5.8 on the spacing exception |
-| Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1440 | Playwright device profiles |
+| Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1440, and at 768 / 1024 with root text doubled | Playwright, plus a `font-size: 32px` pass for the 200 % text case |
 | Sticky hover | none | real touch tap; background stayed at rest |
 
-The LCP is bounded by the hero entrance — the headline is the largest paint and
-it animates from `opacity: 0`, so the measurement cannot complete until the
-animation does. Shortening the entrance from 1.05 s to 0.75 s is what brought it
-under a second.
+LCP was bounded by the hero entrance: the headline is the largest paint, and it
+used to animate from `opacity: 0`, so the measurement could not complete until
+the animation did — shortening it from 1.05 s to 0.75 s was what brought it under
+a second. The motion pass replaced that opacity fade with a **transform-only
+masked rise**, so the line counts as painted as soon as it enters the mask. No
+payload was added, and LCP moved from 912 ms to 804 ms (both medians of 3 on the
+same machine, same script, A/B against the previous build via `git stash`).
+
+Do not compare the transfer figure against the 357 KB recorded earlier — that was
+counted with a different method and is not a like-for-like delta. The resource
+table is the honest one: the same nine subresources, one of them 1 KB larger.
+
+**Three scroll-driven effects — the hero title drift, the hero side drift and the
+project `lag` — were measured as dead in the previous build.** They had been
+compiled out by Lightning CSS into a shorthand Chromium cannot parse. The header
+progress rule is new and runs. `scripts/check-built.mjs` now fails the build if
+the fold returns.

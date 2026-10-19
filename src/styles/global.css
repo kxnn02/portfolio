@@ -115,6 +115,18 @@ img {
 	border-radius: 2px;
 }
 
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
 /* -------------------------------------------------------------------------
    Layout
 ------------------------------------------------------------------------- */
@@ -153,12 +165,25 @@ img {
 	border-bottom: 1px solid var(--line);
 }
 
+/* How far down the page you are. Only exists where scroll timelines do. */
+.site-head::after {
+	content: '';
+	position: absolute;
+	inset: auto 0 -1px 0;
+	height: 1px;
+	background: var(--accent);
+	transform: scaleX(0);
+	transform-origin: 0 50%;
+}
+
 .site-head__in {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
+	gap: 0.35rem 1rem;
 	min-height: 3.5rem;
+	padding-block: 0.5rem;
 }
 
 .brand {
@@ -167,7 +192,6 @@ img {
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	text-decoration: none;
-	white-space: nowrap;
 }
 
 .brand__name {
@@ -255,6 +279,15 @@ img {
 }
 
 .hero__title .line {
+	display: block;
+	/* The mask each line rises out of. The padding keeps the descender of
+	   "ships." clear of the clip edge; the negative margin cancels it again. */
+	overflow: hidden;
+	padding-block: 0.02em 0.14em;
+	margin-block: -0.02em -0.14em;
+}
+
+.hero__title .line > span {
 	display: block;
 }
 
@@ -552,6 +585,56 @@ img {
 }
 
 /* -------------------------------------------------------------------------
+   Stack strip
+   The four projects' own stacks, gathered into one line. It is the only
+   looping thing on the page, so it carries the tools rather than pure
+   texture, it pauses on hover, and it stops entirely under reduced motion.
+------------------------------------------------------------------------- */
+
+.strip {
+	margin-top: clamp(2.5rem, 5vw, 4rem);
+	padding-block: 0.7rem;
+	border-block: 1px solid var(--line-2);
+	overflow: hidden;
+}
+
+.strip__in {
+	display: flex;
+	width: max-content;
+	animation: strip 34s linear infinite;
+}
+
+.strip:hover .strip__in {
+	animation-play-state: paused;
+}
+
+.strip__set {
+	display: flex;
+}
+
+.strip__set > span,
+.strip__set > i {
+	font-family: var(--mono);
+	font-size: var(--step--1);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ink-3);
+	white-space: nowrap;
+	padding-right: 1.1rem;
+}
+
+.strip__set > i {
+	font-style: normal;
+	color: var(--accent);
+}
+
+@keyframes strip {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* -------------------------------------------------------------------------
    About
 ------------------------------------------------------------------------- */
 
@@ -828,11 +911,9 @@ img {
 
 @keyframes rise {
 	from {
-		opacity: 0;
-		transform: translateY(0.5em);
+		transform: translate3d(0, 118%, 0) scale(1.03);
 	}
 	to {
-		opacity: 1;
 		transform: none;
 	}
 }
@@ -848,16 +929,18 @@ img {
 	}
 }
 
-.js .hero__title .line {
-	animation: rise 0.75s var(--ease) both;
+/* The line rises out of its own mask and settles, so the type reads as weight
+   arriving rather than as something fading up. */
+.js .hero__title .line > span {
+	animation: rise 0.76s var(--ease) both;
 }
 
-.js .hero__title .line:nth-child(1) {
-	animation-delay: 0.04s;
+.js .hero__title .line:nth-child(1) > span {
+	animation-delay: 0.02s;
 }
 
-.js .hero__title .line:nth-child(2) {
-	animation-delay: 0.12s;
+.js .hero__title .line:nth-child(2) > span {
+	animation-delay: 0.1s;
 }
 
 .js .hero__eyebrow,
@@ -886,12 +969,28 @@ img {
 	transform: none;
 }
 
+/* The screenshot is acquired rather than faded in: the frame is already on the
+   page, the image wipes across it in the reading direction. The clip lives on
+   the frame inside the observed figure — clipping the observed element itself
+   collapses its own intersection rect, so it would never report as visible.
+   The settled clip is oversized so it releases the card's drop shadow. */
+.js [data-wipe] > .shot-wrap,
+.js [data-wipe] > .panel {
+	clip-path: inset(0 100% 0 0);
+	transition: clip-path 900ms cubic-bezier(0.77, 0, 0.175, 1) 110ms;
+}
+
+.js [data-wipe].is-in > .shot-wrap,
+.js [data-wipe].is-in > .panel {
+	clip-path: inset(-4rem -4rem -4rem -4rem);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
 	}
 
-	.js .hero__title .line,
+	.js .hero__title .line > span,
 	.js .hero__eyebrow,
 	.js .hero__foot {
 		animation: none;
@@ -900,6 +999,12 @@ img {
 	.js [data-reveal] {
 		opacity: 1;
 		transform: none;
+		transition: none;
+	}
+
+	.js [data-wipe] > .shot-wrap,
+	.js [data-wipe] > .panel {
+		clip-path: none;
 		transition: none;
 	}
 
@@ -920,6 +1025,17 @@ img {
 	.project:hover .panel__shot {
 		transform: none;
 	}
+
+	/* The strip stops and folds into a static line instead of scrolling. */
+	.strip__in {
+		animation: none;
+		width: auto;
+		flex-wrap: wrap;
+	}
+
+	.strip__set + .strip__set {
+		display: none;
+	}
 }
 
 /* -------------------------------------------------------------------------
@@ -929,26 +1045,73 @@ img {
    supports scroll timelines — everywhere else the page is simply still.
 ------------------------------------------------------------------------- */
 
-@supports (animation-timeline: view()) {
+/* -------------------------------------------------------------------------
+   Scroll-driven. These live in two rule-sets on purpose.
+
+   Lightning CSS folds an `animation-timeline` longhand into the `animation`
+   shorthand, producing `animation: linear both drift-away scroll()`. Current
+   Chromium cannot parse `scroll()` inside that shorthand, so it drops the
+   whole declaration and the effect silently never runs — which is exactly
+   what had happened to all four of these. Keeping the keyframes and the
+   timeline in separate at-rule blocks stops the fold.
+
+   Everything is inside @supports and the reduced-motion guard, because
+   without a scroll timeline `animation: drift-away linear both` is a
+   zero-duration animation that snaps to its end state and stays there.
+------------------------------------------------------------------------- */
+
+@supports (animation-timeline: scroll()) {
 	@media (prefers-reduced-motion: no-preference) {
 		.hero__title,
 		.hero__lede {
 			animation: drift-away linear both;
+		}
+
+		.hero__side {
+			animation: drift-away-soft linear both;
+		}
+
+		.project__visual {
+			animation: lag linear both;
+		}
+
+		/* How much of the page is left, drawn on the header's own rule. */
+		.site-head::after {
+			animation: progress linear both;
+		}
+	}
+}
+
+@supports (animation-timeline: scroll()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.hero__title,
+		.hero__lede {
 			animation-timeline: scroll();
 			animation-range: 0 18%;
 		}
 
 		.hero__side {
-			animation: drift-away-soft linear both;
 			animation-timeline: scroll();
 			animation-range: 0 18%;
 		}
 
 		.project__visual {
-			animation: lag linear both;
 			animation-timeline: view();
 			animation-range: cover 5% cover 75%;
 		}
+
+		.site-head::after {
+			animation-timeline: scroll(root block);
+		}
+	}
+}
+
+@keyframes progress {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
 	}
 }
 
@@ -1021,5 +1184,63 @@ img {
 
 	.contact__foot {
 		flex-direction: column;
+	}
+}
+
+/* -------------------------------------------------------------------------
+   Print
+   The page is a CV for a lot of people who will hit Ctrl+P. Every reveal has
+   to be resolved before the printer sees it — an opacity:0 headline prints as
+   a blank sheet, which is what it was doing.
+------------------------------------------------------------------------- */
+
+@media print {
+	.site-head,
+	.skip,
+	.strip {
+		display: none;
+	}
+
+	.js .hero__title .line > span,
+	.js .hero__eyebrow,
+	.js .hero__foot {
+		animation: none !important;
+	}
+
+	.js .hero__title .line {
+		overflow: visible;
+	}
+
+	.js [data-reveal] {
+		opacity: 1 !important;
+		transform: none !important;
+		transition: none !important;
+	}
+
+	.js [data-wipe] > .shot-wrap,
+	.js [data-wipe] > .panel {
+		clip-path: none !important;
+		transition: none !important;
+	}
+
+	.hero__title,
+	.hero__lede,
+	.hero__side,
+	.project__visual {
+		animation: none !important;
+		transform: none !important;
+	}
+
+	.project {
+		break-inside: avoid;
+	}
+
+	.shot-wrap,
+	.panel {
+		box-shadow: none;
+	}
+
+	a {
+		text-decoration-color: currentColor;
 	}
 }
