@@ -2,7 +2,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
 
 // Placeholder until the Student Pack domain is claimed. Update in one place.
-const SITE = 'https://kennethclein.vercel.app';
+const SITE = 'https://kennethclein-portfolio.vercel.app';
 
 // https://astro.build/config
 export default defineConfig({
