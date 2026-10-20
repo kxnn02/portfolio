@@ -1,4 +1,5 @@
 // @ts-check
+import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 
 // Placeholder until the Student Pack domain is claimed. Update in one place.
@@ -8,6 +9,7 @@ const SITE = 'https://kennethclein-portfolio.vercel.app';
 export default defineConfig({
 	site: SITE,
 	output: 'static',
+	integrations: [sitemap()],
 	fonts: [
 		{
 			name: 'Inter Tight',

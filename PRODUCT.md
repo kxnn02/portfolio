@@ -4,8 +4,8 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (visual direction chosen and built from live references;
-single-page showcase; content corrections after the first deploy)
+Last updated: 2026-10-20 (review pass: role/proof lines, one-row mobile header,
+eager print images, composed OG card, sitemap, type/link/build gates)
 
 ---
 
@@ -74,7 +74,7 @@ everything else). Numbers below are stamped with the date they were counted.
 | CampusCurrents team size | 5 people | owner |
 | CampusCurrents migrations | **50** | repo — README says 43 and is wrong |
 | CampusCurrents shipped | Android beta, then a security/UX fix release | owner |
-| CampusCurrents links | live landing page at `campus-currents-website.vercel.app`; signed APK in GitHub Releases (`v1.0.0-beta.2`, 105 MB) | GitHub API, HTTP 200 |
+| CampusCurrents links | live landing page at `campus-currents-website.vercel.app`; signed APK in GitHub Releases (`v1.0.0-beta.2`, 102.4 MB) | GitHub API, HTTP 200 (size re-checked 2026-10-20) |
 | CampusCurrents backend | Supabase/PostgreSQL, row-level security, edge functions, two-phase push with per-student delivery receipts | owner |
 | Task Bot users | DEVCON Philippines Cohort 5, 8 people, daily production use | owner |
 | Task Bot authorship | **328 of 328 commits** on `main` (re-verified 2026-10-20; the brief said 136 — the repo has since grown) | GitHub API |
@@ -116,6 +116,9 @@ everything else). Numbers below are stamped with the date they were counted.
      Python, Java.
   A site that says one thing and attaches a PDF that says another loses the
   argument on both.
+- **The résumé is by request, not published.** The two "Résumé on request" links
+  open a `mailto:` with the subject "Résumé request". Do not add a `/resume.pdf`
+  link until the three overclaims and phone number are removed.
 - No invented numbers, users, downloads, or uptime. Any number not in the
   Evidence table gets asked about, not estimated.
 - Never scrape a README for facts. `campus-currents` README is out of date and
@@ -131,14 +134,15 @@ everything else). Numbers below are stamped with the date they were counted.
   reduced motion. No framework, no hydration, no third-party script. The site has
   to be explainable by its owner line by line — including that observer.
 - Load speed beats scroll theatrics. Motion budget, decided 2026-10-20 and
-  revised later the same day (thesis B, "instrument"): hero lines rise out of a
-  mask and settle, project text reveals while its screenshot wipes across a frame
-  that is already on the page, the four projects' stacks run as one slow strip
-  that pauses on hover, a pointer-parallax field of at most 12 px on a fine
-  pointer, and hover/focus states. Everything is `transform`/`opacity`/`clip-path`
-  only, and none of it adds a byte of network payload. The scroll-linked drift and
-  the header progress rule use `animation-timeline` behind `@supports`, so
-  browsers without it get a completely still page rather than a bug. No WebGL, no
+  revised in the review pass: hero lines rise out of a mask and settle, project
+  text reveals while its screenshot wipes across a frame that is already on the
+  page, each caption fades with its image, the four projects' stacks run as one
+  slow strip that pauses on hover, a pointer-parallax field of at most 12 px on a
+  fine pointer, and hover/focus states. The reveal is 420 ms / 10 px; the wipe is
+  560 ms with no delay. Everything is `transform`/`opacity`/`clip-path` only, and
+  none of it adds a byte of network payload. The scroll-linked drift and the
+  header progress rule use `animation-timeline` behind `@supports`, so browsers
+  without it get a completely still page rather than a bug. No WebGL, no
   scroll-jacking, no animation library.
 - **Scroll-driven CSS is a build hazard, not a source hazard.** Lightning CSS
   folds an `animation-timeline` longhand into the `animation` shorthand, and
@@ -147,7 +151,8 @@ everything else). Numbers below are stamped with the date they were counted.
   timeline in separate rules, and let `scripts/check-built.mjs` fail the build if
   the fold ever comes back.
 - Phone-first: recruiters read this on a phone, so 390px is the primary canvas
-  and the desktop layout is the adaptation.
+  and the desktop layout is the adaptation. The header holds one row at 390;
+  `Background` is desktop-only; at ≤22rem the `KCF` mark replaces the full name.
 - Tokens in `src/styles/global.css` are the built direction. They are traceable:
   paper and ink are warm neutrals, and the accent is `#AE0F19`, sampled from the
   CampusCurrents landing page rather than invented. `reference-brief.md` records
@@ -162,9 +167,9 @@ everything else). Numbers below are stamped with the date they were counted.
 | Positioning | Ships real software | Differentiated; AI is table stakes in 2026 |
 | Framework | Astro, static | Content is static; zero JS by default; explainable unaided, which Next.js is not for the owner |
 | Structure | One page, project showcase | Owner's call 2026-10-20, replacing the one-page-plus-four-case-studies plan. Reverses an earlier decision — the plan document still describes case studies |
-| Contact | Email + copy button, no form, no phone | No backend, no spam surface; phone stays on the resume PDF |
+| Contact | Email + copy button, no form, no phone | No backend, no spam surface; the phone stays on the unpublished résumé, never on the page |
 | Phone number | **Never on a public page.** Email only | Owner's instruction 2026-10-20: the number is shared when he applies, not when someone views. Audited the built output for phone-shaped strings — clean |
-| Resume PDF | Not published. Carried the number and three overclaims | The old site `kxnn02-portfolio.vercel.app` was serving `kenneth-fernandez-resume.pdf` publicly (HTTP 200, number in the header line) and the file sat in a public repo. Removed 2026-10-20: the file is deleted from `kxnn02/kxnn02-portfolio`, the URL now 404s, and the raw GitHub path 404s |
+| Resume PDF | Not published. Requests by email until the text is fixed | The old site `kxnn02-portfolio.vercel.app` was serving `kenneth-fernandez-resume.pdf` publicly (HTTP 200, number in the header line) and the file sat in a public repo. Removed 2026-10-20: the file is deleted from `kxnn02/kxnn02-portfolio`, the URL now 404s, and the raw GitHub path 404s. The site now links "Résumé on request" to a mailto with the subject "Résumé request"; the PDF returns once the three overclaims and phone number are removed |
 | Repo | Public, `kxnn02/portfolio` | The repo is itself evidence |
 | Availability | "Open to OJT / internship hours" | Honest for a third-year with classes |
 | Deploy | Vercel now, custom domain when claimed | Clears the "always shipping" gate today |
@@ -176,9 +181,10 @@ everything else). Numbers below are stamped with the date they were counted.
 | Motion | Expressive but transform/opacity only | Owner asked for expressive on 2026-10-20. Scroll-linked drift is behind `@supports (animation-timeline)` |
 | Motion thesis | **B — "instrument"**, chosen by the owner from three | Quiet/editorial (A) read as too still, cinematic/technical (C) read as a stunt. B keeps A's masked line reveal and takes exactly one thing from C: the screenshot wipe. Previewed at `C:\Users\Admin\portfolio-shots\motion-preview.html` as a throwaway — the implementation was written from the thesis, not ported from that file |
 | Wipe target | The frame inside the observed figure, never the figure | Clipping the observed element collapses its own intersection rect, so it never reports as visible and the wipe never fires. Same reason the settled clip is oversized — `inset(-4rem)` — so it releases the card's drop shadow |
-| Portrait | One photo in a short about section | Owner's call. Currently the photo from the old portfolio — worth replacing |
+| Portrait | One photo in a short about section | Owner's call. Currently the photo from the old portfolio, warmed with a subtle sepia/saturation filter until a current headshot replaces it |
 | Visual direction | Owned by the owner, decided from references | The builder had picked a direction unasked; corrected 2026-10-20. Three live references captured full-page, compared at `C:\Users\Admin\portfolio-shots\references.html`, direction chosen and recorded in `reference-brief.md` |
 | Project visuals | One screenshot per row, shape chosen by the asset | A wide screenshot fills the column; a portrait one (the Telegram card) sits framed on a panel rather than being cropped into a shape it isn't. Earlier typographic fact panels were retired when real screenshots arrived. Where a screen can't be shown — the DEVCON+ admin dashboard is company-owned — the caption says so instead of substituting a different screen silently |
+| Review fixes | Role + proof lines, one-row mobile header, eager print images, composed OG card, sitemap, type/link/build gates | The 2026-10-20 review found the five-second scan hid the proof, the mobile header wrapped, print dropped two of five images, and the OG card cut the lede mid-sentence. Each fix is in the source; the constraints above still hold |
 
 ## Open questions
 
@@ -187,8 +193,9 @@ everything else). Numbers below are stamped with the date they were counted.
    personality and it works at 22rem wide, but a cleaner, current headshot would
    be better. Ask before publishing anything else.
 2. **Resume PDF.** Received and extracted, but it overclaims (see Non-claims) and
-   carries a public phone number. Fix the text, then decide: publish at
-   `/resume.pdf`, or keep it as staples. Not linked yet.
+   carries a public phone number. The site now offers "Résumé on request" mailto
+   links instead. Fix the text, then decide: publish at `/resume.pdf`, or keep it
+   as staples. Do not add a direct PDF link before then.
 3. **Screenshots — all four rows now carry a real one (2026-10-20).**
    CampusCurrents landing page (captured), Task Bot command card in Telegram
    (owner, cropped to drop the group header), Kids Hub sign-in (owner), DEVCON+
@@ -231,26 +238,26 @@ build was actually like on the day, not what it was assumed to be.
 
 | Measure | Value | Method |
 | --- | --- | --- |
-| Mobile LCP | **804 ms** | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3 |
+| Mobile LCP | **1.6 s** | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3; LCP read before scrolling |
 | CLS | 0.000 | same run, whole-page scroll |
-| Transfer | 358 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
-| DOM nodes | 264 | the stack strip adds 63 |
-| WCAG contrast | every pair AA or AAA, 0 failures | `dembrandt --wcag` against production, including hover and focus states; lowest pair is 5.06:1 (mono labels on paper) |
-| Tap targets | 19–24 px tall, ≥24 px apart | measured centre-to-centre; passes 2.5.8 on the spacing exception |
-| Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1440, and at 768 / 1024 with root text doubled | Playwright, plus a `font-size: 32px` pass for the 200 % text case |
+| Transfer | 364 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
+| DOM nodes | 292 | the role/proof lines and the fourth nav link add 28 |
+| WCAG contrast | every pair AA or AAA, 0 failures; lowest pair 5.06:1 | `dembrandt <url> --wcag` against the preview build, including hover and focus states; 10 pairs |
+| Tap targets | 32–44 px tall | header, nav and project links 36 px; inline links 32 px; copy button 44 px on coarse pointers |
+| Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1024 / 1440, and with root text doubled at all six | Playwright; the root is forced to `32px` for the 200 % text pass |
 | Sticky hover | none | real touch tap; background stayed at rest |
 
-LCP was bounded by the hero entrance: the headline is the largest paint, and it
-used to animate from `opacity: 0`, so the measurement could not complete until
-the animation did — shortening it from 1.05 s to 0.75 s was what brought it under
-a second. The motion pass replaced that opacity fade with a **transform-only
-masked rise**, so the line counts as painted as soon as it enters the mask. No
-payload was added, and LCP moved from 912 ms to 804 ms (both medians of 3 on the
-same machine, same script, A/B against the previous build via `git stash`).
+LCP is 1.6 s, up from 804 ms before the review pass. The print fix is the main
+cost: all five proof images now load eagerly so Ctrl+P includes every one. The
+budget is <2 s, so the trade is deliberate and still inside it. The hero remains
+a transform-only masked rise, so the headline counts as painted as soon as it
+enters the mask; it is not opacity-gated. If the LCP needs to come back down, the
+options are a smaller hero font payload or a different print strategy — not
+dropping the proof images.
 
-Do not compare the transfer figure against the 357 KB recorded earlier — that was
-counted with a different method and is not a like-for-like delta. The resource
-table is the honest one: the same nine subresources, one of them 1 KB larger.
+The pre-review build measured 358 KB / 264 DOM nodes; the resource timeline is
+the honest count for both. The 6 KB difference is the eager proof images; the 28
+nodes are the role/proof lines and the fourth nav item.
 
 **Three scroll-driven effects — the hero title drift, the hero side drift and the
 project `lag` — were measured as dead in the previous build.** They had been

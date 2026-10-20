@@ -7,13 +7,18 @@
 // declaration, and the effect silently never runs — the CSS looks right, the page
 // looks fine, and nothing moves. Keep the keyframes and the timeline in separate
 // rules in `src/styles/global.css` so the fold cannot happen.
+//
+// The second: two of the five proof images were `loading="lazy"`, so a fresh
+// print dropped the DEVCON+ and portrait images. Print can't wait for a lazy
+// loader; all proof images load eagerly now.
 
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const dist = fileURLToPath(new URL('../dist/', import.meta.url));
 const cssFile = readdirSync(`${dist}_astro`).find((f) => f.endsWith('.css'));
 const css = readFileSync(`${dist}_astro/${cssFile}`, 'utf8');
+const html = readFileSync(`${dist}index.html`, 'utf8');
 
 const problems = [];
 
@@ -36,6 +41,32 @@ for (const fn of ['scroll(', 'view(']) {
 const print = css.slice(css.indexOf('@media print'));
 if (!/\[data-reveal\]\{[^}]*opacity:1/.test(print)) {
 	problems.push('@media print no longer forces [data-reveal] to opacity 1 — printed output will be blank');
+}
+
+// 4. Every image must load eagerly; a lazy image never reaches the print path.
+const lazy = html.match(/<img[^>]+loading="lazy"/g);
+if (lazy) {
+	problems.push(
+		`${lazy.length} image(s) still use loading="lazy" — printed output drops below-the-fold images. Use loading="eager".`
+	);
+}
+
+// 5. The caption sits outside the clipped frame, so print has to resolve it too.
+if (!/project__caption\{[^}]*opacity:1/.test(print)) {
+	problems.push('@media print no longer forces .project__caption to opacity 1 — printed captions disappear');
+}
+
+// 6. The sitemap integration must emit its index.
+if (!existsSync(`${dist}sitemap-index.xml`)) {
+	problems.push('sitemap-index.xml is missing — the @astrojs/sitemap integration did not run');
+}
+
+// 7. robots.txt should point crawlers at that index.
+if (
+	!existsSync(`${dist}robots.txt`) ||
+	!/Sitemap:\s*https?:\/\/\S+\/sitemap-index\.xml/i.test(readFileSync(`${dist}robots.txt`, 'utf8'))
+) {
+	problems.push('robots.txt does not advertise the sitemap — add Sitemap: https://<site>/sitemap-index.xml');
 }
 
 if (problems.length) {

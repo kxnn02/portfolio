@@ -2,9 +2,35 @@
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 
+interface Props {
+	title: string;
+	description: string;
+}
+
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og.png', Astro.site);
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Kenneth Clein T. Fernandez',
+	url: canonical.href,
+	image: ogImage.href,
+	jobTitle: 'BSIT student',
+	description,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Manila',
+		addressCountry: 'PH',
+	},
+	affiliation: {
+		'@type': 'CollegeOrUniversity',
+		name: 'San Sebastian College – Recoletos Manila',
+	},
+	knowsAbout: ['JavaScript', 'Python', 'Java', 'React Native', 'SQL', 'PostgreSQL', 'Supabase'],
+	sameAs: ['https://github.com/kxnn02', 'https://linkedin.com/in/kenneth-clein-fernandez'],
+};
 ---
 
 <!doctype html>
@@ -16,9 +42,12 @@ const ogImage = new URL('/og.png', Astro.site);
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<meta name="author" content="Kenneth Clein T. Fernandez" />
 		<link rel="canonical" href={canonical} />
+		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Kenneth Clein T. Fernandez" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
@@ -27,9 +56,15 @@ const ogImage = new URL('/og.png', Astro.site);
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="Kenneth Clein T. Fernandez — I build software that ships." />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content="Kenneth Clein T. Fernandez — I build software that ships." />
 		<meta name="theme-color" content="#f8f5ef" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
 		<script is:inline>
 			document.documentElement.classList.add('js');
@@ -41,7 +76,7 @@ const ogImage = new URL('/og.png', Astro.site);
 
 		<Font cssVariable="--font-sans" preload={[{ weight: '400' }, { weight: '600' }]} />
 		<Font cssVariable="--font-serif" preload />
-		<Font cssVariable="--font-mono" />
+		<Font cssVariable="--font-mono" preload />
 	</head>
 	<body>
 		<slot />

@@ -9,7 +9,8 @@ import portrait from '../assets/shots/portrait.jpg';
 
 const title = 'Kenneth Clein T. Fernandez — I build software that ships';
 const description =
-	'Third-year BSIT student in Manila. A campus alert app on Android, a Telegram bot DEVCON Cohort 5 uses daily, the retrieval layer of a nonprofit platform, and an internship on a membership product. Open to OJT and internship hours.';
+	'Third-year BSIT student in Manila. Shipped an Android campus-alert app, a Telegram bot in daily use, and a nonprofit’s retrieval layer. Open to OJT.';
+const EMAIL = 'fernandezk728@gmail.com';
 
 /* Each project carries its own visual. Two shapes, chosen by what the asset
    actually is: a wide screenshot fills the column, a portrait one is framed on
@@ -17,14 +18,16 @@ const description =
 const work = [
 	{
 		idx: '01',
-		kind: 'Android app · 2026',
+		kind: 'Android beta · 2026',
 		name: 'CampusCurrents',
 		href: 'https://campus-currents-website.vercel.app',
-		body: 'Class suspension alerts, emergency notices and campus announcements for San Sebastian – Recoletos, in one Android app. Five-person team; I was project manager and lead developer. The Supabase backend runs 50 migrations with row-level security, and push delivery reports a receipt for every student.',
+		role: 'Project manager & lead developer',
+		proof: '5-person team · 50 migrations · per-student delivery receipts',
+		body: 'Class suspension alerts, emergency notices and campus announcements for San Sebastian – Recoletos, in one Android app. The Supabase backend runs 50 migrations with row-level security, and push delivery reports a receipt for every student.',
 		stack: 'React Native (Expo) · Next.js · Supabase · PostgreSQL',
 		links: [
 			{ label: 'Project site', href: 'https://campus-currents-website.vercel.app' },
-			{ label: 'Download APK', href: 'https://github.com/kxnn02/campus-currents/releases/latest' },
+			{ label: 'Download APK · 102 MB', href: 'https://github.com/kxnn02/campus-currents/releases/latest' },
 			{ label: 'Source code', href: 'https://github.com/kxnn02/campus-currents' },
 		],
 		visual: {
@@ -41,10 +44,12 @@ const work = [
 		kind: 'Telegram bot · 2026',
 		name: 'DEVCON Cohort 5 Task Bot',
 		href: 'https://telegram-taskbot-ten.vercel.app',
+		role: 'Solo build',
+		proof: '328 commits, all mine · 93 test files · 8 daily users',
 		body: 'A Telegram bot and a Next.js dashboard in daily use by DEVCON\u2019s eight-person Cohort 5: board, team and activity views, plus the cohort\u2019s working rhythm \u2014 a morning standup card grouped by person, overdue reminders, and weekly digests. CI blocks any merge that fails typecheck, the test suite or the migration check.',
 		stack: 'Telegram Bot API · Next.js · Supabase · CI',
 		links: [
-			{ label: 'Live dashboard', href: 'https://telegram-taskbot-ten.vercel.app' },
+			{ label: 'Dashboard — Telegram login', href: 'https://telegram-taskbot-ten.vercel.app' },
 			{ label: 'Source code', href: 'https://github.com/kxnn02/telegram-taskbot' },
 		],
 		visual: {
@@ -52,7 +57,7 @@ const work = [
 			src: taskbotShot,
 			alt: 'A Telegram group with the bot\u2019s Available Commands card: /tasks, /deadlines and /standup to read work, /addtask to create it, and /done, /complete, /update and /due to change it.',
 			caption: 'Command card, in Telegram',
-			note: '328/328 commits · 93 test files',
+			note: 'In the cohort’s Telegram group',
 		},
 	},
 	{
@@ -60,7 +65,9 @@ const work = [
 		kind: 'Nonprofit platform · 2026',
 		name: 'DEVCON Kids Hub',
 		href: 'https://devcon-kids-hub-2-0.vercel.app',
-		body: 'Events, volunteer onboarding, chapters, inventory and post-event reporting for DEVCON Kids, built by five people. I built the retrieval pipeline: document ingestion and chunking, Mistral embeddings and pgvector search, plus an FAQ auto-builder. I wrote the 39-case evaluation harness on my own.',
+		role: 'Retrieval pipeline & eval harness',
+		proof: '5-person team · 39 eval cases · pgvector + citations',
+		body: 'Events, volunteer onboarding, chapters, inventory and post-event reporting for DEVCON Kids. I built the retrieval pipeline: document ingestion and chunking, Mistral embeddings and pgvector search, plus an FAQ auto-builder. I wrote the 39-case evaluation harness on my own.',
 		stack: 'React · Vite · Supabase · pgvector · Mistral',
 		links: [
 			{ label: 'Live site', href: 'https://devcon-kids-hub-2-0.vercel.app' },
@@ -79,9 +86,11 @@ const work = [
 		kind: 'Internship · Aug–Sep 2026',
 		name: 'DEVCON+',
 		href: 'https://devcon.plus',
+		role: 'Intern — admin dashboard',
+		proof: '13 chapters · duplicate chapter fix · proposed leaderboard',
 		body: 'A volunteer internship on DEVCON\u2019s membership platform \u2014 event registration, points and rewards, and chapter operations across 13 chapters. I fixed UI and data bugs in the admin dashboard, including duplicate chapter entries in chapter listings, and proposed the chapter leaderboard.',
 		stack: 'React · TypeScript · NestJS · Supabase · Firebase Auth',
-		links: [{ label: 'Live site', href: 'https://devcon.plus' }],
+		links: [{ label: 'Public site', href: 'https://devcon.plus' }],
 		private: true,
 		visual: {
 			kind: 'shot',
@@ -101,11 +110,13 @@ const work = [
 		<div class="shell site-head__in">
 			<a class="brand" href="#top">
 				<span class="sr-only">Kenneth Clein T. Fernandez, back to top</span>
-				<span aria-hidden="true">KCF<span class="brand__name"> — Kenneth Clein Fernandez</span></span>
+				<span class="brand__name" aria-hidden="true">Kenneth Fernandez</span>
+				<span class="brand__mark" aria-hidden="true">KCF</span>
 			</a>
 			<nav class="nav" aria-label="Sections">
 				<a href="#work">Work</a>
 				<a href="#about">About</a>
+				<a class="nav__background" href="#background">Background</a>
 				<a href="#contact">Contact</a>
 			</nav>
 		</div>
@@ -114,7 +125,7 @@ const work = [
 	<main id="main">
 		<section class="hero" id="top">
 			<div class="shell">
-				<p class="label hero__eyebrow">Kenneth Clein T. Fernandez — Manila, Philippines</p>
+				<p class="label hero__eyebrow">Kenneth Clein T. Fernandez</p>
 				<div class="hero__type">
 					<h1 class="hero__title">
 						<span class="line"><span>I build software</span></span>
@@ -124,10 +135,8 @@ const work = [
 
 				<div class="hero__foot">
 					<p class="hero__lede">
-						Third-year BSIT student at San Sebastian College – Recoletos Manila. Four things I've built
-						are live right now: a campus alert app on Android, a Telegram bot DEVCON's Cohort 5 uses
-						every day, the retrieval layer of a nonprofit platform, and a membership product I worked on
-						during an internship.
+						Third-year BSIT student in Manila. I've shipped an Android campus-alert app, a Telegram
+						bot in daily use, and the retrieval layer of a nonprofit platform.
 					</p>
 
 					<div class="hero__side">
@@ -144,11 +153,14 @@ const work = [
 										stroke-linejoin="round"></path>
 								</svg>
 							</a>
-							<a class="btn btn--ghost" href="mailto:fernandezk728@gmail.com">Email me</a>
+							<a class="btn btn--ghost" href={`mailto:${EMAIL}`}>Email me</a>
 						</div>
 						<p class="hero__links">
-							<a href="https://github.com/kxnn02">GitHub</a>
-							<a href="https://linkedin.com/in/kenneth-clein-fernandez">LinkedIn</a>
+							<a href="https://github.com/kxnn02" target="_blank" rel="me noopener">GitHub</a>
+							<a href="https://linkedin.com/in/kenneth-clein-fernandez" target="_blank" rel="me noopener"
+								>LinkedIn</a
+							>
+							<a href={`mailto:${EMAIL}?subject=R%C3%A9sum%C3%A9%20request`}>Résumé on request</a>
 						</p>
 					</div>
 				</div>
@@ -172,19 +184,28 @@ const work = [
 									<span>{project.kind}</span>
 								</p>
 								<h3 class="project__title">
-									<a href={project.href}>{project.name}</a>
+									<a href={project.href} target="_blank" rel="noopener">{project.name}</a>
 								</h3>
+								<p class="project__role">
+									<span>Role</span> {project.role}
+								</p>
 								<p class="project__body">{project.body}</p>
 								<p class="project__stack">{project.stack}</p>
+								<p class="project__proof">
+									<span>Proof</span> {project.proof}
+								</p>
 								<ul class="project__links">
 									{project.links.map((link) => (
 										<li>
-											<a href={link.href}>{link.label}</a>
+											<a href={link.href} target="_blank" rel="noopener">{link.label}</a>
 										</li>
 									))}
 									{project.private && (
 										<li>
-											<span class="project__private">Private repo</span>
+											<a
+												class="project__private"
+												href={`mailto:${EMAIL}?subject=DEVCON%2B%20admin%20work`}
+											>Private repo — ask me</a>
 										</li>
 									)}
 								</ul>
@@ -201,13 +222,13 @@ const work = [
 												sizes="(max-width: 56rem) 92vw, 55vw"
 												format="webp"
 												quality={82}
-												loading="lazy"
+												loading="eager"
 											/>
 										</div>
 										<figcaption class="project__caption">
 											<span>{project.visual.caption}</span>
 											{project.visual.noteHref ? (
-												<a href={project.visual.noteHref}>{project.visual.note}</a>
+												<a href={project.visual.noteHref} target="_blank" rel="noopener">{project.visual.note}</a>
 											) : (
 												<span>{project.visual.note}</span>
 											)}
@@ -226,7 +247,7 @@ const work = [
 												sizes="(max-width: 56rem) 76vw, 26rem"
 												format="webp"
 												quality={82}
-												loading="lazy"
+												loading="eager"
 											/>
 										</div>
 										<figcaption class="project__caption">
@@ -272,7 +293,7 @@ const work = [
 							sizes="(max-width: 56rem) 60vw, 22rem"
 							format="webp"
 							quality={82}
-							loading="lazy"
+							loading="eager"
 						/>
 					</figure>
 
@@ -283,8 +304,8 @@ const work = [
 						</p>
 						<p>
 							I'm a third-year BSIT student at San Sebastian College – Recoletos Manila. Most of what I
-							know came from building four projects with other people and fixing what broke, not from
-							tutorials.
+							know came from shipping four projects — three with small teams, one alone — and fixing
+							what broke.
 						</p>
 						<p>
 							I work in JavaScript and Python, with Java from coursework. I'm looking for an OJT or
@@ -349,11 +370,12 @@ const work = [
 				</h2>
 
 				<div class="email-row" data-reveal>
-					<a class="email" href="mailto:fernandezk728@gmail.com">fernandezk728@gmail.com</a>
+					<a class="email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
 					<button
 						class="copy"
 						type="button"
 						data-copy-email
+						data-email={EMAIL}
 						aria-label="Copy email address to clipboard"
 					>
 						Copy
@@ -364,8 +386,12 @@ const work = [
 				<div class="contact__foot" data-reveal>
 					<p>Manila, Philippines · GMT+8</p>
 					<div>
-						<a href="https://github.com/kxnn02">github.com/kxnn02</a>
-						<a href="https://linkedin.com/in/kenneth-clein-fernandez">LinkedIn</a>
+						<a href="https://github.com/kxnn02" target="_blank" rel="me noopener">github.com/kxnn02</a>
+						<a href="https://linkedin.com/in/kenneth-clein-fernandez" target="_blank" rel="me noopener"
+							>LinkedIn</a
+						>
+						{/* The PDF stays unpublished until the overclaims and phone number are removed. */}
+						<a href={`mailto:${EMAIL}?subject=R%C3%A9sum%C3%A9%20request`}>Résumé on request</a>
 					</div>
 				</div>
 			</div>
@@ -376,7 +402,8 @@ const work = [
 		<div class="shell footer__in">
 			<p>© 2026 Kenneth Clein T. Fernandez</p>
 			<p>
-				Built with Astro · <a href="https://github.com/kxnn02/portfolio">source</a>
+				Built with Astro ·
+				<a href="https://github.com/kxnn02/portfolio" target="_blank" rel="noopener">source</a>
 			</p>
 		</div>
 	</footer>
@@ -404,7 +431,7 @@ const work = [
 			targets.forEach((target) => target.classList.add('is-in'));
 		}
 
-		window.__revealReady = true;
+		(window as Window & { __revealReady?: boolean }).__revealReady = true;
 
 		// Pointer parallax. The pointer's position in the viewport drives every
 		// rigged element through the same field, so this never needs a
@@ -414,16 +441,28 @@ const work = [
 		const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 		if (finePointer.matches && !stillMotion.matches) {
-			const rig = [];
+			type RigItem = {
+				element: HTMLElement;
+				travel: number;
+				x: number;
+				y: number;
+				toX: number;
+				toY: number;
+			};
 
-			const rigElement = (element, travel) => {
+			const rig: RigItem[] = [];
+
+			const rigElement = (element: HTMLElement | null, travel: number) => {
 				if (element) rig.push({ element, travel, x: 0, y: 0, toX: 0, toY: 0 });
 			};
 
-			rigElement(document.querySelector('.hero__type'), 6);
+			rigElement(document.querySelector<HTMLElement>('.hero__type'), 6);
 
 			for (const row of document.querySelectorAll('.project')) {
-				rigElement(row.querySelector('.shot-wrap') || row.querySelector('.panel'), 12);
+				rigElement(
+					row.querySelector<HTMLElement>('.shot-wrap') ?? row.querySelector<HTMLElement>('.panel'),
+					12
+				);
 			}
 
 			let frame = 0;
@@ -465,11 +504,13 @@ const work = [
 			);
 		}
 
-		const button = document.querySelector('[data-copy-email]');
+		const button = document.querySelector<HTMLButtonElement>('[data-copy-email]');
 		const status = document.querySelector('[data-copy-status]');
-		const email = 'fernandezk728@gmail.com';
+		const email = button?.dataset.email ?? '';
 
 		button?.addEventListener('click', async () => {
+			if (!email) return;
+
 			try {
 				await navigator.clipboard.writeText(email);
 				button.textContent = 'Copied';

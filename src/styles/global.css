@@ -187,6 +187,9 @@ img {
 }
 
 .brand {
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.25rem;
 	font-family: var(--mono);
 	font-size: var(--step--1);
 	letter-spacing: 0.14em;
@@ -195,11 +198,16 @@ img {
 }
 
 .brand__name {
-	color: var(--ink-3);
+	color: var(--ink);
+}
+
+.brand__mark {
+	display: none;
 }
 
 .nav {
 	display: flex;
+	flex-wrap: wrap;
 	gap: clamp(0.85rem, 2vw, 1.5rem);
 	font-family: var(--mono);
 	font-size: var(--step--1);
@@ -208,6 +216,9 @@ img {
 }
 
 .nav a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.25rem;
 	color: var(--ink-2);
 	text-decoration: none;
 }
@@ -392,7 +403,7 @@ img {
 
 .btn--ghost {
 	background: transparent;
-	border-color: var(--line-2);
+	border-color: var(--ink-3);
 	color: var(--ink);
 }
 
@@ -405,19 +416,27 @@ img {
 
 .hero__links {
 	display: flex;
-	gap: 1.25rem;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.25rem;
 	font-family: var(--mono);
 	font-size: var(--step--1);
 }
 
 .hero__links a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 2rem;
 	color: var(--ink-3);
-	text-decoration: none;
+	text-decoration: underline;
+	text-decoration-color: var(--line-2);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.22em;
 }
 
 @media (hover: hover) {
 	.hero__links a:hover {
 		color: var(--accent);
+		text-decoration-color: var(--accent);
 	}
 }
 
@@ -470,6 +489,25 @@ img {
 	}
 }
 
+.project__role,
+.project__proof {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem 0.55rem;
+	margin-top: 0.85rem;
+	font-size: 0.875rem;
+	color: var(--ink-2);
+}
+
+.project__role span,
+.project__proof span {
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ink-3);
+}
+
 .project__body {
 	margin-top: 1rem;
 	max-width: 34rem;
@@ -495,22 +533,25 @@ img {
 }
 
 .project__links a {
-	text-decoration: none;
-	border-bottom: 1px solid var(--line-2);
-	padding-bottom: 1px;
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.25rem;
+	text-decoration: underline;
+	text-decoration-color: var(--line-2);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.25em;
 }
 
 @media (hover: hover) {
 	.project__links a:hover {
 		color: var(--accent);
-		border-color: var(--accent);
+		text-decoration-color: var(--accent);
 	}
 }
 
 .project__private {
 	color: var(--ink-3);
-	border-bottom: 1px solid var(--line);
-	padding-bottom: 1px;
+	text-decoration-color: var(--line);
 }
 
 .project__visual {
@@ -539,6 +580,7 @@ img {
 .project__caption {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	justify-content: space-between;
 	gap: 0.25rem 1rem;
 	margin-top: 0.6rem;
@@ -548,12 +590,19 @@ img {
 }
 
 .project__caption a {
-	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	min-height: 2rem;
+	text-decoration: underline;
+	text-decoration-color: var(--line-2);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
 }
 
 @media (hover: hover) {
 	.project__caption a:hover {
 		color: var(--accent);
+		text-decoration-color: var(--accent);
 	}
 }
 
@@ -654,6 +703,8 @@ img {
 	display: block;
 	width: 100%;
 	border: 1px solid var(--line-2);
+	/* Warm the casual phone shot toward the paper until a studio portrait replaces it. */
+	filter: sepia(0.16) saturate(0.85) contrast(1.02);
 }
 
 .about__photo figcaption {
@@ -812,8 +863,9 @@ img {
 }
 
 .copy {
-	padding: 0.3rem 0.65rem;
-	border: 1px solid var(--line-2);
+	min-height: 2.25rem;
+	padding: 0.45rem 0.75rem;
+	border: 1px solid var(--ink-3);
 	border-radius: 2px;
 	background: transparent;
 	color: var(--ink-3);
@@ -832,6 +884,12 @@ img {
 
 .copy:active {
 	background: var(--paper-2);
+}
+
+@media (pointer: coarse) {
+	.copy {
+		min-height: 2.75rem;
+	}
 }
 
 @media (hover: hover) {
@@ -867,12 +925,19 @@ img {
 }
 
 .contact__foot a {
-	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	min-height: 2rem;
+	text-decoration: underline;
+	text-decoration-color: var(--line-2);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.22em;
 }
 
 @media (hover: hover) {
 	.contact__foot a:hover {
 		color: var(--accent);
+		text-decoration-color: var(--accent);
 	}
 }
 
@@ -896,12 +961,19 @@ img {
 }
 
 .footer a {
-	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	min-height: 2rem;
+	text-decoration: underline;
+	text-decoration-color: var(--line-2);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.22em;
 }
 
 @media (hover: hover) {
 	.footer a:hover {
 		color: var(--accent);
+		text-decoration-color: var(--accent);
 	}
 }
 
@@ -958,10 +1030,10 @@ img {
 
 .js [data-reveal] {
 	opacity: 0;
-	transform: translateY(1.25rem);
+	transform: translateY(0.625rem);
 	transition:
-		opacity 800ms var(--ease),
-		transform 800ms var(--ease);
+		opacity 420ms var(--ease),
+		transform 420ms var(--ease);
 }
 
 .js [data-reveal].is-in {
@@ -977,12 +1049,27 @@ img {
 .js [data-wipe] > .shot-wrap,
 .js [data-wipe] > .panel {
 	clip-path: inset(0 100% 0 0);
-	transition: clip-path 900ms cubic-bezier(0.77, 0, 0.175, 1) 110ms;
+	transition: clip-path 560ms cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .js [data-wipe].is-in > .shot-wrap,
 .js [data-wipe].is-in > .panel {
 	clip-path: inset(-4rem -4rem -4rem -4rem);
+}
+
+/* The caption sits outside the clipped frame, so it needs its own arrival.
+   It fades with the wipe rather than waiting for it to finish. */
+.js [data-wipe] > .project__caption {
+	opacity: 0;
+	transform: translateY(0.5rem);
+	transition:
+		opacity 420ms var(--ease),
+		transform 420ms var(--ease);
+}
+
+.js [data-wipe].is-in > .project__caption {
+	opacity: 1;
+	transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1005,6 +1092,12 @@ img {
 	.js [data-wipe] > .shot-wrap,
 	.js [data-wipe] > .panel {
 		clip-path: none;
+		transition: none;
+	}
+
+	.js [data-wipe] > .project__caption {
+		opacity: 1;
+		transform: none;
 		transition: none;
 	}
 
@@ -1166,7 +1259,16 @@ img {
 }
 
 @media (max-width: 34rem) {
-	.brand__name {
+	.brand {
+		font-size: 0.6875rem;
+		letter-spacing: 0.1em;
+	}
+
+	.nav {
+		gap: 0.8rem;
+	}
+
+	.nav a.nav__background {
 		display: none;
 	}
 
@@ -1187,6 +1289,16 @@ img {
 	}
 }
 
+@media (max-width: 22rem) {
+	.brand__name {
+		display: none;
+	}
+
+	.brand__mark {
+		display: inline;
+	}
+}
+
 /* -------------------------------------------------------------------------
    Print
    The page is a CV for a lot of people who will hit Ctrl+P. Every reveal has
@@ -1197,7 +1309,8 @@ img {
 @media print {
 	.site-head,
 	.skip,
-	.strip {
+	.strip,
+	.copy {
 		display: none;
 	}
 
@@ -1220,6 +1333,12 @@ img {
 	.js [data-wipe] > .shot-wrap,
 	.js [data-wipe] > .panel {
 		clip-path: none !important;
+		transition: none !important;
+	}
+
+	.js [data-wipe] > .project__caption {
+		opacity: 1 !important;
+		transform: none !important;
 		transition: none !important;
 	}
 
