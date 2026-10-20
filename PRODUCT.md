@@ -4,8 +4,9 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (problem-first pass: new hero and About copy, project
-problems, serif problem lead, role/proof receipt, static strip wrap)
+Last updated: 2026-10-20 (problem-first pass: new hero and About copy,
+owner-confirmed project problems, serif problem lead, role/proof receipt,
+static strip wrap)
 
 ---
 
@@ -76,18 +77,22 @@ everything else). Numbers below are stamped with the date they were counted.
 | CampusCurrents shipped | Android beta, then a security/UX fix release | owner |
 | CampusCurrents links | live landing page at `campus-currents-website.vercel.app`; signed APK in GitHub Releases (`v1.0.0-beta.2`, 102.4 MB) | GitHub API, HTTP 200 (size re-checked 2026-10-20) |
 | CampusCurrents backend | Supabase/PostgreSQL, row-level security, edge functions, two-phase push with per-student delivery receipts | owner |
+| CampusCurrents problem | announcements scattered across Facebook and other platforms; students already check their phones | owner, 2026-10-20 |
 | Task Bot users | DEVCON Philippines Cohort 5, 8 people, daily production use | owner |
 | Task Bot authorship | **328 of 328 commits** on `main` (re-verified 2026-10-20; the brief said 136 — the repo has since grown) | GitHub API |
 | Task Bot CI | gates every merge on typecheck, full test suite, migration check | repo |
 | Task Bot scale | 17 ADRs, 19 SQL migrations, 93 test files (all three re-counted 2026-10-20) | GitHub API |
+| Task Bot problem | higher-ups assign tasks with no shared tracker, so people keep their own; Telegram is the cohort's main channel | owner, 2026-10-20 |
 | Kids Hub team | 5 people | owner |
 | Kids Hub stack | **React + Vite** + Supabase (confirmed by build output, not the README — the README is still the Vite template) | live site |
 | Kids Hub ownership | retrieval pipeline + AI feature set (see non-claims) | owner |
 | Kids Hub eval harness | 39 test cases: grounding, citations, no-answer, injection, authorization | owner, written alone |
+| Kids Hub problem | no centralized platform; borrowed materials untracked and some went missing; volunteer onboarding waits on a higher-up | owner, 2026-10-20 |
 | DEVCON+ | 13 chapters | owner |
 | DEVCON+ dates | Aug 2026 – Sep 2026 (ended) | owner + resume |
 | DEVCON+ scope | event registration, points and rewards, chapter operations | resume |
-| DEVCON+ work | admin dashboard UI/data bug fixes, duplicate chapter entries, proposed chapter leaderboard | owner |
+| DEVCON+ problem | duplicate chapter entries in the admin dashboard; no visible chapter ranking | owner, 2026-10-20 |
+| DEVCON+ work | duplicate chapter entries fixed in the admin dashboard (AI-assisted with Claude Code, not studied in depth); chapter leaderboard proposed, never shipped | owner, 2026-10-20 |
 | Academic | BSIT, San Sebastian College – Recoletos Manila, expected 2028 | owner |
 | Academic award | Silver Medalist for Academic Excellence, 1st year (both semesters) — San Sebastian College – Recoletos Manila, confirmed by owner 2026-10-20 | owner |
 | Organisations | Founder and Lead, AWS Learning Club SSCR Manila (2026–2027); 3rd Year Representative, JPCS SSCR Manila (2026–2027); 2nd Year Representative, JPCS SSCR Manila (2025–2026) | owner + resume |
@@ -102,7 +107,15 @@ everything else). Numbers below are stamped with the date they were counted.
 - **Kids Hub:** the server-side edge functions (role scoping, prompt-injection
   guard, rate limiting) were written by a teammate. Never imply the whole
   assistant was solo work. Say: retrieval pipeline and the AI feature set.
-- **DEVCON+:** internship work on a private repo, not a personal project.
+- **DEVCON+:** internship work on a private repo, not a personal project. The
+  duplicate-entry fix was AI-assisted (Claude Code) and not studied in depth;
+  keep the claim to those entries and the proposal. The chapter leaderboard
+  never shipped. Do not expand the work into "UI and data bug fixes" or
+  dashboard ownership.
+- **Problem statements:** the CampusCurrents, Task Bot, Kids Hub and DEVCON+
+  problems are the owner's account, confirmed 2026-10-20. Do not add further
+  incidents, dates or loss counts. "Easy to miss" is a risk, not a claim that a
+  specific notice was missed.
 - AI-assisted development (Claude Code, Kiro CLI) is a **workflow**, never a
   credential. Do not put it in the hero or a skills list.
 - **The resume PDF currently attached at
@@ -187,6 +200,7 @@ everything else). Numbers below are stamped with the date they were counted.
 | Review fixes | Role + proof lines, one-row mobile header, eager print images, composed OG card, sitemap, type/link/build gates | The 2026-10-20 review found the five-second scan hid the proof, the mobile header wrapped, print dropped two of five images, and the OG card cut the lede mid-sentence. Each fix is in the source; the constraints above still hold |
 | Project copy | Problem → solution → my part. “I” diagnoses, “we” ship; solo stays “I” | Owner's call 2026-10-20. Every project leads with the problem it answers; numbers still come only from the table above |
 | Hero and About | “I find the problem. I ship the fix.”; evidence-first lede; About P2 names the four problems | Owner picked the direction. The headline carries the thesis, the lede carries the proof; the OG card regenerates from the page |
+| Problem facts | Owner-confirmed 2026-10-20: scattered Facebook announcements and phones (CampusCurrents); personal trackers + Telegram (Task Bot); no centralized platform, missing materials and onboarding waits (Kids Hub); duplicate entries, proposal-only leaderboard (DEVCON+) | The problem sentences are now the owner's account, not inferred from the feature list; DEVCON+ stays narrowly scoped |
 | Problem lead | Serif italic problem, sans solution, role/proof receipt below the story | Gives the problem the page's editorial voice and keeps the evidence scannable in one block. Owner asked for a look pass; static composition matters because their OS reports reduce |
 | Reduced motion | Automatic: follows the OS, no toggle; the strip wraps instead of clipping in that state | Owner's instruction 2026-10-20. The page is complete and still under reduce; a toggle would add UI for a preference the OS already states |
 

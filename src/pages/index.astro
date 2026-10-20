@@ -24,8 +24,8 @@ const work = [
 		role: 'Project manager & lead developer',
 		proof: '5-person team · 50 migrations · per-student delivery receipts',
 		problem:
-			'Suspension calls and emergency notices don’t all arrive in the same place, so the notice that matters can be the one that’s missed.',
-		body: 'We built one Android app for every class suspension, emergency notice and campus announcement, on a Supabase backend with 50 migrations and row-level security. Push delivery reports a receipt for every student.',
+			'Campus announcements were scattered across Facebook and other platforms, so suspension calls and emergency notices were easy to miss on the phones students already check.',
+		body: 'We built one Android app for class suspensions, emergency notices and campus announcements, delivered straight to the student’s phone. The Supabase backend runs 50 migrations with row-level security, and push delivery reports a receipt for every student.',
 		stack: 'React Native (Expo) · Next.js · Supabase · PostgreSQL',
 		links: [
 			{ label: 'Project site', href: 'https://campus-currents-website.vercel.app' },
@@ -49,8 +49,8 @@ const work = [
 		role: 'Solo build',
 		proof: '328 commits, all mine · 93 test files · 8 daily users',
 		problem:
-			'Cohort 5’s tasks, deadlines and standups were scattered through a Telegram group, so work got buried and no one had one view of who was doing what.',
-		body: 'I built the bot the cohort runs on: a morning standup card grouped by person, overdue reminders and weekly digests, with board, team and activity views in a Next.js dashboard behind it. I wrote every commit, and CI blocks any merge that fails typecheck, the tests or the migration check.',
+			'When a higher-up assigned a task, the cohort had no shared tracker — everyone made their own — and coordination lived in a Telegram group.',
+		body: 'I built the bot inside Telegram, where the cohort already worked: a morning standup card grouped by person, overdue reminders and weekly digests, with board, team and activity views in a Next.js dashboard behind it. I wrote every commit, and CI blocks any merge that fails typecheck, the tests or the migration check.',
 		stack: 'Telegram Bot API · Next.js · Supabase · CI',
 		links: [
 			{ label: 'Dashboard — Telegram login', href: 'https://telegram-taskbot-ten.vercel.app' },
@@ -72,8 +72,8 @@ const work = [
 		role: 'Retrieval pipeline & eval harness',
 		proof: '5-person team · 39 eval cases · pgvector + citations',
 		problem:
-			'DEVCON Kids’ answers lived in documents, so finding one meant knowing where to look.',
-		body: 'The platform covers events, volunteer onboarding, chapters, inventory and reporting. I built the retrieval layer that turns those documents into searchable answers — ingestion and chunking, Mistral embeddings, pgvector search and an FAQ auto-builder — and wrote the 39-case evaluation harness on my own.',
+			'DEVCON Kids had no centralized platform. Borrowed materials had no shared record — some went missing and no one could say who had them — and onboarding a volunteer meant asking a higher-up and waiting for an answer.',
+		body: 'The platform covers events, volunteer onboarding, chapters, inventory and reporting. I built the retrieval layer behind the chatbot that answers onboarding questions — document ingestion and chunking, Mistral embeddings, pgvector search and an FAQ auto-builder — and wrote the 39-case evaluation harness on my own.',
 		stack: 'React · Vite · Supabase · pgvector · Mistral',
 		links: [
 			{ label: 'Live site', href: 'https://devcon-kids-hub-2-0.vercel.app' },
@@ -96,7 +96,7 @@ const work = [
 		proof: '13 chapters · duplicate chapter fix · proposed leaderboard',
 		problem:
 			'Duplicate chapter entries were showing up in DEVCON’s admin dashboard, and chapter activity had no visible ranking.',
-		body: 'During my internship on the membership platform — event registration, points and rewards, chapter operations across 13 chapters — I fixed UI and data bugs in the admin dashboard, including the duplicates, and proposed the chapter leaderboard.',
+		body: 'During my internship on the membership platform — event registration, points and rewards, chapter operations across 13 chapters — I fixed the duplicate chapter entries and proposed the chapter leaderboard.',
 		stack: 'React · TypeScript · NestJS · Supabase · Firebase Auth',
 		links: [{ label: 'Public site', href: 'https://devcon.plus' }],
 		private: true,
@@ -315,9 +315,9 @@ const work = [
 						</p>
 						<p>
 							I'm a third-year BSIT student at San Sebastian College – Recoletos Manila. Every project
-							here started with a problem — alerts in too many places, work nobody could track, answers
-							stuck in documents, duplicate chapter rows — and most of what I know came from building
-							the fix, with a small team or on my own.
+							here started with a problem — announcements scattered across Facebook, tasks kept in
+							personal trackers, materials nobody could trace, duplicate chapter rows — and most of
+							what I know came from building the fix, with a small team or on my own.
 						</p>
 						<p>
 							I work in JavaScript and Python, with Java from coursework. I'm looking for an OJT or
