@@ -323,6 +323,7 @@ img {
 	max-width: var(--measure);
 	font-size: var(--step-1);
 	color: var(--ink-2);
+	text-wrap: pretty;
 }
 
 .hero__side {
@@ -489,14 +490,24 @@ img {
 	}
 }
 
+/* Role and proof as one receipt under the story, ruled off from it. */
+.project__facts {
+	margin-top: 1.35rem;
+	padding-top: 0.9rem;
+	border-top: 1px solid var(--line);
+}
+
 .project__role,
 .project__proof {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.35rem 0.55rem;
-	margin-top: 0.85rem;
 	font-size: 0.875rem;
 	color: var(--ink-2);
+}
+
+.project__proof {
+	margin-top: 0.45rem;
 }
 
 .project__role span,
@@ -508,10 +519,25 @@ img {
 	color: var(--ink-3);
 }
 
-.project__body {
+/* The problem is the lead: serif italic is the page's voice for the human
+   situation, the sans body underneath is the engineering answer. */
+.project__problem {
 	margin-top: 1rem;
 	max-width: 34rem;
+	font-family: var(--serif);
+	font-style: italic;
+	font-size: clamp(1.125rem, 1.3vw, 1.25rem);
+	line-height: 1.42;
+	letter-spacing: -0.005em;
+	color: var(--ink);
+	text-wrap: pretty;
+}
+
+.project__body {
+	margin-top: 0.65rem;
+	max-width: 34rem;
 	color: var(--ink-2);
+	text-wrap: pretty;
 }
 
 .project__stack {
@@ -683,6 +709,27 @@ img {
 	}
 }
 
+/* The loop fades at the edges instead of cutting. Under reduced motion the
+   line is static, so it shows without the mask. */
+@media (prefers-reduced-motion: no-preference) {
+	.strip {
+		-webkit-mask-image: linear-gradient(
+			90deg,
+			transparent,
+			#000 2.5rem,
+			#000 calc(100% - 2.5rem),
+			transparent
+		);
+		mask-image: linear-gradient(
+			90deg,
+			transparent,
+			#000 2.5rem,
+			#000 calc(100% - 2.5rem),
+			transparent
+		);
+	}
+}
+
 /* -------------------------------------------------------------------------
    About
 ------------------------------------------------------------------------- */
@@ -717,6 +764,7 @@ img {
 .about__text p {
 	max-width: 38rem;
 	color: var(--ink-2);
+	text-wrap: pretty;
 }
 
 .about__text p + p {
@@ -1119,11 +1167,32 @@ img {
 		transform: none;
 	}
 
-	/* The strip stops and folds into a static line instead of scrolling. */
+	/* The strip stops and folds into a static block instead of scrolling. */
 	.strip__in {
 		animation: none;
 		width: auto;
 		flex-wrap: wrap;
+	}
+
+	.strip__set {
+		flex-wrap: wrap;
+		row-gap: 0.35rem;
+	}
+
+	/* Keep each tool and its separator together, so a wrapped line never
+	   starts with a stray accent dot. */
+	.strip__set > span {
+		padding-right: 0;
+	}
+
+	.strip__set > i {
+		display: none;
+	}
+
+	.strip__set > span:not(:last-of-type)::after {
+		content: '·';
+		padding-inline: 0.55rem;
+		color: var(--accent);
 	}
 
 	.strip__set + .strip__set {
@@ -1245,6 +1314,7 @@ img {
 		gap: 1.25rem;
 	}
 
+	.project__problem,
 	.project__body {
 		max-width: none;
 	}

@@ -7,9 +7,9 @@ import kidshubShot from '../assets/shots/kidshub-login.png';
 import devconShot from '../assets/shots/devconplus-home.png';
 import portrait from '../assets/shots/portrait.jpg';
 
-const title = 'Kenneth Clein T. Fernandez — I build software that ships';
+const title = 'Kenneth Clein T. Fernandez — I find the problem. I ship the fix';
 const description =
-	'Third-year BSIT student in Manila. Shipped an Android campus-alert app, a Telegram bot in daily use, and a nonprofit’s retrieval layer. Open to OJT.';
+	'Third-year BSIT student in Manila. I’ve shipped the fixes: an Android alert app, a Telegram bot in daily use, and a nonprofit’s retrieval layer. Open to OJT.';
 const EMAIL = 'fernandezk728@gmail.com';
 
 /* Each project carries its own visual. Two shapes, chosen by what the asset
@@ -23,7 +23,9 @@ const work = [
 		href: 'https://campus-currents-website.vercel.app',
 		role: 'Project manager & lead developer',
 		proof: '5-person team · 50 migrations · per-student delivery receipts',
-		body: 'Class suspension alerts, emergency notices and campus announcements for San Sebastian – Recoletos, in one Android app. The Supabase backend runs 50 migrations with row-level security, and push delivery reports a receipt for every student.',
+		problem:
+			'Suspension calls and emergency notices don’t all arrive in the same place, so the notice that matters can be the one that’s missed.',
+		body: 'We built one Android app for every class suspension, emergency notice and campus announcement, on a Supabase backend with 50 migrations and row-level security. Push delivery reports a receipt for every student.',
 		stack: 'React Native (Expo) · Next.js · Supabase · PostgreSQL',
 		links: [
 			{ label: 'Project site', href: 'https://campus-currents-website.vercel.app' },
@@ -46,7 +48,9 @@ const work = [
 		href: 'https://telegram-taskbot-ten.vercel.app',
 		role: 'Solo build',
 		proof: '328 commits, all mine · 93 test files · 8 daily users',
-		body: 'A Telegram bot and a Next.js dashboard in daily use by DEVCON\u2019s eight-person Cohort 5: board, team and activity views, plus the cohort\u2019s working rhythm \u2014 a morning standup card grouped by person, overdue reminders, and weekly digests. CI blocks any merge that fails typecheck, the test suite or the migration check.',
+		problem:
+			'Cohort 5’s tasks, deadlines and standups were scattered through a Telegram group, so work got buried and no one had one view of who was doing what.',
+		body: 'I built the bot the cohort runs on: a morning standup card grouped by person, overdue reminders and weekly digests, with board, team and activity views in a Next.js dashboard behind it. I wrote every commit, and CI blocks any merge that fails typecheck, the tests or the migration check.',
 		stack: 'Telegram Bot API · Next.js · Supabase · CI',
 		links: [
 			{ label: 'Dashboard — Telegram login', href: 'https://telegram-taskbot-ten.vercel.app' },
@@ -67,7 +71,9 @@ const work = [
 		href: 'https://devcon-kids-hub-2-0.vercel.app',
 		role: 'Retrieval pipeline & eval harness',
 		proof: '5-person team · 39 eval cases · pgvector + citations',
-		body: 'Events, volunteer onboarding, chapters, inventory and post-event reporting for DEVCON Kids. I built the retrieval pipeline: document ingestion and chunking, Mistral embeddings and pgvector search, plus an FAQ auto-builder. I wrote the 39-case evaluation harness on my own.',
+		problem:
+			'DEVCON Kids’ answers lived in documents, so finding one meant knowing where to look.',
+		body: 'The platform covers events, volunteer onboarding, chapters, inventory and reporting. I built the retrieval layer that turns those documents into searchable answers — ingestion and chunking, Mistral embeddings, pgvector search and an FAQ auto-builder — and wrote the 39-case evaluation harness on my own.',
 		stack: 'React · Vite · Supabase · pgvector · Mistral',
 		links: [
 			{ label: 'Live site', href: 'https://devcon-kids-hub-2-0.vercel.app' },
@@ -88,7 +94,9 @@ const work = [
 		href: 'https://devcon.plus',
 		role: 'Intern — admin dashboard',
 		proof: '13 chapters · duplicate chapter fix · proposed leaderboard',
-		body: 'A volunteer internship on DEVCON\u2019s membership platform \u2014 event registration, points and rewards, and chapter operations across 13 chapters. I fixed UI and data bugs in the admin dashboard, including duplicate chapter entries in chapter listings, and proposed the chapter leaderboard.',
+		problem:
+			'Duplicate chapter entries were showing up in DEVCON’s admin dashboard, and chapter activity had no visible ranking.',
+		body: 'During my internship on the membership platform — event registration, points and rewards, chapter operations across 13 chapters — I fixed UI and data bugs in the admin dashboard, including the duplicates, and proposed the chapter leaderboard.',
 		stack: 'React · TypeScript · NestJS · Supabase · Firebase Auth',
 		links: [{ label: 'Public site', href: 'https://devcon.plus' }],
 		private: true,
@@ -128,15 +136,15 @@ const work = [
 				<p class="label hero__eyebrow">Kenneth Clein T. Fernandez</p>
 				<div class="hero__type">
 					<h1 class="hero__title">
-						<span class="line"><span>I build software</span></span>
-						<span class="line"><span>that <em>ships.</em></span></span>
+						<span class="line"><span>I find the problem.</span></span>
+						<span class="line"><span>I ship the <em>fix.</em></span></span>
 					</h1>
 				</div>
 
 				<div class="hero__foot">
 					<p class="hero__lede">
-						Third-year BSIT student in Manila. I've shipped an Android campus-alert app, a Telegram
-						bot in daily use, and the retrieval layer of a nonprofit platform.
+						Third-year BSIT student in Manila. I've shipped the fixes: an Android campus-alert app,
+						a Telegram bot in daily use, and the retrieval layer of a nonprofit platform.
 					</p>
 
 					<div class="hero__side">
@@ -186,14 +194,17 @@ const work = [
 								<h3 class="project__title">
 									<a href={project.href} target="_blank" rel="noopener">{project.name}</a>
 								</h3>
-								<p class="project__role">
-									<span>Role</span> {project.role}
-								</p>
+								<p class="project__problem">{project.problem}</p>
 								<p class="project__body">{project.body}</p>
 								<p class="project__stack">{project.stack}</p>
-								<p class="project__proof">
-									<span>Proof</span> {project.proof}
-								</p>
+								<div class="project__facts">
+									<p class="project__role">
+										<span>Role</span> {project.role}
+									</p>
+									<p class="project__proof">
+										<span>Proof</span> {project.proof}
+									</p>
+								</div>
 								<ul class="project__links">
 									{project.links.map((link) => (
 										<li>
@@ -303,9 +314,10 @@ const work = [
 							migrations, the bug a tester finds on a Friday.</em>
 						</p>
 						<p>
-							I'm a third-year BSIT student at San Sebastian College – Recoletos Manila. Most of what I
-							know came from shipping four projects — three with small teams, one alone — and fixing
-							what broke.
+							I'm a third-year BSIT student at San Sebastian College – Recoletos Manila. Every project
+							here started with a problem — alerts in too many places, work nobody could track, answers
+							stuck in documents, duplicate chapter rows — and most of what I know came from building
+							the fix, with a small team or on my own.
 						</p>
 						<p>
 							I work in JavaScript and Python, with Java from coursework. I'm looking for an OJT or

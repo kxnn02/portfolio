@@ -43,7 +43,7 @@ const name = content.name ?? 'Kenneth Clein T. Fernandez';
 const location = content.location ?? 'Manila, Philippines';
 const lines = content.lines.length
 	? content.lines
-	: ['I build software', 'that <em>ships.</em>'];
+	: ['I find the problem.', 'I ship the <em>fix.</em>'];
 const status = content.status ?? 'Open to OJT / internship hours';
 
 const card = `
@@ -102,9 +102,9 @@ const card = `
 		}
 
 		.og__title {
-			max-width: 1040px;
+			max-width: 1072px;
 			margin: 0;
-			font-size: 112px;
+			font-size: 104px;
 			font-weight: 600;
 			line-height: 0.92;
 			letter-spacing: -0.05em;

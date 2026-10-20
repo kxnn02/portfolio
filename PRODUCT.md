@@ -4,8 +4,8 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (review pass: role/proof lines, one-row mobile header,
-eager print images, composed OG card, sitemap, type/link/build gates)
+Last updated: 2026-10-20 (problem-first pass: new hero and About copy, project
+problems, serif problem lead, role/proof receipt, static strip wrap)
 
 ---
 
@@ -14,11 +14,11 @@ eager print images, composed OG card, sitemap, type/link/build gates)
 A static personal site for **Kenneth Clein T. Fernandez**, third-year BSIT
 student at San Sebastian College – Recoletos Manila (graduating 2028).
 
-Structure: **one page — a project showcase.** Four projects, each with the
-problem, what was built, the stack and links to the live thing. No case-study
-sub-pages and no long decision write-ups: the owner's call, made 2026-10-20
-after the SPA-plus-case-studies plan was drafted. Depth lives in the linked
-repos and the running software, not in prose.
+Structure: **one page — a project showcase.** Four projects, each leading with
+the problem, then what was built, the role and proof, the stack and links to the
+live thing. No case-study sub-pages and no long decision write-ups: the owner's
+call, made 2026-10-20 after the SPA-plus-case-studies plan was drafted. Depth
+lives in the linked repos and the running software, not in prose.
 
 ## Who reads it
 
@@ -32,13 +32,13 @@ repos and the running software, not in prose.
 
 ## The one impression
 
-**Ships real software.**
+**Finds the problem. Ships the fix.**
 
-Not "AI and automation specialist". In 2026 every applicant claims AI. Very few
-third-years have an app a five-person team shipped, a bot in daily production
-use, and a habit of verifying their own work (CI on every merge, 39-case
-evaluation harness, per-student delivery receipts). The AI work stays on the
-site as proof of depth, not as the headline.
+The proof is that the fix is real software. Not "AI and automation specialist".
+In 2026 every applicant claims AI. Very few third-years have an app a five-person
+team shipped, a bot in daily production use, and a habit of verifying their own
+work (CI on every merge, 39-case evaluation harness, per-student delivery
+receipts). The AI work stays on the site as proof of depth, not as the headline.
 
 ## Success criteria
 
@@ -164,7 +164,7 @@ everything else). Numbers below are stamped with the date they were counted.
 
 | Decision | Chosen | Because |
 | --- | --- | --- |
-| Positioning | Ships real software | Differentiated; AI is table stakes in 2026 |
+| Positioning | Finds the problem, ships the fix — and ships real software | Differentiated; AI is table stakes in 2026. Owner's direction 2026-10-20: lead with the problem, then the build |
 | Framework | Astro, static | Content is static; zero JS by default; explainable unaided, which Next.js is not for the owner |
 | Structure | One page, project showcase | Owner's call 2026-10-20, replacing the one-page-plus-four-case-studies plan. Reverses an earlier decision — the plan document still describes case studies |
 | Contact | Email + copy button, no form, no phone | No backend, no spam surface; the phone stays on the unpublished résumé, never on the page |
@@ -185,6 +185,10 @@ everything else). Numbers below are stamped with the date they were counted.
 | Visual direction | Owned by the owner, decided from references | The builder had picked a direction unasked; corrected 2026-10-20. Three live references captured full-page, compared at `C:\Users\Admin\portfolio-shots\references.html`, direction chosen and recorded in `reference-brief.md` |
 | Project visuals | One screenshot per row, shape chosen by the asset | A wide screenshot fills the column; a portrait one (the Telegram card) sits framed on a panel rather than being cropped into a shape it isn't. Earlier typographic fact panels were retired when real screenshots arrived. Where a screen can't be shown — the DEVCON+ admin dashboard is company-owned — the caption says so instead of substituting a different screen silently |
 | Review fixes | Role + proof lines, one-row mobile header, eager print images, composed OG card, sitemap, type/link/build gates | The 2026-10-20 review found the five-second scan hid the proof, the mobile header wrapped, print dropped two of five images, and the OG card cut the lede mid-sentence. Each fix is in the source; the constraints above still hold |
+| Project copy | Problem → solution → my part. “I” diagnoses, “we” ship; solo stays “I” | Owner's call 2026-10-20. Every project leads with the problem it answers; numbers still come only from the table above |
+| Hero and About | “I find the problem. I ship the fix.”; evidence-first lede; About P2 names the four problems | Owner picked the direction. The headline carries the thesis, the lede carries the proof; the OG card regenerates from the page |
+| Problem lead | Serif italic problem, sans solution, role/proof receipt below the story | Gives the problem the page's editorial voice and keeps the evidence scannable in one block. Owner asked for a look pass; static composition matters because their OS reports reduce |
+| Reduced motion | Automatic: follows the OS, no toggle; the strip wraps instead of clipping in that state | Owner's instruction 2026-10-20. The page is complete and still under reduce; a toggle would add UI for a preference the OS already states |
 
 ## Open questions
 
@@ -241,7 +245,7 @@ build was actually like on the day, not what it was assumed to be.
 | Mobile LCP | **1.6 s** | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3; LCP read before scrolling |
 | CLS | 0.000 | same run, whole-page scroll |
 | Transfer | 364 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
-| DOM nodes | 292 | the role/proof lines and the fourth nav link add 28 |
+| DOM nodes | 300 | the role/proof lines and the fourth nav item add 28; the problem-first pass adds 8 |
 | WCAG contrast | every pair AA or AAA, 0 failures; lowest pair 5.06:1 | `dembrandt <url> --wcag` against the preview build, including hover and focus states; 10 pairs |
 | Tap targets | 32–44 px tall | header, nav and project links 36 px; inline links 32 px; copy button 44 px on coarse pointers |
 | Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1024 / 1440, and with root text doubled at all six | Playwright; the root is forced to `32px` for the 200 % text pass |
@@ -256,8 +260,11 @@ options are a smaller hero font payload or a different print strategy — not
 dropping the proof images.
 
 The pre-review build measured 358 KB / 264 DOM nodes; the resource timeline is
-the honest count for both. The 6 KB difference is the eager proof images; the 28
-nodes are the role/proof lines and the fourth nav item.
+the honest count for both. The 6 KB difference is the eager proof images; 28
+nodes were the role/proof lines and the fourth nav item, and the problem-first
+pass adds 8 (four problem paragraphs and four facts wrappers). LCP, CLS and
+transfer were not re-run after the copy pass: the font payload, images and
+motion budget are unchanged, and only the copy and a few CSS rules moved.
 
 **Three scroll-driven effects — the hero title drift, the hero side drift and the
 project `lag` — were measured as dead in the previous build.** They had been
