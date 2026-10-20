@@ -4,9 +4,9 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (copy polish: no em dashes, selected-work note and
-footer credit removed, CampusCurrents strength line, “My part” alignment, broader
-contact)
+Last updated: 2026-10-20 (copy polish and personalized About: no em dashes,
+selected-work note and footer credit removed, CampusCurrents strength line,
+“My part” alignment, broader contact, owner-supplied About details)
 
 ---
 
@@ -202,7 +202,8 @@ everything else). Numbers below are stamped with the date they were counted.
 | Project visuals | One screenshot per row, shape chosen by the asset | A wide screenshot fills the column; a portrait one (the Telegram card) sits framed on a panel rather than being cropped into a shape it isn't. Earlier typographic fact panels were retired when real screenshots arrived. Where a screen can't be shown — the DEVCON+ admin dashboard is company-owned — the caption says so instead of substituting a different screen silently |
 | Review fixes | Role + proof lines, one-row mobile header, eager print images, composed OG card, sitemap, type/link/build gates | The 2026-10-20 review found the five-second scan hid the proof, the mobile header wrapped, print dropped two of five images, and the OG card cut the lede mid-sentence. Each fix is in the source; the constraints above still hold |
 | Project copy | Problem → solution → my part. “I” diagnoses, “we” ship; solo stays “I” | Owner's call 2026-10-20. Every project leads with the problem it answers; numbers still come only from the table above |
-| Hero and About | “I find the problem. I ship the fix.”; simple evidence-first lede naming the chatbot; About P2 names the four problems | Owner picked the direction and asked for the chatbot to be named plainly; the headline carries the thesis, the lede carries the evidence |
+| Hero and About | “I find the problem. I ship the fix.”; simple evidence-first lede naming the chatbot; About opens with games turning into problem solving, then school, the four problems, Manila and hobbies, and the small-business goal | Owner picked the direction and asked for the chatbot to be named plainly; the About now carries personality from the owner's answers instead of another resume paragraph |
+| About facts | Owner-confirmed 2026-10-20: games and beating them led to problem solving; Valorant and League of Legends; coffee; guitar; tech events; Manila commute and focusing on what he can control; wants real small-business projects with real users; wants to be remembered as someone who can build a solution to a problem. Team role and strong opinions intentionally left out | Owner's answers 2026-10-20; do not infer a team role or a strong opinion |
 | Problem facts | Owner-confirmed 2026-10-20: scattered Facebook announcements and phones (CampusCurrents); personal trackers + Telegram (Task Bot); no centralized platform, missing materials and onboarding waits (Kids Hub); duplicate entries, proposal-only leaderboard (DEVCON+) | The problem sentences are now the owner's account, not inferred from the feature list; DEVCON+ stays narrowly scoped |
 | Problem lead | Sans 18px medium problem lead, sans body, one “My part” line under the story | Owner found the serif italic hard to read; the problem keeps emphasis through size, weight and colour instead |
 | Simplification | Removed the four Proof lines, the Kids Hub retrieval jargon and the DEVCON+ private-repo link; role label is now “My part” | Owner's call 2026-10-20: the proofs and jargon overcomplicated the page, and each row should say only what the owner wants to defend |
@@ -264,7 +265,7 @@ build was actually like on the day, not what it was assumed to be.
 | Mobile LCP | **1.6 s** | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3; LCP read before scrolling |
 | CLS | 0.000 | same run, whole-page scroll |
 | Transfer | 364 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
-| DOM nodes | 287 | counting every element on the built page at 390px |
+| DOM nodes | 288 | counting every element on the built page at 390px |
 | WCAG contrast | every pair AA or AAA, 0 failures; lowest pair 5.06:1 | `dembrandt <url> --wcag` against the preview build, including hover and focus states; 10 pairs |
 | Tap targets | 32–44 px tall | header, nav and project links 36 px; inline links 32 px; copy button 44 px on coarse pointers |
 | Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1024 / 1440, and with root text doubled at all six | Playwright; the root is forced to `32px` for the 200 % text pass |
