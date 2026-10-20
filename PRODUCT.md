@@ -4,9 +4,9 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (copy and simplification pass: chatbot-led hero,
-owner-confirmed project problems, sans problem lead, “My part” lines, proofs
-removed)
+Last updated: 2026-10-20 (copy polish: no em dashes, selected-work note and
+footer credit removed, CampusCurrents strength line, “My part” alignment, broader
+contact)
 
 ---
 
@@ -56,7 +56,8 @@ Plain and specific. Short sentences. Concrete nouns and real counts.
 
 **Banned:** passionate about technology, leveraging, cutting-edge, innovative,
 seamless, robust, scalable (unless the sentence says what scales and how),
-utilize, journey, "I believe", exclamation marks, em-dash pileups.
+utilize, journey, "I believe", exclamation marks, em dashes. Use a colon, a
+period or parentheses instead.
 
 Write "fixed duplicate chapter entries in chapter listings", not "enhanced data
 integrity across the platform".
@@ -182,11 +183,11 @@ everything else). Numbers below are stamped with the date they were counted.
 | Positioning | Finds the problem, ships the fix — and ships real software | Differentiated; AI is table stakes in 2026. Owner's direction 2026-10-20: lead with the problem, then the build |
 | Framework | Astro, static | Content is static; zero JS by default; explainable unaided, which Next.js is not for the owner |
 | Structure | One page, project showcase | Owner's call 2026-10-20, replacing the one-page-plus-four-case-studies plan. Reverses an earlier decision — the plan document still describes case studies |
-| Contact | Email + copy button, no form, no phone | No backend, no spam surface; the phone stays on the unpublished résumé, never on the page |
+| Contact | Email + copy button, no form, no phone; heading welcomes a role, a project or a problem | No backend, no spam surface; the phone stays on the unpublished résumé, never on the page. The owner wants clients and other work to feel welcome, not just internship recruiters |
 | Phone number | **Never on a public page.** Email only | Owner's instruction 2026-10-20: the number is shared when he applies, not when someone views. Audited the built output for phone-shaped strings — clean |
 | Resume PDF | Not published. Requests by email until the text is fixed | The old site `kxnn02-portfolio.vercel.app` was serving `kenneth-fernandez-resume.pdf` publicly (HTTP 200, number in the header line) and the file sat in a public repo. Removed 2026-10-20: the file is deleted from `kxnn02/kxnn02-portfolio`, the URL now 404s, and the raw GitHub path 404s. The site now links "Résumé on request" to a mailto with the subject "Résumé request"; the PDF returns once the three overclaims and phone number are removed |
 | Repo | Public, `kxnn02/portfolio` | The repo is itself evidence |
-| Availability | "Open to OJT / internship hours" | Honest for a third-year with classes |
+| Availability | "Open to internships & projects" | The owner is mainly looking for an OJT internship but wants clients and other work to feel welcome |
 | Deploy | Vercel now, custom domain when claimed | Clears the "always shipping" gate today |
 | Leadership | Its own section under the work list | Owner asked for it; founder and both JPCS roles are verified |
 | Screenshots | Captured from live sites only, never mocked | Mocked UI would break the honesty rule |
@@ -205,6 +206,7 @@ everything else). Numbers below are stamped with the date they were counted.
 | Problem facts | Owner-confirmed 2026-10-20: scattered Facebook announcements and phones (CampusCurrents); personal trackers + Telegram (Task Bot); no centralized platform, missing materials and onboarding waits (Kids Hub); duplicate entries, proposal-only leaderboard (DEVCON+) | The problem sentences are now the owner's account, not inferred from the feature list; DEVCON+ stays narrowly scoped |
 | Problem lead | Sans 18px medium problem lead, sans body, one “My part” line under the story | Owner found the serif italic hard to read; the problem keeps emphasis through size, weight and colour instead |
 | Simplification | Removed the four Proof lines, the Kids Hub retrieval jargon and the DEVCON+ private-repo link; role label is now “My part” | Owner's call 2026-10-20: the proofs and jargon overcomplicated the page, and each row should say only what the owner wants to defend |
+| Copy polish | No em dashes in the page copy or metadata; selected-work note and footer credit removed; CampusCurrents leads with push delivery in one feed; “My part” values baseline-align; contact and status welcome roles, projects and problems | Owner's 2026-10-20 pass: the backend line undersold the app, the note and credit were noise, the em dash reads as AI-ish, and the contact should not assume only internships |
 | Reduced motion | Automatic: follows the OS, no toggle; the strip wraps instead of clipping in that state | Owner's instruction 2026-10-20. The page is complete and still under reduce; a toggle would add UI for a preference the OS already states |
 
 ## Open questions
@@ -262,7 +264,7 @@ build was actually like on the day, not what it was assumed to be.
 | Mobile LCP | **1.6 s** | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3; LCP read before scrolling |
 | CLS | 0.000 | same run, whole-page scroll |
 | Transfer | 364 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
-| DOM nodes | 286 | counting every element on the built page at 390px |
+| DOM nodes | 287 | counting every element on the built page at 390px |
 | WCAG contrast | every pair AA or AAA, 0 failures; lowest pair 5.06:1 | `dembrandt <url> --wcag` against the preview build, including hover and focus states; 10 pairs |
 | Tap targets | 32–44 px tall | header, nav and project links 36 px; inline links 32 px; copy button 44 px on coarse pointers |
 | Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1024 / 1440, and with root text doubled at all six | Playwright; the root is forced to `32px` for the 200 % text pass |

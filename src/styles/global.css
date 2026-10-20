@@ -266,13 +266,6 @@ img {
 	font-weight: 500;
 }
 
-.section__note {
-	margin-left: auto;
-	font-family: var(--mono);
-	font-size: var(--step--1);
-	color: var(--ink-3);
-}
-
 /* -------------------------------------------------------------------------
    Hero
 ------------------------------------------------------------------------- */
@@ -494,7 +487,8 @@ img {
 .project__role {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.35rem 0.55rem;
+	align-items: baseline;
+	gap: 0.3rem 0.75rem;
 	margin-top: 1.35rem;
 	padding-top: 0.9rem;
 	border-top: 1px solid var(--line);
@@ -502,12 +496,17 @@ img {
 	color: var(--ink-2);
 }
 
-.project__role span {
+.project__role-label {
 	font-family: var(--mono);
 	font-size: 0.6875rem;
+	line-height: 1;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--ink-3);
+}
+
+.project__role-value {
+	min-width: 0;
 }
 
 /* The problem leads in plain sans: a step up in weight and colour, not a
@@ -984,30 +983,9 @@ img {
 }
 
 .footer__in {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	gap: 0.35rem 2rem;
 	font-family: var(--mono);
 	font-size: 0.6875rem;
 	color: var(--ink-3);
-}
-
-.footer a {
-	display: inline-flex;
-	align-items: center;
-	min-height: 2rem;
-	text-decoration: underline;
-	text-decoration-color: var(--line-2);
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.22em;
-}
-
-@media (hover: hover) {
-	.footer a:hover {
-		color: var(--accent);
-		text-decoration-color: var(--accent);
-	}
 }
 
 /* -------------------------------------------------------------------------
@@ -1306,10 +1284,6 @@ img {
 
 	.about__photo {
 		max-width: 16rem;
-	}
-
-	.section__note {
-		margin-left: 0;
 	}
 }
 
