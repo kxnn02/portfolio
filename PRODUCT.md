@@ -6,7 +6,8 @@ say why.
 
 Last updated: 2026-10-20 (copy polish and personalized About: no em dashes,
 selected-work note and footer credit removed, CampusCurrents strength line,
-“My part” alignment, broader contact, owner-supplied About details)
+“My part” alignment, broader contact, owner-supplied About details, motion now
+unconditional)
 
 ---
 
@@ -146,9 +147,9 @@ everything else). Numbers below are stamped with the date they were counted.
   JavaScript is one inline script (a `js` class so reveal animations never hide
   content from a browser without JS) and one small module: the copy-email button
   with its live region, an IntersectionObserver that adds a class on scroll, and
-  a pointer-parallax loop that only runs for a fine pointer and never under
-  reduced motion. No framework, no hydration, no third-party script. The site has
-  to be explainable by its owner line by line — including that observer.
+  a pointer-parallax loop that only runs for a fine pointer. No framework, no
+  hydration, no third-party script. The site has to be explainable by its owner
+  line by line — including that observer.
 - Load speed beats scroll theatrics. Motion budget, decided 2026-10-20 and
   revised in the review pass: hero lines rise out of a mask and settle, project
   text reveals while its screenshot wipes across a frame that is already on the
@@ -208,7 +209,7 @@ everything else). Numbers below are stamped with the date they were counted.
 | Problem lead | Sans 18px medium problem lead, sans body, one “My part” line under the story | Owner found the serif italic hard to read; the problem keeps emphasis through size, weight and colour instead |
 | Simplification | Removed the four Proof lines, the Kids Hub retrieval jargon and the DEVCON+ private-repo link; role label is now “My part” | Owner's call 2026-10-20: the proofs and jargon overcomplicated the page, and each row should say only what the owner wants to defend |
 | Copy polish | No em dashes in the page copy or metadata; selected-work note and footer credit removed; CampusCurrents leads with push delivery in one feed; “My part” values baseline-align; contact and status welcome roles, projects and problems | Owner's 2026-10-20 pass: the backend line undersold the app, the note and credit were noise, the em dash reads as AI-ish, and the contact should not assume only internships |
-| Reduced motion | Automatic: follows the OS, no toggle; the strip wraps instead of clipping in that state | Owner's instruction 2026-10-20. The page is complete and still under reduce; a toggle would add UI for a preference the OS already states |
+| Reduced motion | Ignored: animations run even when the OS reports `prefers-reduced-motion: reduce` | Owner's instruction 2026-10-20: animations must be visible with Windows animation effects off. This supersedes the earlier automatic-reduce decision; motion-sensitive visitors no longer get an automatic still page. No toggle was added |
 
 ## Open questions
 

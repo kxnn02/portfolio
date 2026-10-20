@@ -647,7 +647,7 @@ img {
    Stack strip
    The four projects' own stacks, gathered into one line. It is the only
    looping thing on the page, so it carries the tools rather than pure
-   texture, it pauses on hover, and it stops entirely under reduced motion.
+   texture, and it pauses on hover.
 ------------------------------------------------------------------------- */
 
 .strip {
@@ -693,25 +693,22 @@ img {
 	}
 }
 
-/* The loop fades at the edges instead of cutting. Under reduced motion the
-   line is static, so it shows without the mask. */
-@media (prefers-reduced-motion: no-preference) {
-	.strip {
-		-webkit-mask-image: linear-gradient(
-			90deg,
-			transparent,
-			#000 2.5rem,
-			#000 calc(100% - 2.5rem),
-			transparent
-		);
-		mask-image: linear-gradient(
-			90deg,
-			transparent,
-			#000 2.5rem,
-			#000 calc(100% - 2.5rem),
-			transparent
-		);
-	}
+/* The loop fades at the edges instead of cutting. */
+.strip {
+	-webkit-mask-image: linear-gradient(
+		90deg,
+		transparent,
+		#000 2.5rem,
+		#000 calc(100% - 2.5rem),
+		transparent
+	);
+	mask-image: linear-gradient(
+		90deg,
+		transparent,
+		#000 2.5rem,
+		#000 calc(100% - 2.5rem),
+		transparent
+	);
 }
 
 /* -------------------------------------------------------------------------
@@ -989,7 +986,7 @@ img {
 }
 
 /* -------------------------------------------------------------------------
-   Motion — only when JS is on, and never under reduced-motion.
+   Motion — only when JS is on.
 ------------------------------------------------------------------------- */
 
 @keyframes rise {
@@ -1083,86 +1080,6 @@ img {
 	transform: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
-
-	.js .hero__title .line > span,
-	.js .hero__eyebrow,
-	.js .hero__foot {
-		animation: none;
-	}
-
-	.js [data-reveal] {
-		opacity: 1;
-		transform: none;
-		transition: none;
-	}
-
-	.js [data-wipe] > .shot-wrap,
-	.js [data-wipe] > .panel {
-		clip-path: none;
-		transition: none;
-	}
-
-	.js [data-wipe] > .project__caption {
-		opacity: 1;
-		transform: none;
-		transition: none;
-	}
-
-	.shot-wrap img,
-	.btn svg,
-	.project__title a {
-		transition: none;
-	}
-
-	.project:hover .shot-wrap img {
-		transform: none;
-	}
-
-	.panel__shot {
-		transition: none;
-	}
-
-	.project:hover .panel__shot {
-		transform: none;
-	}
-
-	/* The strip stops and folds into a static block instead of scrolling. */
-	.strip__in {
-		animation: none;
-		width: auto;
-		flex-wrap: wrap;
-	}
-
-	.strip__set {
-		flex-wrap: wrap;
-		row-gap: 0.35rem;
-	}
-
-	/* Keep each tool and its separator together, so a wrapped line never
-	   starts with a stray accent dot. */
-	.strip__set > span {
-		padding-right: 0;
-	}
-
-	.strip__set > i {
-		display: none;
-	}
-
-	.strip__set > span:not(:last-of-type)::after {
-		content: '·';
-		padding-inline: 0.55rem;
-		color: var(--accent);
-	}
-
-	.strip__set + .strip__set {
-		display: none;
-	}
-}
-
 /* -------------------------------------------------------------------------
    Scroll-driven motion.
    The hero drifts away and each project's visual lags slightly behind the
@@ -1180,54 +1097,50 @@ img {
    what had happened to all four of these. Keeping the keyframes and the
    timeline in separate at-rule blocks stops the fold.
 
-   Everything is inside @supports and the reduced-motion guard, because
-   without a scroll timeline `animation: drift-away linear both` is a
-   zero-duration animation that snaps to its end state and stays there.
+   Everything is inside @supports, because without a scroll timeline
+   `animation: drift-away linear both` is a zero-duration animation that
+   snaps to its end state and stays there.
 ------------------------------------------------------------------------- */
 
 @supports (animation-timeline: scroll()) {
-	@media (prefers-reduced-motion: no-preference) {
-		.hero__title,
-		.hero__lede {
-			animation: drift-away linear both;
-		}
+	.hero__title,
+	.hero__lede {
+		animation: drift-away linear both;
+	}
 
-		.hero__side {
-			animation: drift-away-soft linear both;
-		}
+	.hero__side {
+		animation: drift-away-soft linear both;
+	}
 
-		.project__visual {
-			animation: lag linear both;
-		}
+	.project__visual {
+		animation: lag linear both;
+	}
 
-		/* How much of the page is left, drawn on the header's own rule. */
-		.site-head::after {
-			animation: progress linear both;
-		}
+	/* How much of the page is left, drawn on the header's own rule. */
+	.site-head::after {
+		animation: progress linear both;
 	}
 }
 
 @supports (animation-timeline: scroll()) {
-	@media (prefers-reduced-motion: no-preference) {
-		.hero__title,
-		.hero__lede {
-			animation-timeline: scroll();
-			animation-range: 0 18%;
-		}
+	.hero__title,
+	.hero__lede {
+		animation-timeline: scroll();
+		animation-range: 0 18%;
+	}
 
-		.hero__side {
-			animation-timeline: scroll();
-			animation-range: 0 18%;
-		}
+	.hero__side {
+		animation-timeline: scroll();
+		animation-range: 0 18%;
+	}
 
-		.project__visual {
-			animation-timeline: view();
-			animation-range: cover 5% cover 75%;
-		}
+	.project__visual {
+		animation-timeline: view();
+		animation-range: cover 5% cover 75%;
+	}
 
-		.site-head::after {
-			animation-timeline: scroll(root block);
-		}
+	.site-head::after {
+		animation-timeline: scroll(root block);
 	}
 }
 

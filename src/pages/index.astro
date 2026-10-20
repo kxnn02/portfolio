@@ -436,12 +436,11 @@ const work = [
 
 		// Pointer parallax. The pointer's position in the viewport drives every
 		// rigged element through the same field, so this never needs a
-		// getBoundingClientRect per move. Fine pointers only, and never under
-		// reduced motion — on a phone the whole block is skipped.
+		// getBoundingClientRect per move. Fine pointers only — on a phone the
+		// whole block is skipped.
 		const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-		const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-		if (finePointer.matches && !stillMotion.matches) {
+		if (finePointer.matches) {
 			type RigItem = {
 				element: HTMLElement;
 				travel: number;
