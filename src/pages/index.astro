@@ -12,12 +12,13 @@ const description =
 	'Third-year BSIT student in Manila. I’ve shipped an Android alert app, a Telegram bot in daily use, and a chatbot for DEVCON Kids. Open to internships & projects';
 const EMAIL = 'fernandezk728@gmail.com';
 
-/* Each project carries its own visual. Two shapes, chosen by what the asset
-   actually is: a wide screenshot fills the column, a portrait one is framed on
-   a panel instead of being cropped into a shape it isn't. */
+/* Each project carries one wide screenshot, mounted in the same frame so the
+   four rows read as a set rather than four different crops. */
 const work = [
 	{
 		idx: '01',
+		slug: 'campuscurrents',
+		short: 'CampusCurrents',
 		kind: 'Android beta · 2026',
 		name: 'CampusCurrents',
 		href: 'https://campus-currents-website.vercel.app',
@@ -32,8 +33,8 @@ const work = [
 			{ label: 'Source code', href: 'https://github.com/kxnn02/campus-currents' },
 		],
 		visual: {
-			kind: 'shot',
 			src: ccShot,
+			widths: [640, 960, 1440],
 			alt: 'The CampusCurrents landing page: the headline “Stay Informed. Stay Safe.”, a red Try the Beta button, and a phone showing its Status screen reading CLASSES ARE ON.',
 			caption: 'Landing page',
 			note: 'campus-currents-website.vercel.app',
@@ -42,6 +43,8 @@ const work = [
 	},
 	{
 		idx: '02',
+		slug: 'task-bot',
+		short: 'Task Bot',
 		kind: 'Telegram bot · 2026',
 		name: 'DEVCON Cohort 5 Task Bot',
 		href: 'https://telegram-taskbot-ten.vercel.app',
@@ -55,8 +58,8 @@ const work = [
 			{ label: 'Source code', href: 'https://github.com/kxnn02/telegram-taskbot' },
 		],
 		visual: {
-			kind: 'card',
 			src: taskbotShot,
+			widths: [480, 720, 889],
 			alt: 'A Telegram group with the bot\u2019s Available Commands card: /tasks, /deadlines and /standup to read work, /addtask to create it, and /done, /complete, /update and /due to change it.',
 			caption: 'Command card, in Telegram',
 			note: 'In the cohort’s Telegram group',
@@ -64,6 +67,8 @@ const work = [
 	},
 	{
 		idx: '03',
+		slug: 'kids-hub',
+		short: 'Kids Hub',
 		kind: 'Nonprofit platform · 2026',
 		name: 'DEVCON Kids Hub',
 		href: 'https://devcon-kids-hub-2-0.vercel.app',
@@ -77,8 +82,8 @@ const work = [
 			{ label: 'Team repo', href: 'https://github.com/Debb1ie/DEVCON-Kids-Hub-2.0' },
 		],
 		visual: {
-			kind: 'shot',
 			src: kidshubShot,
+			widths: [640, 960, 1440],
 			alt: 'The DEVCON Kids Hub sign-in page: a constellation graphic and the words “Learn. Build. Belong.” on the left, and a sign-in card on the right offering Continue with Google or email.',
 			caption: 'Sign-in, role-based',
 			note: 'The AI chat sits behind it',
@@ -86,6 +91,8 @@ const work = [
 	},
 	{
 		idx: '04',
+		slug: 'devcon-plus',
+		short: 'DEVCON+',
 		kind: 'Internship · Aug–Sep 2026',
 		name: 'DEVCON+',
 		href: 'https://devcon.plus',
@@ -96,8 +103,8 @@ const work = [
 		stack: 'React · TypeScript · NestJS · Supabase · Firebase Auth',
 		links: [{ label: 'Public site', href: 'https://devcon.plus' }],
 		visual: {
-			kind: 'shot',
 			src: devconShot,
+			widths: [640, 960, 1440],
 			alt: 'The DEVCON+ member home screen: a greeting, 100 XP earned, quick actions for Find Jobs, Volunteer and Earn Points, and an Events Near You section.',
 			caption: 'Member home',
 			note: 'The admin dashboard is private',
@@ -165,6 +172,20 @@ const work = [
 							>
 							<a href={`mailto:${EMAIL}?subject=R%C3%A9sum%C3%A9%20request`}>Résumé on request</a>
 						</p>
+
+						<nav class="hero__index" aria-label="Projects">
+							<span class="label">Contents</span>
+							<ol>
+								{work.map((project) => (
+									<li>
+										<a href={`#${project.slug}`}>
+											<span>{project.idx}</span>
+											{project.short}
+										</a>
+									</li>
+								))}
+							</ol>
+						</nav>
 					</div>
 				</div>
 			</div>
@@ -179,7 +200,7 @@ const work = [
 
 				{
 					work.map((project) => (
-						<article class="project">
+						<article class="project" id={project.slug}>
 							<div class="project__text" data-reveal>
 								<p class="project__meta">
 									<span>{project.idx}</span>
@@ -205,50 +226,25 @@ const work = [
 							</div>
 
 							<figure class="project__visual" data-wipe>
-								{project.visual.kind === 'shot' && (
-									<>
-										<div class="shot-wrap">
-											<Image
-												src={project.visual.src}
-												alt={project.visual.alt}
-												widths={[640, 960, 1440]}
-												sizes="(max-width: 56rem) 92vw, 55vw"
-												format="webp"
-												quality={82}
-												loading="eager"
-											/>
-										</div>
-										<figcaption class="project__caption">
-											<span>{project.visual.caption}</span>
-											{project.visual.noteHref ? (
-												<a href={project.visual.noteHref} target="_blank" rel="noopener">{project.visual.note}</a>
-											) : (
-												<span>{project.visual.note}</span>
-											)}
-										</figcaption>
-									</>
-								)}
-
-								{project.visual.kind === 'card' && (
-									<>
-										<div class="panel">
-											<Image
-												class="panel__shot"
-												src={project.visual.src}
-												alt={project.visual.alt}
-												widths={[400, 620, 900]}
-												sizes="(max-width: 56rem) 76vw, 26rem"
-												format="webp"
-												quality={82}
-												loading="eager"
-											/>
-										</div>
-										<figcaption class="project__caption">
-											<span>{project.visual.caption}</span>
-											<span>{project.visual.note}</span>
-										</figcaption>
-									</>
-								)}
+								<div class="shot-wrap">
+									<Image
+										src={project.visual.src}
+										alt={project.visual.alt}
+										widths={project.visual.widths}
+										sizes="(max-width: 56rem) 92vw, 55vw"
+										format="webp"
+										quality={82}
+										loading="eager"
+									/>
+								</div>
+								<figcaption class="project__caption">
+									<span>{project.visual.caption}</span>
+									{project.visual.noteHref ? (
+										<a href={project.visual.noteHref} target="_blank" rel="noopener">{project.visual.note}</a>
+									) : (
+										<span>{project.visual.note}</span>
+									)}
+								</figcaption>
 							</figure>
 						</article>
 					))
@@ -459,10 +455,7 @@ const work = [
 			rigElement(document.querySelector<HTMLElement>('.hero__type'), 6);
 
 			for (const row of document.querySelectorAll('.project')) {
-				rigElement(
-					row.querySelector<HTMLElement>('.shot-wrap') ?? row.querySelector<HTMLElement>('.panel'),
-					12
-				);
+				rigElement(row.querySelector<HTMLElement>('.shot-wrap'), 12);
 			}
 
 			let frame = 0;

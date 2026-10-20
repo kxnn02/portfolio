@@ -81,10 +81,12 @@ reference-brief.md        where the design is borrowed from, and what isn't
 
 ## Design
 
-Light only. Warm paper (`#f8f5ef`), warm near-black ink, and one accent:
+Light only. White paper (`#ffffff`), warm near-black ink, and one accent:
 `#AE0F19`, sampled from the CampusCurrents landing page rather than picked by
-eye. Green appears once, as the availability dot — it's a status colour, not a
-brand one.
+eye. The sheet is pure white the way the references are: minima. and ERDENSEN
+both run `#ffffff` and put every bit of colour in the type. Warmth lives in the
+ink and the hairlines, not in the paper. Green appears once, as the availability
+dot — it's a status colour, not a brand one.
 
 Type is Inter Tight for reading, Instrument Serif italic for the hero and one
 line of the About section, JetBrains Mono for every label, year and stack line.
