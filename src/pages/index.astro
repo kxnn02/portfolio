@@ -9,7 +9,7 @@ import portrait from '../assets/shots/portrait.jpg';
 
 const title = 'Kenneth Clein T. Fernandez — I find the problem. I ship the fix';
 const description =
-	'Third-year BSIT student in Manila. I’ve shipped the fixes: an Android alert app, a Telegram bot in daily use, and a nonprofit’s retrieval layer. Open to OJT.';
+	'Third-year BSIT student in Manila. I’ve shipped an Android campus-alert app, a Telegram bot in daily use, and a chatbot for a nonprofit. Open to OJT.';
 const EMAIL = 'fernandezk728@gmail.com';
 
 /* Each project carries its own visual. Two shapes, chosen by what the asset
@@ -22,7 +22,6 @@ const work = [
 		name: 'CampusCurrents',
 		href: 'https://campus-currents-website.vercel.app',
 		role: 'Project manager & lead developer',
-		proof: '5-person team · 50 migrations · per-student delivery receipts',
 		problem:
 			'Campus announcements were scattered across Facebook and other platforms, so suspension calls and emergency notices were easy to miss on the phones students already check.',
 		body: 'We built one Android app for class suspensions, emergency notices and campus announcements, delivered straight to the student’s phone. The Supabase backend runs 50 migrations with row-level security, and push delivery reports a receipt for every student.',
@@ -47,11 +46,10 @@ const work = [
 		name: 'DEVCON Cohort 5 Task Bot',
 		href: 'https://telegram-taskbot-ten.vercel.app',
 		role: 'Solo build',
-		proof: '328 commits, all mine · 93 test files · 8 daily users',
 		problem:
 			'When a higher-up assigned a task, the cohort had no shared tracker — everyone made their own — and coordination lived in a Telegram group.',
-		body: 'I built the bot inside Telegram, where the cohort already worked: a morning standup card grouped by person, overdue reminders and weekly digests, with board, team and activity views in a Next.js dashboard behind it. I wrote every commit, and CI blocks any merge that fails typecheck, the tests or the migration check.',
-		stack: 'Telegram Bot API · Next.js · Supabase · CI',
+		body: 'I built the bot inside Telegram, where the cohort already worked: a morning standup card grouped by person, overdue reminders and weekly digests, with board, team and activity views in a Next.js dashboard behind it.',
+		stack: 'Telegram Bot API · Next.js · Supabase',
 		links: [
 			{ label: 'Dashboard — Telegram login', href: 'https://telegram-taskbot-ten.vercel.app' },
 			{ label: 'Source code', href: 'https://github.com/kxnn02/telegram-taskbot' },
@@ -69,11 +67,10 @@ const work = [
 		kind: 'Nonprofit platform · 2026',
 		name: 'DEVCON Kids Hub',
 		href: 'https://devcon-kids-hub-2-0.vercel.app',
-		role: 'Retrieval pipeline & eval harness',
-		proof: '5-person team · 39 eval cases · pgvector + citations',
+		role: 'I built the AI chatbot',
 		problem:
 			'DEVCON Kids had no centralized platform. Borrowed materials had no shared record — some went missing and no one could say who had them — and onboarding a volunteer meant asking a higher-up and waiting for an answer.',
-		body: 'The platform covers events, volunteer onboarding, chapters, inventory and reporting. I built the retrieval layer behind the chatbot that answers onboarding questions — document ingestion and chunking, Mistral embeddings, pgvector search and an FAQ auto-builder — and wrote the 39-case evaluation harness on my own.',
+		body: 'The platform covers events, volunteer onboarding, chapters, inventory and reporting. The chatbot answers onboarding questions from DEVCON Kids’ documents.',
 		stack: 'React · Vite · Supabase · pgvector · Mistral',
 		links: [
 			{ label: 'Live site', href: 'https://devcon-kids-hub-2-0.vercel.app' },
@@ -92,14 +89,12 @@ const work = [
 		kind: 'Internship · Aug–Sep 2026',
 		name: 'DEVCON+',
 		href: 'https://devcon.plus',
-		role: 'Intern — admin dashboard',
-		proof: '13 chapters · duplicate chapter fix · proposed leaderboard',
+		role: 'Voluntary intern',
 		problem:
 			'Duplicate chapter entries were showing up in DEVCON’s admin dashboard, and chapter activity had no visible ranking.',
 		body: 'During my internship on the membership platform — event registration, points and rewards, chapter operations across 13 chapters — I fixed the duplicate chapter entries and proposed the chapter leaderboard.',
 		stack: 'React · TypeScript · NestJS · Supabase · Firebase Auth',
 		links: [{ label: 'Public site', href: 'https://devcon.plus' }],
-		private: true,
 		visual: {
 			kind: 'shot',
 			src: devconShot,
@@ -143,8 +138,8 @@ const work = [
 
 				<div class="hero__foot">
 					<p class="hero__lede">
-						Third-year BSIT student in Manila. I've shipped the fixes: an Android campus-alert app,
-						a Telegram bot in daily use, and the retrieval layer of a nonprofit platform.
+						Third-year BSIT student in Manila. I've shipped an Android campus-alert app, a Telegram
+						bot in daily use, and a chatbot for a nonprofit.
 					</p>
 
 					<div class="hero__side">
@@ -165,7 +160,7 @@ const work = [
 						</div>
 						<p class="hero__links">
 							<a href="https://github.com/kxnn02" target="_blank" rel="me noopener">GitHub</a>
-							<a href="https://linkedin.com/in/kenneth-clein-fernandez" target="_blank" rel="me noopener"
+							<a href="https://www.linkedin.com/in/kenneth-clein-fernandez-8a6b48258" target="_blank" rel="me noopener"
 								>LinkedIn</a
 							>
 							<a href={`mailto:${EMAIL}?subject=R%C3%A9sum%C3%A9%20request`}>Résumé on request</a>
@@ -197,28 +192,15 @@ const work = [
 								<p class="project__problem">{project.problem}</p>
 								<p class="project__body">{project.body}</p>
 								<p class="project__stack">{project.stack}</p>
-								<div class="project__facts">
-									<p class="project__role">
-										<span>Role</span> {project.role}
-									</p>
-									<p class="project__proof">
-										<span>Proof</span> {project.proof}
-									</p>
-								</div>
+								<p class="project__role">
+									<span>My part</span> {project.role}
+								</p>
 								<ul class="project__links">
 									{project.links.map((link) => (
 										<li>
 											<a href={link.href} target="_blank" rel="noopener">{link.label}</a>
 										</li>
 									))}
-									{project.private && (
-										<li>
-											<a
-												class="project__private"
-												href={`mailto:${EMAIL}?subject=DEVCON%2B%20admin%20work`}
-											>Private repo — ask me</a>
-										</li>
-									)}
 								</ul>
 							</div>
 
@@ -399,7 +381,7 @@ const work = [
 					<p>Manila, Philippines · GMT+8</p>
 					<div>
 						<a href="https://github.com/kxnn02" target="_blank" rel="me noopener">github.com/kxnn02</a>
-						<a href="https://linkedin.com/in/kenneth-clein-fernandez" target="_blank" rel="me noopener"
+						<a href="https://www.linkedin.com/in/kenneth-clein-fernandez-8a6b48258" target="_blank" rel="me noopener"
 							>LinkedIn</a
 						>
 						{/* The PDF stays unpublished until the overclaims and phone number are removed. */}

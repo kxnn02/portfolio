@@ -4,9 +4,9 @@ Anchor document for this site. Every later design, copy and audit decision is
 judged against this file. If a change contradicts it, change this file first and
 say why.
 
-Last updated: 2026-10-20 (problem-first pass: new hero and About copy,
-owner-confirmed project problems, serif problem lead, role/proof receipt,
-static strip wrap)
+Last updated: 2026-10-20 (copy and simplification pass: chatbot-led hero,
+owner-confirmed project problems, sans problem lead, “My part” lines, proofs
+removed)
 
 ---
 
@@ -16,10 +16,10 @@ A static personal site for **Kenneth Clein T. Fernandez**, third-year BSIT
 student at San Sebastian College – Recoletos Manila (graduating 2028).
 
 Structure: **one page — a project showcase.** Four projects, each leading with
-the problem, then what was built, the role and proof, the stack and links to the
-live thing. No case-study sub-pages and no long decision write-ups: the owner's
-call, made 2026-10-20 after the SPA-plus-case-studies plan was drafted. Depth
-lives in the linked repos and the running software, not in prose.
+the problem, then what was built, my part, the stack and links to the live thing.
+No case-study sub-pages and no long decision write-ups: the owner's call, made
+2026-10-20 after the SPA-plus-case-studies plan was drafted. Depth lives in the
+linked repos and the running software, not in prose.
 
 ## Who reads it
 
@@ -105,8 +105,10 @@ everything else). Numbers below are stamped with the date they were counted.
 - **Databases:** SQL, PostgreSQL, MySQL, Supabase. Firebase — **Auth only**,
   never "Firebase" as a whole platform.
 - **Kids Hub:** the server-side edge functions (role scoping, prompt-injection
-  guard, rate limiting) were written by a teammate. Never imply the whole
-  assistant was solo work. Say: retrieval pipeline and the AI feature set.
+  guard, rate limiting) were written by a teammate. The role line says "I built
+  the AI chatbot" at the owner's request; the "My part" label scopes it to his
+  part. Never imply the whole assistant or platform was solo work; his part was
+  the retrieval layer behind the chatbot.
 - **DEVCON+:** internship work on a private repo, not a personal project. The
   duplicate-entry fix was AI-assisted (Claude Code) and not studied in depth;
   keep the claim to those entries and the proposal. The chapter leaderboard
@@ -199,9 +201,10 @@ everything else). Numbers below are stamped with the date they were counted.
 | Project visuals | One screenshot per row, shape chosen by the asset | A wide screenshot fills the column; a portrait one (the Telegram card) sits framed on a panel rather than being cropped into a shape it isn't. Earlier typographic fact panels were retired when real screenshots arrived. Where a screen can't be shown — the DEVCON+ admin dashboard is company-owned — the caption says so instead of substituting a different screen silently |
 | Review fixes | Role + proof lines, one-row mobile header, eager print images, composed OG card, sitemap, type/link/build gates | The 2026-10-20 review found the five-second scan hid the proof, the mobile header wrapped, print dropped two of five images, and the OG card cut the lede mid-sentence. Each fix is in the source; the constraints above still hold |
 | Project copy | Problem → solution → my part. “I” diagnoses, “we” ship; solo stays “I” | Owner's call 2026-10-20. Every project leads with the problem it answers; numbers still come only from the table above |
-| Hero and About | “I find the problem. I ship the fix.”; evidence-first lede; About P2 names the four problems | Owner picked the direction. The headline carries the thesis, the lede carries the proof; the OG card regenerates from the page |
+| Hero and About | “I find the problem. I ship the fix.”; simple evidence-first lede naming the chatbot; About P2 names the four problems | Owner picked the direction and asked for the chatbot to be named plainly; the headline carries the thesis, the lede carries the evidence |
 | Problem facts | Owner-confirmed 2026-10-20: scattered Facebook announcements and phones (CampusCurrents); personal trackers + Telegram (Task Bot); no centralized platform, missing materials and onboarding waits (Kids Hub); duplicate entries, proposal-only leaderboard (DEVCON+) | The problem sentences are now the owner's account, not inferred from the feature list; DEVCON+ stays narrowly scoped |
-| Problem lead | Serif italic problem, sans solution, role/proof receipt below the story | Gives the problem the page's editorial voice and keeps the evidence scannable in one block. Owner asked for a look pass; static composition matters because their OS reports reduce |
+| Problem lead | Sans 18px medium problem lead, sans body, one “My part” line under the story | Owner found the serif italic hard to read; the problem keeps emphasis through size, weight and colour instead |
+| Simplification | Removed the four Proof lines, the Kids Hub retrieval jargon and the DEVCON+ private-repo link; role label is now “My part” | Owner's call 2026-10-20: the proofs and jargon overcomplicated the page, and each row should say only what the owner wants to defend |
 | Reduced motion | Automatic: follows the OS, no toggle; the strip wraps instead of clipping in that state | Owner's instruction 2026-10-20. The page is complete and still under reduce; a toggle would add UI for a preference the OS already states |
 
 ## Open questions
@@ -259,7 +262,7 @@ build was actually like on the day, not what it was assumed to be.
 | Mobile LCP | **1.6 s** | Chromium, 390×844 DPR 3, 4× CPU, 1.6 Mbps / 750 kbps / 150 ms RTT, cold cache, median of 3; LCP read before scrolling |
 | CLS | 0.000 | same run, whole-page scroll |
 | Transfer | 364 KB over 10 requests (document + 9) | same build, enumerating the resource timeline |
-| DOM nodes | 300 | the role/proof lines and the fourth nav item add 28; the problem-first pass adds 8 |
+| DOM nodes | 286 | counting every element on the built page at 390px |
 | WCAG contrast | every pair AA or AAA, 0 failures; lowest pair 5.06:1 | `dembrandt <url> --wcag` against the preview build, including hover and focus states; 10 pairs |
 | Tap targets | 32–44 px tall | header, nav and project links 36 px; inline links 32 px; copy button 44 px on coarse pointers |
 | Horizontal overflow | 0 px at 320 / 390 / 768 / 810 / 1024 / 1440, and with root text doubled at all six | Playwright; the root is forced to `32px` for the 200 % text pass |
@@ -274,11 +277,9 @@ options are a smaller hero font payload or a different print strategy — not
 dropping the proof images.
 
 The pre-review build measured 358 KB / 264 DOM nodes; the resource timeline is
-the honest count for both. The 6 KB difference is the eager proof images; 28
-nodes were the role/proof lines and the fourth nav item, and the problem-first
-pass adds 8 (four problem paragraphs and four facts wrappers). LCP, CLS and
-transfer were not re-run after the copy pass: the font payload, images and
-motion budget are unchanged, and only the copy and a few CSS rules moved.
+the honest count for both. The 6 KB difference is the eager proof images. LCP,
+CLS and transfer were not re-run after the copy passes: the font payload,
+images and motion budget are unchanged, and only copy and a few CSS rules moved.
 
 **Three scroll-driven effects — the hero title drift, the hero side drift and the
 project `lag` — were measured as dead in the previous build.** They had been

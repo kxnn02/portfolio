@@ -490,28 +490,19 @@ img {
 	}
 }
 
-/* Role and proof as one receipt under the story, ruled off from it. */
-.project__facts {
-	margin-top: 1.35rem;
-	padding-top: 0.9rem;
-	border-top: 1px solid var(--line);
-}
-
-.project__role,
-.project__proof {
+/* One-line receipt under the story, ruled off from it. */
+.project__role {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.35rem 0.55rem;
+	margin-top: 1.35rem;
+	padding-top: 0.9rem;
+	border-top: 1px solid var(--line);
 	font-size: 0.875rem;
 	color: var(--ink-2);
 }
 
-.project__proof {
-	margin-top: 0.45rem;
-}
-
-.project__role span,
-.project__proof span {
+.project__role span {
 	font-family: var(--mono);
 	font-size: 0.6875rem;
 	letter-spacing: 0.08em;
@@ -519,16 +510,15 @@ img {
 	color: var(--ink-3);
 }
 
-/* The problem is the lead: serif italic is the page's voice for the human
-   situation, the sans body underneath is the engineering answer. */
+/* The problem leads in plain sans: a step up in weight and colour, not a
+   different face. */
 .project__problem {
 	margin-top: 1rem;
 	max-width: 34rem;
-	font-family: var(--serif);
-	font-style: italic;
-	font-size: clamp(1.125rem, 1.3vw, 1.25rem);
-	line-height: 1.42;
-	letter-spacing: -0.005em;
+	font-size: 1.125rem;
+	font-weight: 500;
+	line-height: 1.55;
+	letter-spacing: -0.01em;
 	color: var(--ink);
 	text-wrap: pretty;
 }
@@ -573,11 +563,6 @@ img {
 		color: var(--accent);
 		text-decoration-color: var(--accent);
 	}
-}
-
-.project__private {
-	color: var(--ink-3);
-	text-decoration-color: var(--line);
 }
 
 .project__visual {
