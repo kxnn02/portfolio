@@ -72,6 +72,13 @@ const personSchema = {
 			window.setTimeout(function () {
 				if (!window.__revealReady) document.documentElement.classList.remove('js');
 			}, 3000);
+			// Restore the strip pause before the first frame. index.astro owns the
+			// control; this only avoids a running loop flashing before it paints.
+			try {
+				if (window.sessionStorage.getItem('strip-paused') === '1') {
+					document.documentElement.classList.add('strip-paused');
+				}
+			} catch (e) {}
 		</script>
 
 		<Font cssVariable="--font-sans" preload={[{ weight: '400' }, { weight: '600' }]} />

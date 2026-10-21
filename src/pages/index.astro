@@ -135,7 +135,10 @@ const work = [
 	<main id="main">
 		<section class="hero" id="top">
 			<div class="shell">
-				<p class="label hero__eyebrow">Kenneth Clein T. Fernandez</p>
+				<div class="hero__masthead">
+					<p class="label">Kenneth Clein T. Fernandez</p>
+					<p class="label">Manila · 2026</p>
+				</div>
 				<div class="hero__type">
 					<h1 class="hero__title">
 						<span class="line"><span>I find the problem.</span></span>
@@ -166,35 +169,36 @@ const work = [
 							<a class="btn btn--ghost" href={`mailto:${EMAIL}`}>Email me</a>
 						</div>
 						<p class="hero__links">
-							<a href="https://github.com/kxnn02" target="_blank" rel="me noopener">GitHub</a>
+							<a href="https://github.com/kxnn02" target="_blank" rel="me noopener"
+								>GitHub<span class="sr-only"> (opens in a new tab)</span></a
+							>
 							<a href="https://www.linkedin.com/in/kenneth-clein-fernandez-8a6b48258" target="_blank" rel="me noopener"
-								>LinkedIn</a
+								>LinkedIn<span class="sr-only"> (opens in a new tab)</span></a
 							>
 							<a href={`mailto:${EMAIL}?subject=R%C3%A9sum%C3%A9%20request`}>Résumé on request</a>
 						</p>
-
-						<nav class="hero__index" aria-label="Projects">
-							<span class="label">Contents</span>
-							<ol>
-								{work.map((project) => (
-									<li>
-										<a href={`#${project.slug}`}>
-											<span>{project.idx}</span>
-											{project.short}
-										</a>
-									</li>
-								))}
-							</ol>
-						</nav>
 					</div>
 				</div>
+
+				<nav class="hero__index" aria-label="Projects">
+					<span class="label">Contents</span>
+					<ol>
+						{work.map((project) => (
+							<li>
+								<a href={`#${project.slug}`}>
+									<span>{project.idx}</span>
+									{project.short}
+								</a>
+							</li>
+						))}
+					</ol>
+				</nav>
 			</div>
 		</section>
 
 		<section class="section" id="work" aria-labelledby="work-title">
 			<div class="shell">
 				<header class="section__head" data-reveal>
-					<span class="section__num">01</span>
 					<h2 id="work-title">Selected work</h2>
 				</header>
 
@@ -207,7 +211,9 @@ const work = [
 									<span>{project.kind}</span>
 								</p>
 								<h3 class="project__title">
-									<a href={project.href} target="_blank" rel="noopener">{project.name}</a>
+									<a href={project.href} target="_blank" rel="noopener"
+										>{project.name}<span class="sr-only"> (opens in a new tab)</span></a
+									>
 								</h3>
 								<p class="project__problem">{project.problem}</p>
 								<p class="project__body">{project.body}</p>
@@ -219,7 +225,9 @@ const work = [
 								<ul class="project__links">
 									{project.links.map((link) => (
 										<li>
-											<a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+											<a href={link.href} target="_blank" rel="noopener"
+												>{link.label}<span class="sr-only"> (opens in a new tab)</span></a
+											>
 										</li>
 									))}
 								</ul>
@@ -227,20 +235,25 @@ const work = [
 
 							<figure class="project__visual" data-wipe>
 								<div class="shot-wrap">
-									<Image
-										src={project.visual.src}
-										alt={project.visual.alt}
-										widths={project.visual.widths}
-										sizes="(max-width: 56rem) 92vw, 55vw"
-										format="webp"
-										quality={82}
-										loading="eager"
-									/>
+									<a href={project.visual.noteHref ?? project.href} target="_blank" rel="noopener">
+										<Image
+											src={project.visual.src}
+											alt={project.visual.alt}
+											widths={project.visual.widths}
+											sizes="(max-width: 56rem) 92vw, 55vw"
+											format="webp"
+											quality={82}
+											loading="eager"
+										/>
+										<span class="sr-only"> (opens in a new tab)</span>
+									</a>
 								</div>
 								<figcaption class="project__caption">
-									<span>{project.visual.caption}</span>
+									<span><span class="fig">Fig. {project.idx}</span> {project.visual.caption}</span>
 									{project.visual.noteHref ? (
-										<a href={project.visual.noteHref} target="_blank" rel="noopener">{project.visual.note}</a>
+										<a href={project.visual.noteHref} target="_blank" rel="noopener"
+											>{project.visual.note}<span class="sr-only"> (opens in a new tab)</span></a
+										>
 									) : (
 										<span>{project.visual.note}</span>
 									)}
@@ -254,22 +267,28 @@ const work = [
 
 		{/* The four projects' own stacks, gathered into one line. aria-hidden
 		    because it repeats what each row already states, and because the
-		    second half is a duplicate that exists only to make the loop join. */}
-		<div class="strip" aria-hidden="true">
-			<div class="strip__in">
-				<span class="strip__set">
-					<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
-				</span>
-				<span class="strip__set">
-					<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
-				</span>
+		    second half is a duplicate that exists only to make the loop join.
+		    The pause button sits outside the strip: a loop that starts on its
+		    own needs a user stop (WCAG 2.2.2), and hover is not one on touch. */}
+		<div class="strip-band">
+			<div class="strip" aria-hidden="true">
+				<div class="strip__in">
+					<span class="strip__set">
+						<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
+					</span>
+					<span class="strip__set">
+						<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
+					</span>
+				</div>
 			</div>
+			<button class="strip-toggle" type="button" data-strip-toggle>
+				<span data-strip-label>Pause</span><span class="sr-only"> the scrolling technology list</span>
+			</button>
 		</div>
 
 		<section class="section" id="about" aria-labelledby="about-title">
 			<div class="shell">
 				<header class="section__head" data-reveal>
-					<span class="section__num">02</span>
 					<h2 id="about-title">About</h2>
 				</header>
 
@@ -277,13 +296,14 @@ const work = [
 					<figure class="about__photo">
 						<Image
 							src={portrait}
-							alt="Kenneth Fernandez, in a white shirt, dark tie and orange-tinted glasses, giving two thumbs up."
+							alt="Kenneth Fernandez, in a white shirt, dark tie and glasses, giving two thumbs up."
 							widths={[320, 480, 640]}
 							sizes="(max-width: 56rem) 60vw, 22rem"
 							format="webp"
 							quality={82}
 							loading="eager"
 						/>
+						<figcaption>Kenneth Fernandez</figcaption>
 					</figure>
 
 					<div class="about__text">
@@ -309,8 +329,10 @@ const work = [
 							I still like the part after the demo: auth, migrations, the bug a tester finds on a
 							Friday. I'm mainly looking for an OJT or internship where I own a feature end to end.
 							I'm also open to freelance work: real projects for small businesses with a real problem
-							and real users. What I want people to remember is simple: I can build a solution to
-							their problem.
+							and real users.
+						</p>
+						<p class="about__creed">
+							What I want people to remember is simple: <em>I can build a solution to their problem.</em>
 						</p>
 					</div>
 				</div>
@@ -320,7 +342,6 @@ const work = [
 		<section class="section" id="background" aria-labelledby="background-title">
 			<div class="shell">
 				<header class="section__head" data-reveal>
-					<span class="section__num">03</span>
 					<h2 id="background-title">Education &amp; leadership</h2>
 				</header>
 
@@ -365,7 +386,6 @@ const work = [
 
 		<section class="contact" id="contact" aria-labelledby="contact-title">
 			<div class="shell">
-				<p class="label" data-reveal>04 · Contact</p>
 				<h2 class="contact__title" id="contact-title" data-reveal>
 					Have a role, a project or a problem? <em>Let's talk.</em>
 				</h2>
@@ -387,9 +407,11 @@ const work = [
 				<div class="contact__foot" data-reveal>
 					<p>Manila, Philippines · GMT+8</p>
 					<div>
-						<a href="https://github.com/kxnn02" target="_blank" rel="me noopener">github.com/kxnn02</a>
+						<a href="https://github.com/kxnn02" target="_blank" rel="me noopener"
+							>github.com/kxnn02<span class="sr-only"> (opens in a new tab)</span></a
+						>
 						<a href="https://www.linkedin.com/in/kenneth-clein-fernandez-8a6b48258" target="_blank" rel="me noopener"
-							>LinkedIn</a
+							>LinkedIn<span class="sr-only"> (opens in a new tab)</span></a
 						>
 						{/* The PDF stays unpublished until the overclaims and phone number are removed. */}
 						<a href={`mailto:${EMAIL}?subject=R%C3%A9sum%C3%A9%20request`}>Résumé on request</a>
@@ -402,6 +424,7 @@ const work = [
 	<footer class="footer">
 		<div class="shell footer__in">
 			<p>© 2026 Kenneth Clein T. Fernandez</p>
+			<p class="footer__colophon">Inter Tight · Instrument Serif · JetBrains Mono</p>
 		</div>
 	</footer>
 
@@ -414,16 +437,47 @@ const work = [
 			const io = new IntersectionObserver(
 				(entries) => {
 					for (const entry of entries) {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('is-in');
-							io.unobserve(entry.target);
-						}
+						if (entry.isIntersecting) reveal(entry.target);
 					}
+					// A target the observer skipped never reports as intersecting:
+					// one already above the viewport at load, or one a jump passed in
+					// a single frame. Sweep after every batch so nothing stays hidden.
+					sweep();
 				},
 				{ rootMargin: '0px 0px -10% 0px', threshold: 0.04 }
 			);
 
+			function reveal(target: Element) {
+				target.classList.add('is-in');
+				io.unobserve(target);
+			}
+
+			// 0.9 matches the -10% bottom rootMargin, so both paths reveal on the
+			// same line. Seventeen rect reads on a frame that follows a scroll or a
+			// resize, and none at all once every target is in.
+			let pending = 0;
+
+			function sweep() {
+				pending = 0;
+				const limit = window.innerHeight * 0.9;
+
+				for (const target of targets) {
+					if (!target.classList.contains('is-in') && target.getBoundingClientRect().top < limit) {
+						reveal(target);
+					}
+				}
+			}
+
+			function queueSweep() {
+				if (!pending) pending = requestAnimationFrame(sweep);
+			}
+
 			targets.forEach((target) => io.observe(target));
+
+			window.addEventListener('load', sweep);
+			window.addEventListener('pageshow', sweep);
+			window.addEventListener('resize', queueSweep);
+			window.addEventListener('scroll', queueSweep, { passive: true });
 		} else {
 			targets.forEach((target) => target.classList.add('is-in'));
 		}
@@ -495,6 +549,33 @@ const work = [
 				},
 				{ passive: true }
 			);
+		}
+
+		// The strip's pause control. The state lives on <html> so the inline head
+		// script can restore it before the first frame; sessionStorage keeps it for
+		// the visit, not forever. The loop still runs on first load by default.
+		const stripToggle = document.querySelector<HTMLButtonElement>('[data-strip-toggle]');
+		const stripLabel = stripToggle?.querySelector<HTMLElement>('[data-strip-label]');
+
+		if (stripToggle) {
+			let stripPaused = document.documentElement.classList.contains('strip-paused');
+
+			const paintStrip = () => {
+				document.documentElement.classList.toggle('strip-paused', stripPaused);
+				if (stripLabel) stripLabel.textContent = stripPaused ? 'Play' : 'Pause';
+			};
+
+			paintStrip();
+
+			stripToggle.addEventListener('click', () => {
+				stripPaused = !stripPaused;
+				paintStrip();
+				try {
+					sessionStorage.setItem('strip-paused', stripPaused ? '1' : '0');
+				} catch {
+					// Private mode or a blocked store: the control still works for this view.
+				}
+			});
 		}
 
 		const button = document.querySelector<HTMLButtonElement>('[data-copy-email]');
