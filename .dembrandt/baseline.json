@@ -1,8 +1,8 @@
 {
-  "url": "http://localhost:4325/",
-  "extractedAt": "2026-10-21T09:51:08.771Z",
+  "url": "https://kennethclein-portfolio.vercel.app/",
+  "extractedAt": "2026-10-21T09:59:21.996Z",
   "meta": {
-    "snapshotId": "d39a2868-1b0c-479b-bb01-6d29963827a0",
+    "snapshotId": "16ee9ee5-72fc-406d-81b6-c100d7dd33a8",
     "httpStatus": 200,
     "dembrandtVersion": "0.39.2",
     "schemaVersion": "1.19.0",
@@ -26,7 +26,7 @@
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
     },
     "fontsReady": true,
-    "requestedUrl": "http://localhost:4325/",
+    "requestedUrl": "https://kennethclein-portfolio.vercel.app/",
     "contentLength": 6194,
     "flags": {}
   },
@@ -36,7 +36,7 @@
   "favicons": [
     {
       "type": "icon",
-      "url": "http://localhost:4325/favicon.svg",
+      "url": "https://kennethclein-portfolio.vercel.app/favicon.svg",
       "sizes": null,
       "dataUri": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Iktlbm5ldGggQ2xlaW4gVC4gRmVybmFuZGV6Ij4KCTxyZWN0IHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgcng9IjEwIiBmaWxsPSIjMTkxNjEyIiAvPgoJPHBhdGgKCQlkPSJNMTcgMTMuNXYyMU0xNyAyNCAzMC41IDEzLjVNMTcgMjQgMzAuNSAzNC41IgoJCWZpbGw9Im5vbmUiCgkJc3Ryb2tlPSIjZmZmZmZmIgoJCXN0cm9rZS13aWR0aD0iMy40IgoJCXN0cm9rZS1saW5lY2FwPSJzcXVhcmUiCgkvPgo8L3N2Zz4K"
     },
@@ -1032,9 +1032,9 @@
       ],
       "fontDisplay": "swap",
       "urls": [
-        "http://localhost:4325/_astro/fonts/1b9ddf14826d3107.woff2",
-        "http://localhost:4325/_astro/fonts/6d4bffbf7335e8f1.woff2",
-        "http://localhost:4325/_astro/fonts/ccfece03c51ce7f7.woff2"
+        "https://kennethclein-portfolio.vercel.app/_astro/fonts/1b9ddf14826d3107.woff2",
+        "https://kennethclein-portfolio.vercel.app/_astro/fonts/6d4bffbf7335e8f1.woff2",
+        "https://kennethclein-portfolio.vercel.app/_astro/fonts/ccfece03c51ce7f7.woff2"
       ],
       "selfHostedFonts": [
         "1b9ddf14826d3107.woff2",

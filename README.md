@@ -44,14 +44,14 @@ reveal, a missing sitemap, or a robots.txt that does not advertise it. The link
 check then catches dead anchors and local assets.
 
 `.dembrandt/baseline.json` is the frozen token set — colours, type sizes, radii,
-motion — re-approved from the preview build on 2026-10-21. Run the compare against
-a preview deploy before shipping; the command exits non-zero when a token changes,
+motion — re-approved from the deployed site on 2026-10-21. Run the compare against
+the deployed site before shipping; the command exits non-zero when a token changes,
 so an intentional change needs `--approve` and an intentional commit.
 
 The earlier review pass changed the motion scale: the reveal is 420 ms / 10 px
 (was 800 ms / 20 px), the screenshot wipe is 560 ms with no delay (was 900 ms
 with a 110 ms delay), and the captions now fade with the image. The 2026-10-21
-baseline also picks up the white paper (the deployed baseline still carried the
+baseline also picks up the white paper (the previous baseline still carried the
 old warm `#f8f5ef`), the new docket, redline and case-note type, and the
 additions' `0.14s`/`0.24s` motion steps. It still confirms the scroll-driven
 animations are running — `drift-away` and `drift-away-soft` reappear in the
