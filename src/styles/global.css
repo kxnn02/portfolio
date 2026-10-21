@@ -347,6 +347,21 @@ img {
 	font-weight: 500;
 }
 
+/* The section folio gives the sections a file order, separate from the
+   project's Fig. numbers. */
+.section__folio {
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: var(--accent);
+	white-space: nowrap;
+}
+
+.contact__folio {
+	margin-bottom: 0.75rem;
+}
+
 /* -------------------------------------------------------------------------
    Hero
 ------------------------------------------------------------------------- */
@@ -392,6 +407,86 @@ img {
 	font-weight: 400;
 	letter-spacing: -0.01em;
 	color: var(--accent);
+}
+
+/* The sentence is the link. The arrow is the pointer; the underline only
+   arrives on hover or focus, so the headline still reads as type first. */
+.fix-link {
+	text-decoration: none;
+	background-image: linear-gradient(var(--accent), var(--accent));
+	background-repeat: no-repeat;
+	background-position: 0 100%;
+	background-size: 0% 1px;
+	transition: background-size 240ms var(--ease);
+}
+
+.fix-link__arrow {
+	display: inline-block;
+	/* The period's advance leaves a wide gap after the dot; pull the arrow
+	   back over the bearing so it reads as a mark on the sentence, not a
+	   stray glyph at the end of it. */
+	margin-left: -0.38em;
+	font-family: var(--mono);
+	font-size: 0.32em;
+	font-weight: 400;
+	line-height: 1;
+	vertical-align: 0.62em;
+	color: var(--accent);
+	transition: transform 200ms var(--ease);
+}
+
+@media (hover: hover) {
+	.fix-link:hover {
+		background-size: 100% 1px;
+	}
+
+	.fix-link:hover .fix-link__arrow {
+		transform: translate(0.08em, -0.08em);
+	}
+}
+
+.fix-link:focus-visible {
+	background-size: 100% 1px;
+}
+
+.hero__dateline {
+	margin-left: auto;
+	min-width: 8.5rem;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+/* A soft accent bloom over the hero's dot field, moved by the pointer. */
+.hero__bloom {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 18rem;
+	height: 18rem;
+	margin: -9rem 0 0 -9rem;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle,
+		color-mix(in srgb, var(--accent) 22%, transparent),
+		transparent 68%
+	);
+	mix-blend-mode: multiply;
+	opacity: 0;
+	pointer-events: none;
+	z-index: -1;
+	will-change: transform;
+	transition: opacity 240ms var(--ease);
+}
+
+.hero__bloom.is-on {
+	opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+	.hero__bloom {
+		display: none;
+	}
 }
 
 .hero__foot {
@@ -529,12 +624,8 @@ img {
 	}
 }
 
-/* The first viewport used to end in empty paper. The contents list gives it a
-   destination: the four shipped things, named, before any scroll. Desktop-only
-   because the phone already has the section nav and the work list one thumb
-   away. */
-/* One contents line across the sheet, not a menu in the corner: the label
-   holds the left margin, the four shipped things hold the rest. */
+/* The docket replaces the four-name contents line. Four problem-to-fix rows
+   make the first viewport an argument; the project name stays the link. */
 .hero__index {
 	display: grid;
 	grid-template-columns: 8rem minmax(0, 1fr);
@@ -543,51 +634,98 @@ img {
 	border-bottom: 1px solid var(--line);
 }
 
-.hero__index .label {
+.hero__index > .label {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
+	padding-top: 0.7rem;
 	font-size: 0.625rem;
 	letter-spacing: 0.1em;
 }
 
-.hero__index ol {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.hero__index li {
+.docket {
 	border-left: 1px solid var(--line);
 }
 
-.hero__index a {
-	display: flex;
+.docket__row {
+	position: relative;
+	display: grid;
+	grid-template-columns: 2.25rem minmax(0, 1.35fr) 1.5rem minmax(0, 1fr) auto;
 	align-items: baseline;
-	gap: 0.45rem;
-	min-height: 3rem;
-	padding: 0.75rem 1rem;
-	font-size: 0.9375rem;
-	color: var(--ink-2);
-	text-decoration: none;
-	transition:
-		color var(--dur-fast) var(--ease),
-		border-color var(--dur-fast) var(--ease),
-		text-decoration-color var(--dur-fast) var(--ease);
+	column-gap: 0.85rem;
+	padding: 0.6rem 0;
+	border-bottom: 1px solid var(--line);
 }
 
-.hero__index a span {
+.docket__row:last-child {
+	border-bottom: 0;
+}
+
+.docket__no {
 	font-family: var(--mono);
 	font-size: 0.625rem;
 	letter-spacing: 0.02em;
 	color: var(--accent);
 }
 
+.docket__problem {
+	font-size: 0.9375rem;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	color: var(--ink);
+}
+
+.docket__fixline {
+	display: contents;
+}
+
+.docket__arrow {
+	align-self: center;
+	width: 0.8rem;
+	height: 0.8rem;
+	color: var(--line-2);
+	transition: color var(--dur-fast) var(--ease);
+}
+
+.docket__fix {
+	font-size: 0.875rem;
+	color: var(--ink-2);
+}
+
+.docket__project {
+	justify-self: end;
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ink-3);
+	text-decoration: none;
+	white-space: nowrap;
+	transition: color var(--dur-fast) var(--ease);
+}
+
+/* The project name is the link, but the whole row is the target. */
+.docket__project::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+}
+
 @media (hover: hover) {
-	.hero__index a:hover {
-		color: var(--ink);
-		text-decoration: underline;
-		text-decoration-color: var(--accent);
-		text-underline-offset: 0.22em;
+	.docket__row:hover .docket__problem,
+	.docket__row:hover .docket__project,
+	.docket__row:hover .docket__arrow {
+		color: var(--accent);
 	}
+}
+
+.docket__row:focus-within .docket__problem,
+.docket__row:focus-within .docket__project,
+.docket__row:focus-within .docket__arrow {
+	color: var(--accent);
+}
+
+.docket__project:focus-visible {
+	outline-offset: 2px;
 }
 
 /* -------------------------------------------------------------------------
@@ -657,6 +795,13 @@ img {
 	.project__title a:hover {
 		background-size: 100% 1px;
 	}
+}
+
+/* The strip lights the rows that use the active tool. The readout gives the
+   local answer; this is the connection back to the work. */
+.project.is-indexed .project__title a {
+	background-size: 100% 1px;
+	color: var(--accent);
 }
 
 /* One-line receipt under the story, ruled off from it. */
@@ -756,12 +901,16 @@ img {
 	background-image: var(--paper-grain);
 	background-size: 512px 512px;
 	background-blend-mode: multiply;
-	box-shadow: 0 26px 50px -42px rgba(25, 22, 18, 0.55);
+	box-shadow:
+		0 26px 50px -42px rgba(25, 22, 18, 0.55),
+		3px 3px 0 -1px var(--paper),
+		4px 4px 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
 /* The plate itself is the link. The ring tucks inside the frame, because the
    frame clips its overflow and a ring at the default offset would vanish. */
 .shot-wrap a {
+	position: relative;
 	display: block;
 }
 
@@ -823,6 +972,161 @@ img {
 	}
 }
 
+/* Redlines. The marks are an overlay on the plate, not an extra image; the
+   tags sit outside the SVG so they stay legible when the plate scales down.
+   On dark screens the marks switch to paper, never a red stroke. */
+.redline {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	fill: none;
+	stroke: var(--accent);
+	stroke-width: 1.6;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.redline--paper {
+	stroke: var(--paper);
+}
+
+.redline-tag {
+	position: absolute;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.45rem;
+	height: 1.45rem;
+	padding: 0 0.3rem;
+	transform: translateY(-50%);
+	border: 1px solid var(--accent);
+	background: var(--accent);
+	color: var(--paper);
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	pointer-events: none;
+}
+
+.redline-tag--paper {
+	background: var(--paper);
+	color: var(--accent);
+}
+
+.redline-notes {
+	display: grid;
+	gap: 0.4rem;
+	max-width: 34rem;
+	margin-top: 0.85rem;
+	padding-top: 0.7rem;
+	border-top: 1px dashed var(--line-2);
+}
+
+.redline-notes li {
+	display: grid;
+	grid-template-columns: 1.5rem minmax(0, 1fr);
+	gap: 0.55rem;
+	font-size: 0.8125rem;
+	line-height: 1.45;
+	color: var(--ink-2);
+}
+
+.redline-key {
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	line-height: 1.5;
+	color: var(--accent);
+}
+
+.redline-notes b {
+	font-weight: 500;
+	color: var(--ink);
+}
+
+/* The DEVCON+ note hangs off the plate like a margin note. One project only:
+   the rest do not have a "not shipped" worth printing. */
+.case-notes {
+	max-width: 32rem;
+	margin-top: 1.15rem;
+	padding-left: 1rem;
+	border-left: 1px solid var(--accent);
+}
+
+.case-notes__label {
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: var(--accent);
+}
+
+.case-notes dl {
+	display: grid;
+	gap: 0.5rem;
+	margin-top: 0.55rem;
+}
+
+.case-notes dl div {
+	display: grid;
+	grid-template-columns: 5.5rem minmax(0, 1fr);
+	gap: 0.5rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid var(--line);
+}
+
+.case-notes dt {
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	line-height: 1.5;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ink-3);
+}
+
+.case-notes dd {
+	margin: 0;
+	font-size: 0.875rem;
+	line-height: 1.45;
+	color: var(--ink-2);
+}
+
+/* 2x loupe. The lens is a background-position crop of the image already on the
+   page, so it never fetches a second asset. Fine pointers only. */
+.loupe {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 9rem;
+	height: 9rem;
+	border: 2px solid var(--paper);
+	border-radius: 50%;
+	background-color: var(--paper);
+	background-repeat: no-repeat;
+	box-shadow:
+		0 0 0 1px var(--accent),
+		0 18px 40px -22px color-mix(in srgb, var(--ink) 55%, transparent);
+	opacity: 0;
+	transform: translate3d(-50%, -50%, 0);
+	pointer-events: none;
+	z-index: 3;
+	transition: opacity 140ms var(--ease);
+	will-change: transform;
+}
+
+.loupe.is-on {
+	opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+	.loupe {
+		display: none;
+	}
+}
+
 /* -------------------------------------------------------------------------
    Stack strip
    The four projects' own stacks, gathered into one line. It is the only
@@ -833,6 +1137,14 @@ img {
 .strip-band {
 	position: relative;
 	margin-top: clamp(3.5rem, 6vw, 5rem);
+}
+
+/* The strip is an enhancement: the tools are already in each row's stack.
+   Without JS the loop cannot be paused or used as an index, so it is not a
+   dead control; the contact copy button is likewise a JS convenience. */
+html:not(.js) .strip-band,
+html:not(.js) .copy {
+	display: none;
 }
 
 .strip {
@@ -847,23 +1159,32 @@ img {
 	animation: strip 34s linear infinite;
 }
 
-.strip:hover .strip__in {
+.strip:hover .strip__in,
+.strip:focus-within .strip__in {
 	animation-play-state: paused;
 }
 
-/* The control sits outside the aria-hidden strip and just above it, at the
-   point where the mask has already faded the loop out, so the strip keeps its
-   height and the button never sits on live text. */
+/* Keyboard focus snaps the loop back to the accessible first set, so the
+   focused tool is never off-screen. */
+.strip.is-focused .strip__in {
+	animation: none;
+	transform: translateX(0);
+}
+
+/* The control sits outside the strip and just above it, at the point where the
+   mask has already faded the loop out, so the strip keeps its height and the
+   button never sits on live text. */
 .strip-paused .strip__in {
 	animation-play-state: paused;
 }
 
 .strip-toggle {
 	position: absolute;
+	top: 0;
 	/* The strip is full-bleed, the control is not: it lines up with the shell's
 	   right gutter at every width. */
 	right: max(var(--gutter), calc((100% - var(--max)) / 2));
-	bottom: calc(100% + 0.5rem);
+	transform: translateY(calc(-100% - 0.5rem));
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -899,19 +1220,78 @@ img {
 }
 
 .strip__set > span,
+.strip__set > button,
 .strip__set > i {
+	padding-right: 1.1rem;
 	font-family: var(--mono);
 	font-size: var(--step--1);
+	line-height: 1.5;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	color: var(--ink-3);
 	white-space: nowrap;
-	padding-right: 1.1rem;
+}
+
+.strip__set > button {
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	min-height: 2rem;
+	/* Keep the 32px tap target without making the strip taller: the padding
+	   paints the hit area, the negative margin keeps the line box. */
+	padding-block: 0.35rem;
+	margin-block: -0.35rem;
+	padding-left: 0;
+	border: 0;
+	background: none;
+	text-align: left;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .strip__set > i {
 	font-style: normal;
 	color: var(--accent);
+}
+
+.strip__set > .is-active {
+	color: var(--accent);
+}
+
+.strip__set > button:focus-visible {
+	outline-offset: 2px;
+}
+
+@media (hover: hover) {
+	.strip__set > button:hover {
+		color: var(--accent);
+	}
+}
+
+.strip__foot {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 0.25rem 1.5rem;
+	width: min(calc(100% - var(--gutter) * 2), var(--max));
+	margin: 0.5rem auto 0;
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	line-height: 1.5;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ink-3);
+}
+
+.strip__legend {
+	color: var(--accent);
+}
+
+.strip__readout {
+	margin: 0;
+	text-align: right;
+	text-transform: none;
+	letter-spacing: 0.02em;
 }
 
 @keyframes strip {
@@ -1258,6 +1638,41 @@ img {
 	}
 }
 
+/* The stamp is a printer's mark, not a badge: once, near the end of the file. */
+.contact__stamp {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.stamp {
+	padding: 0.45rem 0.6rem;
+	border: 2px solid var(--accent);
+	outline: 1px solid var(--accent);
+	outline-offset: 2px;
+	transform: rotate(-7deg);
+	text-align: center;
+	color: var(--accent);
+	opacity: 0.82;
+}
+
+.stamp b {
+	display: block;
+	font-family: var(--mono);
+	font-size: 0.75rem;
+	font-weight: 400;
+	line-height: 1.2;
+	letter-spacing: 0.16em;
+}
+
+.stamp span {
+	display: block;
+	font-family: var(--mono);
+	font-size: 0.5625rem;
+	line-height: 1.4;
+	letter-spacing: 0.1em;
+}
+
 /* -------------------------------------------------------------------------
    Footer
 ------------------------------------------------------------------------- */
@@ -1489,7 +1904,47 @@ img {
 	}
 
 	.hero__index {
-		display: none;
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.hero__index > .label {
+		padding-top: 0.55rem;
+		padding-bottom: 0.35rem;
+	}
+
+	.docket {
+		border-left: 0;
+		border-top: 1px solid var(--line);
+	}
+
+	.docket__row {
+		grid-template-columns: 1.5rem minmax(0, 1fr);
+		row-gap: 0.15rem;
+		padding: 0.55rem 0;
+	}
+
+	.docket__no {
+		grid-row: 1 / span 2;
+	}
+
+	.docket__problem {
+		grid-column: 2;
+	}
+
+	.docket__fixline {
+		display: flex;
+		grid-column: 2;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.3rem 0.45rem;
+	}
+
+	.docket__project {
+		margin-left: auto;
+	}
+
+	.strip__readout {
+		text-align: left;
 	}
 
 	.bg-grid::before,
@@ -1541,8 +1996,19 @@ img {
 	.bg-col h3,
 	.edu__period,
 	.roles__period,
-	.footer__in {
+	.footer__in,
+	.section__folio,
+	.docket__project,
+	.strip__legend,
+	.strip__readout,
+	.case-notes dt,
+	.redline-key {
 		font-size: 0.75rem;
+	}
+
+	.case-notes dl div {
+		grid-template-columns: 1fr;
+		gap: 0.1rem;
 	}
 
 	.hero__title em,
@@ -1606,7 +2072,8 @@ img {
 	.skip,
 	.strip-band,
 	.copy,
-	.hero__index {
+	.hero__bloom,
+	.loupe {
 		display: none;
 	}
 
@@ -1670,5 +2137,16 @@ img {
 
 	a {
 		text-decoration-color: currentColor;
+	}
+
+	.redline-tag,
+	.redline-tag--paper {
+		background: #fff !important;
+		color: var(--accent) !important;
+	}
+
+	.case-notes,
+	.contact__stamp {
+		break-inside: avoid;
 	}
 }

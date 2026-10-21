@@ -31,7 +31,14 @@ await page.evaluate(() => document.fonts.ready);
 const content = await page.evaluate(() => {
 	const name = document.querySelector('.brand .sr-only')?.textContent?.replace(', back to top', '').trim();
 	const location = document.querySelector('.contact__foot p')?.textContent?.split(' · ')[0].trim();
-	const lines = [...document.querySelectorAll('.hero__title .line')].map((line) => line.innerHTML.trim());
+	const lines = [...document.querySelectorAll('.hero__title .line')].map((line) => {
+		// The second hero line is a link; the card wants the sentence, not the
+		// arrow, the screen-reader span or the anchor styling.
+		const copy = line.cloneNode(true);
+		copy.querySelectorAll('.fix-link__arrow, .sr-only').forEach((node) => node.remove());
+		copy.querySelectorAll('a').forEach((link) => link.replaceWith(...link.childNodes));
+		return copy.innerHTML.trim();
+	});
 	const status = document.querySelector('.status')?.textContent?.trim();
 
 	return { name, location, lines, status };

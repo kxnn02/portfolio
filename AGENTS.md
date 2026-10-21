@@ -9,8 +9,10 @@ claimed on it.
 Personal portfolio for Kenneth Clein T. Fernandez: one static page built with
 Astro 7 (`output: 'static'`). No client-side framework, no hydration, no
 analytics, no CMS, no backend. The only JavaScript is the inline script in
-`src/pages/index.astro` (scroll reveal, pointer parallax, copy-email button);
-everything else is HTML and CSS. Node >= 22.22.0.
+`src/pages/index.astro` (scroll reveal, pointer parallax, copy-email button,
+Manila clock, halftone bloom, screenshot loupe, tool strip) plus the small
+inline `js` flag and strip-pause restore in `Base.astro`; everything else is
+HTML and CSS. Node >= 22.22.0.
 
 ## Commands
 
@@ -68,6 +70,9 @@ These are owner decisions, not suggestions.
   in `PRODUCT.md`. Ask instead.
 - Project rows tell the same story: problem, solution, then "My part". "I"
   diagnoses, "we" ships; solo work stays "I".
+- Redline notes and case notes annotate the screenshots and the claims in
+  `PRODUCT.md`. They are not a place to introduce a new number or infer a new
+  fact.
 - Screenshots come from live sites, never mocked. If a screen cannot be shown
   (company-owned), say so in the caption; never swap in a different screen
   silently.
@@ -114,7 +119,9 @@ These are owner decisions, not suggestions.
 1. `npm run check` passes.
 2. `npm run build` passes, including both checks.
 3. Look at 390 px and desktop, with and without JavaScript, and in print
-   preview. Print must show all five proof images and no hidden reveals.
+   preview. Print must show all five proof images, the redline notes, case
+   notes and stamp, and no hidden reveals; the strip, bloom, loupe and copy
+   button stay out.
 4. If page copy or metadata changed, restart `npm run preview` and run
    `npm run og`, then commit the regenerated `public/og.png`.
 5. Design drift: `dembrandt <url> --compare .dembrandt/baseline.json` exits

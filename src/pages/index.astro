@@ -23,6 +23,8 @@ const work = [
 		name: 'CampusCurrents',
 		href: 'https://campus-currents-website.vercel.app',
 		role: 'Project manager & lead developer',
+		tools: ['React Native', 'Next.js', 'Supabase', 'PostgreSQL'],
+		docket: { problem: 'Suspension calls scattered across Facebook', fix: 'One push feed' },
 		problem:
 			'Campus announcements were scattered across Facebook and other platforms, so suspension calls and emergency notices were easy to miss on the phones students already check.',
 		body: 'We built one Android app for class suspensions, emergency notices and campus announcements. Each alert arrives as a push notification on the student’s phone, in one feed, instead of another page to check.',
@@ -32,6 +34,46 @@ const work = [
 			{ label: 'Download APK · 102 MB', href: 'https://github.com/kxnn02/campus-currents/releases/latest' },
 			{ label: 'Source code', href: 'https://github.com/kxnn02/campus-currents' },
 		],
+		redline: {
+			tone: 'accent',
+			marks: [
+				{
+					key: '1a',
+					shape: 'ellipse',
+					cx: 1108,
+					cy: 330,
+					rx: 86,
+					ry: 86,
+					rotate: -4,
+					leader: [1194, 330, 1258],
+					tag: { x: 87.6, y: 36.7 },
+				},
+				{
+					key: '1b',
+					shape: 'rect',
+					x: 1026,
+					y: 514,
+					w: 216,
+					h: 66,
+					rx: 10,
+					rotate: -1,
+					leader: [1242, 547, 1258],
+					tag: { x: 87.6, y: 60.8 },
+				},
+			],
+			notes: [
+				{
+					key: '1a',
+					title: 'One status.',
+					text: 'The phone answers whether classes are on before a student checks Facebook.',
+				},
+				{
+					key: '1b',
+					title: 'The notice.',
+					text: 'A suspension lands in the same feed, with the date and time attached.',
+				},
+			],
+		},
 		visual: {
 			src: ccShot,
 			widths: [640, 960, 1440],
@@ -49,6 +91,8 @@ const work = [
 		name: 'DEVCON Cohort 5 Task Bot',
 		href: 'https://telegram-taskbot-ten.vercel.app',
 		role: 'Solo build',
+		tools: ['Telegram Bot API', 'Next.js', 'Supabase'],
+		docket: { problem: 'Tasks kept in personal trackers', fix: 'A bot inside Telegram' },
 		problem:
 			'When a higher-up assigned a task, the cohort had no shared tracker, so everyone made their own. Coordination lived in a Telegram group.',
 		body: 'I built the bot inside Telegram, where the cohort already worked: a morning standup card grouped by person, overdue reminders and weekly digests, with board, team and activity views in a Next.js dashboard behind it.',
@@ -57,6 +101,47 @@ const work = [
 			{ label: 'Dashboard · Telegram login', href: 'https://telegram-taskbot-ten.vercel.app' },
 			{ label: 'Source code', href: 'https://github.com/kxnn02/telegram-taskbot' },
 		],
+		redline: {
+			tone: 'paper',
+			marks: [
+				{
+					key: '2a',
+					shape: 'rect',
+					x: 157,
+					y: 194,
+					w: 262,
+					h: 20,
+					rx: 3,
+					rotate: 0,
+					leader: [423, 204, 638],
+					tag: { x: 71.9, y: 28.2 },
+				},
+				{
+					key: '2b',
+					shape: 'rect',
+					x: 157,
+					y: 239,
+					w: 445,
+					h: 20,
+					rx: 3,
+					rotate: 0,
+					leader: [606, 249, 638],
+					tag: { x: 71.9, y: 34.4 },
+				},
+			],
+			notes: [
+				{
+					key: '2a',
+					title: 'The standup.',
+					text: 'One report, grouped by person, in the group the cohort already uses.',
+				},
+				{
+					key: '2b',
+					title: 'Task creation.',
+					text: 'A task lands in the same thread, not a personal tracker.',
+				},
+			],
+		},
 		visual: {
 			src: taskbotShot,
 			widths: [480, 720, 889],
@@ -73,6 +158,8 @@ const work = [
 		name: 'DEVCON Kids Hub',
 		href: 'https://devcon-kids-hub-2-0.vercel.app',
 		role: 'I built the AI chatbot',
+		tools: ['React', 'Vite', 'Supabase', 'pgvector', 'Mistral'],
+		docket: { problem: 'Volunteers waiting on a higher-up', fix: 'Answers from the docs' },
 		problem:
 			'DEVCON Kids had no centralized platform. Borrowed materials had no shared record; some went missing and no one could say who had them. Onboarding a volunteer meant asking a higher-up and waiting for an answer.',
 		body: 'The platform covers events, volunteer onboarding, chapters, inventory and reporting. The chatbot answers onboarding questions from DEVCON Kids’ documents.',
@@ -81,6 +168,30 @@ const work = [
 			{ label: 'Live site', href: 'https://devcon-kids-hub-2-0.vercel.app' },
 			{ label: 'Team repo', href: 'https://github.com/Debb1ie/DEVCON-Kids-Hub-2.0' },
 		],
+		redline: {
+			tone: 'paper',
+			marks: [
+				{
+					key: '3a',
+					shape: 'rect',
+					x: 1232,
+					y: 773,
+					w: 390,
+					h: 30,
+					rx: 4,
+					rotate: 0,
+					leader: [1628, 788, 1658],
+					tag: { x: 88.3, y: 91.1 },
+				},
+			],
+			notes: [
+				{
+					key: '3a',
+					title: 'Role-based access.',
+					text: 'Approval comes from the chapter lead. The request starts at sign-in.',
+				},
+			],
+		},
 		visual: {
 			src: kidshubShot,
 			widths: [640, 960, 1440],
@@ -97,11 +208,18 @@ const work = [
 		name: 'DEVCON+',
 		href: 'https://devcon.plus',
 		role: 'Voluntary intern',
+		tools: ['React', 'TypeScript', 'NestJS', 'Supabase', 'Firebase Auth'],
+		docket: { problem: 'Duplicate chapter rows', fix: 'One row per chapter' },
 		problem:
 			'Duplicate chapter entries were showing up in DEVCON’s admin dashboard, and chapter activity had no visible ranking.',
 		body: 'During my internship on the membership platform (event registration, points and rewards, chapter operations across 13 chapters), I fixed the duplicate chapter entries and proposed the chapter leaderboard.',
 		stack: 'React · TypeScript · NestJS · Supabase · Firebase Auth',
 		links: [{ label: 'Public site', href: 'https://devcon.plus' }],
+		caseNotes: [
+			{ label: 'Found', text: 'Duplicate chapter entries in the admin dashboard.' },
+			{ label: 'Changed', text: 'Fixed the duplicates, AI-assisted.' },
+			{ label: 'Not shipped', text: 'The chapter leaderboard. Proposed only.' },
+		],
 		visual: {
 			src: devconShot,
 			widths: [640, 960, 1440],
@@ -111,6 +229,21 @@ const work = [
 		},
 	},
 ];
+
+/* The strip is a tool index, not decoration: each technology carries the
+   projects whose stacks name it. Built from the same `tools` arrays, so the
+   strip cannot drift from the rows. */
+const toolIndex = new Map<string, { idx: string; short: string; slug: string }[]>();
+
+for (const project of work) {
+	for (const tool of project.tools) {
+		const projects = toolIndex.get(tool) ?? [];
+		projects.push({ idx: project.idx, short: project.short, slug: project.slug });
+		toolIndex.set(tool, projects);
+	}
+}
+
+const tools = [...toolIndex].map(([name, projects]) => ({ name, projects }));
 ---
 
 <Base {title} {description}>
@@ -137,12 +270,19 @@ const work = [
 			<div class="shell">
 				<div class="hero__masthead">
 					<p class="label">Kenneth Clein T. Fernandez</p>
-					<p class="label">Manila · 2026</p>
+					<p class="label hero__dateline">Manila · <span data-clock>GMT+8</span></p>
 				</div>
 				<div class="hero__type">
 					<h1 class="hero__title">
 						<span class="line"><span>I find the problem.</span></span>
-						<span class="line"><span>I ship the <em>fix.</em></span></span>
+						<span class="line"
+							><span
+								><a class="fix-link" href="#work"
+									>I ship the <em>fix.</em><span class="fix-link__arrow" aria-hidden="true">↗</span
+									><span class="sr-only"> See the work</span></a
+								></span
+							></span
+						>
 					</h1>
 				</div>
 
@@ -182,23 +322,44 @@ const work = [
 
 				<nav class="hero__index" aria-label="Projects">
 					<span class="label">Contents</span>
-					<ol>
+					<ol class="docket">
 						{work.map((project) => (
-							<li>
-								<a href={`#${project.slug}`}>
-									<span>{project.idx}</span>
-									{project.short}
-								</a>
+							<li class="docket__row">
+								<span class="docket__no">{project.idx}</span>
+								<p class="docket__problem">{project.docket.problem}</p>
+								<div class="docket__fixline">
+									<svg
+										class="docket__arrow"
+										width="12"
+										height="12"
+										viewBox="0 0 14 14"
+										fill="none"
+										aria-hidden="true"
+									>
+										<path
+											d="M2.5 7h9M7.5 3l4 4-4 4"
+											stroke="currentColor"
+											stroke-width="1.6"
+											stroke-linecap="round"
+											stroke-linejoin="round"></path>
+									</svg>
+									<p class="docket__fix">{project.docket.fix}</p>
+									<a class="docket__project" href={`#${project.slug}`}>
+										{project.short}<span class="sr-only">, jump to project</span>
+									</a>
+								</div>
 							</li>
 						))}
 					</ol>
 				</nav>
 			</div>
+			<div class="hero__bloom" data-bloom aria-hidden="true"></div>
 		</section>
 
 		<section class="section" id="work" aria-labelledby="work-title">
 			<div class="shell">
 				<header class="section__head" data-reveal>
+					<p class="section__folio">01 / Work</p>
 					<h2 id="work-title">Selected work</h2>
 				</header>
 
@@ -245,6 +406,53 @@ const work = [
 											quality={82}
 											loading="eager"
 										/>
+										{project.redline && (
+											<>
+												<svg
+													class:list={['redline', project.redline.tone === 'paper' && 'redline--paper']}
+													viewBox={`0 0 ${project.visual.src.width} ${project.visual.src.height}`}
+													preserveAspectRatio="none"
+													aria-hidden="true"
+													focusable="false"
+												>
+													{project.redline.marks.map((mark) =>
+														'cx' in mark ? (
+															<ellipse
+																cx={mark.cx}
+																cy={mark.cy}
+																rx={mark.rx}
+																ry={mark.ry}
+																transform={`rotate(${mark.rotate} ${mark.cx} ${mark.cy})`}
+																vector-effect="non-scaling-stroke"></ellipse>
+														) : (
+															<rect
+																x={mark.x}
+																y={mark.y}
+																width={mark.w}
+																height={mark.h}
+																rx={mark.rx}
+																transform={`rotate(${mark.rotate} ${mark.x + mark.w / 2} ${mark.y + mark.h / 2})`}
+																vector-effect="non-scaling-stroke"></rect>
+														)
+													)}
+													{project.redline.marks.map((mark) => (
+														<path
+															d={`M${mark.leader[0]} ${mark.leader[1]}H${mark.leader[2]}`}
+															vector-effect="non-scaling-stroke"></path>
+													))}
+												</svg>
+												{project.redline.marks.map((mark) => (
+													<span
+														class:list={[
+															'redline-tag',
+															project.redline.tone === 'paper' && 'redline-tag--paper',
+														]}
+														style={`left:${mark.tag.x}%;top:${mark.tag.y}%`}
+														aria-hidden="true">{mark.key}</span>
+												))}
+											</>
+										)}
+										<span class="loupe" data-loupe aria-hidden="true"></span>
 										<span class="sr-only"> (opens in a new tab)</span>
 									</a>
 								</div>
@@ -258,6 +466,31 @@ const work = [
 										<span>{project.visual.note}</span>
 									)}
 								</figcaption>
+								{project.redline && (
+									<ul class="redline-notes" aria-label={`Details marked on the ${project.short} plate`}>
+										{project.redline.notes.map((note) => (
+											<li>
+												<span class="redline-key">{note.key}</span>
+												<p>
+													<b>{note.title}</b> {note.text}
+												</p>
+											</li>
+										))}
+									</ul>
+								)}
+								{project.caseNotes && (
+									<aside class="case-notes" aria-label={`${project.short} case notes`}>
+										<p class="case-notes__label">Case notes</p>
+										<dl>
+											{project.caseNotes.map((note) => (
+												<div>
+													<dt>{note.label}</dt>
+													<dd>{note.text}</dd>
+												</div>
+											))}
+										</dl>
+									</aside>
+								)}
 							</figure>
 						</article>
 					))
@@ -270,25 +503,56 @@ const work = [
 		    second half is a duplicate that exists only to make the loop join.
 		    The pause button sits outside the strip: a loop that starts on its
 		    own needs a user stop (WCAG 2.2.2), and hover is not one on touch. */}
+		{/* The first set is the accessible index; the second is the visual
+		    duplicate that makes the loop join, hidden from assistive tech. Hover
+		    works on either set, keyboard focus lands in the first. */}
 		<div class="strip-band">
-			<div class="strip" aria-hidden="true">
-				<div class="strip__in">
-					<span class="strip__set">
-						<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
-					</span>
-					<span class="strip__set">
-						<span>React Native</span><i>·</i><span>Next.js</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Telegram Bot API</span><i>·</i><span>React</span><i>·</i><span>Vite</span><i>·</i><span>pgvector</span><i>·</i><span>Mistral</span><i>·</i><span>NestJS</span><i>·</i><span>TypeScript</span><i>·</i><span>Firebase Auth</span><i>·</i>
-					</span>
-				</div>
-			</div>
-			<button class="strip-toggle" type="button" data-strip-toggle>
+			<button class="strip-toggle" type="button" data-strip-toggle aria-controls="tool-strip">
 				<span data-strip-label>Pause</span><span class="sr-only"> the scrolling technology list</span>
 			</button>
+			<div class="strip" id="tool-strip" data-strip role="group" aria-label="Tools by project">
+				<div class="strip__in">
+					{[0, 1].map((set) => (
+						<span class="strip__set" aria-hidden={set === 1 ? 'true' : undefined}>
+							{tools.map((tool) => (
+								<>
+									{set === 0 ? (
+										<button
+											class="strip__tool"
+											type="button"
+											data-tool={tool.name}
+											data-projects={tool.projects.map((project) => project.slug).join(' ')}
+											data-readout={`${tool.name} · ${tool.projects.map((project) => `${project.idx} ${project.short}`).join(', ')}`}
+											aria-label={`${tool.name}, used in ${tool.projects.map((project) => project.short).join(', ')}`}
+										>
+											{tool.name}
+										</button>
+									) : (
+										<span
+											data-tool={tool.name}
+											data-projects={tool.projects.map((project) => project.slug).join(' ')}
+											data-readout={`${tool.name} · ${tool.projects.map((project) => `${project.idx} ${project.short}`).join(', ')}`}
+										>
+											{tool.name}
+										</span>
+									)}
+									<i aria-hidden="true">·</i>
+								</>
+							))}
+						</span>
+					))}
+				</div>
+			</div>
+			<div class="strip__foot">
+				<span class="strip__legend">Tools, by project</span>
+				<p class="strip__readout" data-strip-readout aria-hidden="true">Pick a tool to find its project</p>
+			</div>
 		</div>
 
 		<section class="section" id="about" aria-labelledby="about-title">
 			<div class="shell">
 				<header class="section__head" data-reveal>
+					<p class="section__folio">02 / About</p>
 					<h2 id="about-title">About</h2>
 				</header>
 
@@ -342,6 +606,7 @@ const work = [
 		<section class="section" id="background" aria-labelledby="background-title">
 			<div class="shell">
 				<header class="section__head" data-reveal>
+					<p class="section__folio">03 / Background</p>
 					<h2 id="background-title">Education &amp; leadership</h2>
 				</header>
 
@@ -386,6 +651,7 @@ const work = [
 
 		<section class="contact" id="contact" aria-labelledby="contact-title">
 			<div class="shell">
+				<p class="section__folio contact__folio" data-reveal>04 / Contact</p>
 				<h2 class="contact__title" id="contact-title" data-reveal>
 					Have a role, a project or a problem? <em>Let's talk.</em>
 				</h2>
@@ -416,6 +682,13 @@ const work = [
 						{/* The PDF stays unpublished until the overclaims and phone number are removed. */}
 						<a href={`mailto:${EMAIL}?subject=R%C3%A9sum%C3%A9%20request`}>Résumé on request</a>
 					</div>
+				</div>
+
+				<div class="contact__stamp" data-reveal>
+					<p class="stamp" aria-hidden="true">
+						<b>SHIPPED</b>
+						<span>MANILA · 2026</span>
+					</p>
 				</div>
 			</div>
 		</section>
@@ -484,6 +757,29 @@ const work = [
 
 		(window as Window & { __revealReady?: boolean }).__revealReady = true;
 
+		// Manila time in the masthead. The markup ships "GMT+8" as the no-JS
+		// fallback; this only replaces it once the page is running.
+		const clock = document.querySelector<HTMLElement>('[data-clock]');
+
+		if (clock) {
+			const paintClock = () => {
+				try {
+					const time = new Intl.DateTimeFormat('en-GB', {
+						timeZone: 'Asia/Manila',
+						hour: '2-digit',
+						minute: '2-digit',
+						hourCycle: 'h23',
+					}).format(new Date());
+					clock.textContent = `${time} GMT+8`;
+				} catch {
+					// Keep the GMT+8 fallback.
+				}
+			};
+
+			paintClock();
+			window.setInterval(paintClock, 30_000);
+		}
+
 		// Pointer parallax. The pointer's position in the viewport drives every
 		// rigged element through the same field, so this never needs a
 		// getBoundingClientRect per move. Fine pointers only — on a phone the
@@ -514,6 +810,52 @@ const work = [
 
 			let frame = 0;
 
+			// The halftone bloom. One accent layer follows the pointer across the
+			// hero's existing dot field; only its transform changes.
+			const hero = document.querySelector<HTMLElement>('.hero');
+			const bloom = document.querySelector<HTMLElement>('[data-bloom]');
+			let heroLeft = 0;
+			let heroTop = 0;
+			let heroWidth = 0;
+			let heroHeight = 0;
+			let bloomX = 0;
+			let bloomY = 0;
+			let bloomToX = 0;
+			let bloomToY = 0;
+			let bloomOn = false;
+
+			const measureHero = () => {
+				if (!hero) return;
+				const rect = hero.getBoundingClientRect();
+				heroLeft = rect.left + window.scrollX;
+				heroTop = rect.top + window.scrollY;
+				heroWidth = rect.width;
+				heroHeight = rect.height;
+			};
+
+			if (hero && bloom) {
+				measureHero();
+				window.addEventListener('load', measureHero);
+				window.addEventListener('pageshow', measureHero);
+				window.addEventListener('resize', measureHero);
+
+				hero.addEventListener('pointerenter', (event) => {
+					if (event.pointerType !== 'mouse') return;
+					const x = event.clientX + window.scrollX - heroLeft;
+					const y = event.clientY + window.scrollY - heroTop;
+					bloomX = bloomToX = x;
+					bloomY = bloomToY = y;
+					bloom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+					bloomOn = true;
+					bloom.classList.add('is-on');
+				});
+
+				hero.addEventListener('pointerleave', () => {
+					bloomOn = false;
+					bloom.classList.remove('is-on');
+				});
+			}
+
 			const settle = () => {
 				frame = 0;
 				let moving = false;
@@ -527,6 +869,17 @@ const work = [
 					}
 
 					item.element.style.transform = `translate3d(${item.x.toFixed(2)}px, ${item.y.toFixed(2)}px, 0)`;
+				}
+
+				if (hero && bloom && bloomOn) {
+					bloomX += (bloomToX - bloomX) * 0.12;
+					bloomY += (bloomToY - bloomY) * 0.12;
+
+					if (Math.abs(bloomToX - bloomX) > 0.1 || Math.abs(bloomToY - bloomY) > 0.1) {
+						moving = true;
+					}
+
+					bloom.style.transform = `translate3d(${bloomX.toFixed(1)}px, ${bloomY.toFixed(1)}px, 0)`;
 				}
 
 				if (moving) frame = requestAnimationFrame(settle);
@@ -545,10 +898,75 @@ const work = [
 						item.toY = -ny * item.travel;
 					}
 
+					if (hero && bloom) {
+						const x = event.clientX + window.scrollX - heroLeft;
+						const y = event.clientY + window.scrollY - heroTop;
+						const inside = x >= 0 && y >= 0 && x <= heroWidth && y <= heroHeight;
+
+						if (inside) {
+							if (!bloomOn) {
+								bloomX = bloomToX = x;
+								bloomY = bloomToY = y;
+								bloom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+								bloomOn = true;
+								bloom.classList.add('is-on');
+							} else {
+								bloomToX = x;
+								bloomToY = y;
+							}
+						} else if (bloomOn) {
+							bloomOn = false;
+							bloom.classList.remove('is-on');
+						}
+					}
+
 					if (!frame) frame = requestAnimationFrame(settle);
 				},
 				{ passive: true }
 			);
+
+			// The loupe. The lens is a background-position crop of the same image,
+			// so it adds no request and no library. Fine pointers only.
+			for (const link of document.querySelectorAll<HTMLAnchorElement>('.shot-wrap a')) {
+				const lens = link.querySelector<HTMLElement>('[data-loupe]');
+				if (!lens) continue;
+
+				let lensSize = 0;
+				let backgroundSource = '';
+
+				const placeLens = (event: PointerEvent) => {
+					if (event.pointerType !== 'mouse') return;
+
+					const rect = link.getBoundingClientRect();
+					const x = event.clientX - rect.left;
+					const y = event.clientY - rect.top;
+
+					if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+						lens.classList.remove('is-on');
+						return;
+					}
+
+					const image = link.querySelector<HTMLImageElement>('img');
+					if (!image) return;
+					const source = image.currentSrc || image.src;
+
+					if (!lensSize) lensSize = lens.offsetWidth;
+					if (backgroundSource !== source) {
+						backgroundSource = source;
+						lens.style.backgroundImage = `url("${source}")`;
+					}
+
+					const scale = 2;
+					lens.style.backgroundSize = `${rect.width * scale}px ${rect.height * scale}px`;
+					lens.style.backgroundPosition = `${-(x * scale - lensSize / 2)}px ${-(y * scale - lensSize / 2)}px`;
+					lens.style.transform = `translate3d(${x - lensSize / 2}px, ${y - lensSize / 2}px, 0)`;
+					lens.classList.add('is-on');
+				};
+
+				link.addEventListener('pointerenter', placeLens);
+				link.addEventListener('pointermove', placeLens);
+				link.addEventListener('pointerleave', () => lens.classList.remove('is-on'));
+			}
 		}
 
 		// The strip's pause control. The state lives on <html> so the inline head
@@ -575,6 +993,81 @@ const work = [
 				} catch {
 					// Private mode or a blocked store: the control still works for this view.
 				}
+			});
+		}
+
+		// The strip is an index. Hovering, focusing or tapping a tool lights the
+		// project rows whose stacks name it and writes the mapping into the
+		// readout. The second set is the visual duplicate; it gets the same
+		// active state but is not focusable.
+		const strip = document.querySelector<HTMLElement>('[data-strip]');
+		const stripReadout = document.querySelector<HTMLElement>('[data-strip-readout]');
+
+		if (strip) {
+			const stripIdle = stripReadout?.textContent ?? '';
+			const toolNodes = [...strip.querySelectorAll<HTMLElement>('[data-tool]')];
+			const projectRows = new Map<string, HTMLElement>();
+
+			for (const row of document.querySelectorAll<HTMLElement>('.project[id]')) {
+				projectRows.set(row.id, row);
+			}
+
+			let activeTool = '';
+
+			const paintTool = (name: string) => {
+				if (name === activeTool) return;
+				activeTool = name;
+
+				for (const node of toolNodes) {
+					node.classList.toggle('is-active', node.dataset.tool === name);
+				}
+
+				for (const row of projectRows.values()) {
+					row.classList.remove('is-indexed');
+				}
+
+				const node = toolNodes.find((item) => item.dataset.tool === name);
+				const slugs = node?.dataset.projects?.split(' ') ?? [];
+
+				for (const slug of slugs) {
+					projectRows.get(slug)?.classList.add('is-indexed');
+				}
+
+				if (stripReadout) {
+					stripReadout.textContent = name ? (node?.dataset.readout ?? '') : stripIdle;
+				}
+			};
+
+			const toolFrom = (target: EventTarget | null) =>
+				target instanceof Element ? target.closest<HTMLElement>('[data-tool]') : null;
+
+			strip.addEventListener('pointerover', (event) => {
+				const node = toolFrom(event.target);
+				if (node) paintTool(node.dataset.tool ?? '');
+			});
+
+			strip.addEventListener('pointerleave', () => {
+				if (!strip.contains(document.activeElement)) paintTool('');
+			});
+
+			strip.addEventListener('focusin', (event) => {
+				const node = toolFrom(event.target);
+				if (!node) return;
+
+				strip.classList.add('is-focused');
+				paintTool(node.dataset.tool ?? '');
+			});
+
+			strip.addEventListener('focusout', (event) => {
+				if (event.relatedTarget instanceof Node && strip.contains(event.relatedTarget)) return;
+
+				strip.classList.remove('is-focused');
+				if (!strip.matches(':hover')) paintTool('');
+			});
+
+			strip.addEventListener('click', (event) => {
+				const node = toolFrom(event.target);
+				if (node) paintTool(node.dataset.tool ?? '');
 			});
 		}
 

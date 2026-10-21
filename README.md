@@ -3,10 +3,11 @@
 Personal site for Kenneth Clein T. Fernandez, third-year BSIT at San Sebastian
 College – Recoletos Manila, looking for full-stack internship hours.
 
-Static Astro site. No client-side framework, no analytics, no CMS. One inline
-script (a `js` class, so reveal animations never hide content from a browser
-without JS) and one small module: the copy-email button and a scroll observer
-that adds a class.
+Static Astro site. No client-side framework, no analytics, no CMS. The head
+adds a `js` flag so reveal animations never hide content from a browser without
+it. One inline script in the page handles reveal, pointer parallax, the live
+Manila clock, the copy button, the halftone bloom, the screenshot loupe and the
+tool strip. No third-party script.
 
 ## Commands
 
@@ -43,16 +44,18 @@ reveal, a missing sitemap, or a robots.txt that does not advertise it. The link
 check then catches dead anchors and local assets.
 
 `.dembrandt/baseline.json` is the frozen token set — colours, type sizes, radii,
-motion — re-approved from the preview build on 2026-10-20. Run the compare against
+motion — re-approved from the preview build on 2026-10-21. Run the compare against
 a preview deploy before shipping; the command exits non-zero when a token changes,
 so an intentional change needs `--approve` and an intentional commit.
 
-The review pass changed the motion scale, not the palette: the reveal is 420 ms /
-10 px (was 800 ms / 20 px), the screenshot wipe is 560 ms with no delay (was 900 ms
-with a 110 ms delay), and the captions now fade with the image. The compare sees
-`0.42s` added and `0.8s`/`0.9s` removed; no colour value changed. It also confirms
-the scroll-driven animations are running — `drift-away` and `drift-away-soft`
-reappear in the extracted animation list.
+The earlier review pass changed the motion scale: the reveal is 420 ms / 10 px
+(was 800 ms / 20 px), the screenshot wipe is 560 ms with no delay (was 900 ms
+with a 110 ms delay), and the captions now fade with the image. The 2026-10-21
+baseline also picks up the white paper (the deployed baseline still carried the
+old warm `#f8f5ef`), the new docket, redline and case-note type, and the
+additions' `0.14s`/`0.24s` motion steps. It still confirms the scroll-driven
+animations are running — `drift-away` and `drift-away-soft` reappear in the
+extracted animation list.
 
 Measured 2026-10-20 on a throttled mobile profile (390×844, 4× CPU, 1.6 Mbps /
 150 ms RTT, cold cache, median of 3): **LCP 1.6 s**, **CLS 0.000**, 364 KB over 10
@@ -61,6 +64,10 @@ proof images to eager loading for print is the main cost. It is still inside the
 2 s budget. WCAG contrast: every pair AA or AAA, including hover and focus states;
 lowest pair 5.06:1. Tap targets are 32–44 px tall (36 px header, nav and project
 links, 32 px inline links, 44 px copy button on coarse pointers).
+
+Those figures predate the 2026-10-21 review additions. The additions add markup,
+CSS and inline script but no new images or network requests; re-measure before
+quoting the numbers as current.
 
 ## Structure
 
@@ -74,7 +81,7 @@ scripts/check-built.mjs   build gate — catches what the source can't show
 scripts/check-links.mjs   dead anchors and missing local assets in dist/
 scripts/make-og.mjs       composes public/og.png from the page copy
 astro.config.mjs          site URL, sitemap, static output, fonts
-.dembrandt/baseline.json  frozen token set, re-approved 2026-10-20
+.dembrandt/baseline.json  frozen token set, re-approved 2026-10-21
 PRODUCT.md                audience, voice, verified claims, non-claims
 reference-brief.md        where the design is borrowed from, and what isn't
 ```
@@ -103,8 +110,22 @@ scroll-linked drift and the header progress rule sit behind
 `@supports (animation-timeline: scroll())`, so browsers without it get a still
 page rather than a broken one.
 
+The 2026-10-21 review additions keep the paper, the three fonts and the one
+accent. The hero contents line became a problem → fix docket. Each plate gets
+one or two numbered redlines with notes below it (paper marks on dark screens;
+DEVCON+ stays clean because its admin dashboard is private). DEVCON+ carries
+three case notes: found, changed, not shipped. A 2× loupe follows the pointer
+on fine pointers, and a transform-only accent bloom follows the pointer over
+the hero's dot field. The stack strip is now a tool index: hover, focus or tap a
+tool to mark the rows that use it, with the mapping in the strip's foot and a
+pause control above it. The small touches are the fix-link arrow, the live
+Manila clock, the misregistered frame, one `SHIPPED / MANILA · 2026` stamp near
+the contact section, and numbered section folios. B1, the build receipt, is
+deliberately not published.
+
 Print is a first-class output: every proof image loads eagerly so Ctrl+P includes
-all five, every reveal and caption resolves, and the copy button is hidden.
+all five, every reveal and caption resolves, the redline notes, case notes and
+stamp print, and the strip, bloom, loupe and copy button are hidden.
 
 `reference-brief.md` records which reference each structural decision came from.
 
